@@ -1,0 +1,50 @@
+<!-- Default Layout-->
+<div class="mcq" *ngIf="layout=='Default'">
+    <div class="question">
+            <div class="icon">
+                <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
+            </div> 
+            <div class="mcqText" [innerHTML]="mcqQuestion"></div>
+    </div>
+    <div class="options">
+        <div *ngFor="let mcqOption of mcqOptions" [ngClass]="(mcqOption.selected==true)?'mcq-option selected':'mcq-option'" class="" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
+
+        </div>
+    </div>        
+</div>
+<!-- End of Default Layout-->
+
+<!-- Multi Option Layout-->
+<div class="mcq" *ngIf="layout=='Multi'">
+        <div class="question">
+                <div class="icon">
+                    <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
+                </div> 
+                <div class="mcqText" [innerHTML]="mcqQuestion"></div>
+        </div>
+        <div class="options">
+            <div *ngFor="let mcqOption of mcqOptions | slice:0:2" class="mcq-option odd" [ngClass]="{selected: mcqOption.selected==true}" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
+            </div>
+            <div *ngFor="let mcqOption of mcqOptions | slice:2:4" class="mcq-option even" [ngClass]="{selected: mcqOption.selected==true}" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
+            </div>
+        </div>        
+</div>
+<!-- Multi Option Layout-->
+
+<!-- Multi Column Layout-->
+<div class="mcq" *ngIf="layout=='Column'">
+        <div class="question column-block">
+                <div class="icon">
+                    <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
+                </div> 
+                <div class="mcqText" [innerHTML]="mcqQuestion"></div>
+        </div>
+        <div class="options column-block">
+            <div *ngFor="let mcqOption of mcqOptions" [ngClass]="(mcqOption.selected==true)?'mcq-option selected':'mcq-option'" class="" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
+
+            </div>
+        </div>        
+</div>
+<!-- Multi Column Layout-->
+
+<lib-layoutstrip (onlayoutChange)='switchLayout($event)'></lib-layoutstrip>

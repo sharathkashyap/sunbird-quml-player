@@ -1,0 +1,4 @@
+<div *ngFor="let stripObject of strips" (click)="onLayoutSelect($event,stripObject)" [className]="'strip '+ stripObject.className">
+    <div class="block">{{stripObject.text}}</div>
+  </div>
+
