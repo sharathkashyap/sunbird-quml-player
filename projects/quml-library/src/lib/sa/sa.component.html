@@ -1,0 +1,53 @@
+<!-- <p>
+  short answers
+</p>
+Question:-
+<div [innerHTML]="shortAnswerQuestion"></div>
+solution:-
+<div [innerHTML]="ShortAnswerSolution"></div> -->
+
+
+
+<div class="mcq" *ngIf="layout=='Default'">
+  <div class="question">
+      <div class="icon">
+          <img
+              src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg" />
+      </div>
+      <div class="mcqText" [innerHTML]="shortAnswerQuestion"></div>
+  </div>
+  <div class="options">
+      <div class="mcq-option" [innerHTML]="ShortAnswerSolution"></div>
+
+  </div>
+</div>
+<!--Multi view-->
+
+<div class="mcq" *ngIf="layout=='Multi'">
+  <div class="question">
+          <div class="icon">
+              <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
+          </div> 
+          <div class="mcqText" [innerHTML]="shortAnswerQuestion"></div>
+  </div>
+  <div class="options">
+      <div class="mcq-option odd" [innerHTML]="ShortAnswerSolution"></div>        
+  </div>        
+</div>
+
+<!--coloumn-->
+
+<div class="mcq" *ngIf="layout=='Column'">
+  <div class="question column-block">
+          <div class="icon">
+              <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
+          </div> 
+          <div class="mcqText" [innerHTML]="shortAnswerQuestion"></div>
+  </div>
+  <div class="options column-block">
+      <div class="mcq-option" [innerHTML]="ShortAnswerSolution"></div>        
+  </div>        
+</div>
+
+
+<lib-layoutstrip (onlayoutChange)='switchLayout($event)'></lib-layoutstrip>
