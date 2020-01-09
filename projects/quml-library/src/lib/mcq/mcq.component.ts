@@ -14,7 +14,8 @@ declare var katex: any;
 export class McqComponent implements OnInit {
 
 
-  @Input() mcqData: any = 'questionData.result.assessment_item.question';
+  @Input() mcqData: any = questionData.result.assessment_item.question;
+  @Input() identifier: any;
   mcqQuestion: any;
   mcqOptions: any[] = [];
   @Input() layout: string = 'Column';
@@ -34,25 +35,24 @@ export class McqComponent implements OnInit {
       optionToBePushed.optionHtml = optionHtml;
       optionToBePushed.selected = selected;
       this.mcqOptions.push(optionToBePushed);
-      console.log('option ' , optionToBePushed );
     }
-     console.log('mcqoptions' , this.mcqOptions);
   }
 
   ngOnInit() {
-    this.renderLatex();
+   this.renderLatex();
   }
-  renderLatex() {
+   renderLatex() {
     let _instance = this;
     setTimeout(function () {
-      _instance.replaceLatexText();
+     _instance.replaceLatexText();
     }, 0);
   }
   replaceLatexText() {
-    var mathTextDivs = document.getElementsByClassName('mathText');
-    for (var i = 0; i < mathTextDivs.length; i++) {
-      var mathExp = mathTextDivs[i];
-      var textToRender = mathExp.innerHTML;
+    const questionElement = document.getElementById(this.identifier);
+    const mathTextDivs = questionElement.getElementsByClassName('mathText');
+    for (let i = 0; i < mathTextDivs.length; i++) {
+      const mathExp = mathTextDivs[i];
+      const textToRender = mathExp.innerHTML;
       katex.render(textToRender, mathExp, { displayMode: false, output: 'html', throwOnError: true });
     }
   }
