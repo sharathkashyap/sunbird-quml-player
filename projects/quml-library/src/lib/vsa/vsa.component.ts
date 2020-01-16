@@ -15,6 +15,7 @@ export class VsaComponent implements OnInit {
   veryShortAnswerSolution: string;
   @Input() layout?: string;
   @Output() componentLoaded = new EventEmitter<any>();
+  @Input() identifier: any;
 
   constructor() {
   }
@@ -36,7 +37,8 @@ export class VsaComponent implements OnInit {
     }, 0);
   }
   replaceLatexText() {
-    const mathTextDivs = document.getElementsByClassName('mathText');
+    const questionElement = document.getElementById(this.identifier);
+    const mathTextDivs = questionElement.getElementsByClassName('mathText');
     for (let i = 0; i < mathTextDivs.length; i++) {
       const mathExp = mathTextDivs[i];
       const textToRender = mathExp.innerHTML;

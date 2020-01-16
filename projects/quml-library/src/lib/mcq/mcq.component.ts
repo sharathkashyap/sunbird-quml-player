@@ -15,6 +15,7 @@ export class McqComponent implements OnInit {
 
 
   @Input() public mcqData?: any;
+  @Input() identifier: any;
   mcqQuestion: any;
   mcqOptions: any[] = [];
   @Input() public layout?: string;
@@ -28,9 +29,7 @@ export class McqComponent implements OnInit {
   ngOnInit() {
 
     this.componentLoaded.emit({event: 'mcq component has been loaded'});
-
     this.renderLatex();
-
     this.mcqData = this.mcqData ? this.mcqData : questionData;
     this.layout = this.layout ? this.layout : 'Default';
     console.log('mcqData after ternary', this.mcqData, this.layout);
@@ -48,23 +47,25 @@ export class McqComponent implements OnInit {
       optionToBePushed.selected = selected;
       this.mcqOptions.push(optionToBePushed);
     }
-    console.log('mcqQuestion', this.mcqQuestion);
-    console.log('mcqOption', this.mcqOptions);
   }
+
   renderLatex() {
     const _instance = this;
     setTimeout(function () {
-      _instance.replaceLatexText();
+     _instance.replaceLatexText();
     }, 0);
   }
+
   replaceLatexText() {
-    const mathTextDivs = document.getElementsByClassName('mathText');
+    const questionElement = document.getElementById(this.identifier);
+    const mathTextDivs = questionElement.getElementsByClassName('mathText');
     for (let i = 0; i < mathTextDivs.length; i++) {
       const mathExp = mathTextDivs[i];
       const textToRender = mathExp.innerHTML;
       katex.render(textToRender, mathExp, { displayMode: false, output: 'html', throwOnError: true });
     }
   }
+
   onOptionSelect(event, mcqOption) {
     this.answerChanged.emit({event: 'Option has been changed' });
     this.mcqOptions.forEach(mcqOptionElement => {
@@ -75,6 +76,7 @@ export class McqComponent implements OnInit {
       }
     });
   }
+
   switchLayout(stripData) {
     this.layout = stripData.text;
     this.renderLatex();

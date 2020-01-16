@@ -17,6 +17,7 @@ export class SaComponent implements OnInit {
   ShortAnswerSolution: string;
   @Input() layout?: string;
   @Output() componentLoaded = new EventEmitter<any>();
+  @Input() identifier: any;
 
   constructor(
     public domSanitizer: DomSanitizer
@@ -27,7 +28,7 @@ export class SaComponent implements OnInit {
   ngOnInit() {
     this.renderLatex();
     this.mcqData = this.mcqData ? this.mcqData : shortAnswerQuestionData;
-    this.layout = this.layout ? this.layout : 'Default';
+    this.layout = this.layout ? this.layout : 'Multi';
     this.shortAnswerQuestion = this.domSanitizer.sanitize
       (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(this.mcqData.result.assessment_item.body));
     this.ShortAnswerSolution = this.domSanitizer.sanitize(SecurityContext.HTML,
@@ -43,7 +44,8 @@ export class SaComponent implements OnInit {
     }, 0);
   }
   replaceLatexText() {
-    const mathTextDivs = document.getElementsByClassName('mathText');
+    const questionElement = document.getElementById(this.identifier);
+    const mathTextDivs = questionElement.getElementsByClassName('mathText');
     for (let i = 0; i < mathTextDivs.length; i++) {
       const mathExp = mathTextDivs[i];
       const textToRender = mathExp.innerHTML;

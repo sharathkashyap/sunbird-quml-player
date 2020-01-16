@@ -17,6 +17,7 @@ export class LaComponent implements OnInit {
   longAnswerSolution: string;
   @Input() layout: String;
   @Output() componentLoaded = new EventEmitter<any>();
+  @Input() identifier: any;
 
   constructor(
     public domSanitizer: DomSanitizer
@@ -26,7 +27,7 @@ export class LaComponent implements OnInit {
    ngOnInit() {
     this.renderLatex();
     this.mcqData = this.mcqData ? this.mcqData : longAnswerData;
-    this.layout = this.layout ? this.layout : 'Default';
+    this.layout = this.layout ? this.layout : 'Column';
     console.log('mcqData', this.mcqData, this.layout);
     console.log('LSA Initiated');
     this.longAnswerQuestion = this.domSanitizer.sanitize
@@ -43,7 +44,8 @@ export class LaComponent implements OnInit {
     }, 0);
   }
   replaceLatexText() {
-    const mathTextDivs = document.getElementsByClassName('mathText');
+    const questionElement = document.getElementById(this.identifier);
+    const mathTextDivs = questionElement.getElementsByClassName('mathText');
     for (let i = 0; i < mathTextDivs.length; i++) {
       const mathExp = mathTextDivs[i];
       const textToRender = mathExp.innerHTML;
