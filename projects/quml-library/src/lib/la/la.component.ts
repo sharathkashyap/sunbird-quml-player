@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, SecurityContext } from '@angular/core';
+import { Component, OnInit, Input, SecurityContext, Output, EventEmitter } from '@angular/core';
 import { longAnswerData } from './data';
 import { DomSanitizer } from '@angular/platform-browser';
-import { from } from 'rxjs';
 
 declare var katex: any;
 
@@ -12,23 +11,29 @@ declare var katex: any;
 })
 export class LaComponent implements OnInit {
 
-  @Input() data: any = longAnswerData.result.assessment_item;
+  @Input() mcqData?: any;
   longAnswerQuestion: string;
   longAnswerSolution: string;
-  @Input() layout = 'Column';
+  @Input() layout: String;
+  @Output() componentLoaded = new EventEmitter<any>();
   @Input() identifier: any;
 
   constructor(
     public domSanitizer: DomSanitizer
   ) {
-    this.longAnswerQuestion = this.domSanitizer.sanitize
-    (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(this.data.body));
-    this.longAnswerSolution = this.domSanitizer.sanitize
-    (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(this.data.solutions[0]));
    }
 
    ngOnInit() {
     this.renderLatex();
+    this.mcqData = this.mcqData ? this.mcqData : longAnswerData;
+    this.layout = this.layout ? this.layout : 'Column';
+    console.log('mcqData', this.mcqData, this.layout);
+    console.log('LSA Initiated');
+    this.longAnswerQuestion = this.domSanitizer.sanitize
+    (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(this.mcqData.result.assessment_item.body));
+    this.longAnswerSolution = this.domSanitizer.sanitize
+    (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(this.mcqData.result.assessment_item.solutions[0]));
+
   }
 
   renderLatex() {

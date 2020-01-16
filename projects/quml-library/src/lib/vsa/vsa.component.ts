@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SecurityContext } from '@angular/core';
+import { Component, OnInit, Input, SecurityContext, Output, EventEmitter } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { katex } from 'katex';
 import { veryShortAnswerData } from './data';
@@ -10,19 +10,24 @@ import { veryShortAnswerData } from './data';
 })
 export class VsaComponent implements OnInit {
 
-  @Input() data: any = veryShortAnswerData.result.assessment_item;
+  @Input() mcqData?: any;
   veryShortAnswerQuestion: string;
   veryShortAnswerSolution: string;
-  @Input() layout = 'Column';
+  @Input() layout?: string;
+  @Output() componentLoaded = new EventEmitter<any>();
   @Input() identifier: any;
 
   constructor() {
-    this.veryShortAnswerQuestion = this.data.question;
-    this.veryShortAnswerSolution = this.data.solutions[0];
   }
 
   ngOnInit() {
     this.renderLatex();
+    this.mcqData = this.mcqData ? this.mcqData : veryShortAnswerData;
+    this.layout = this.layout ? this.layout : 'Default';
+
+    this.veryShortAnswerQuestion = this.mcqData.result.assessment_item.question;
+    this.veryShortAnswerSolution = this.mcqData.result.assessment_item.solutions[0];
+    this.componentLoaded.emit({event : 'Vsa Component Loaded'});
   }
 
   renderLatex() {
