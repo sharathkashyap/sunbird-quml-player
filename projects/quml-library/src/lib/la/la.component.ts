@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, SecurityContext, Output, EventEmitter } from '@angular/core';
 import { longAnswerData } from './data';
 import { DomSanitizer } from '@angular/platform-browser';
-import { from } from 'rxjs';
 
 declare var katex: any;
 
