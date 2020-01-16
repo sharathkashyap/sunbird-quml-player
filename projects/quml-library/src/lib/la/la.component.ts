@@ -16,6 +16,7 @@ export class LaComponent implements OnInit {
   longAnswerQuestion: string;
   longAnswerSolution: string;
   @Input() layout = 'Column';
+  @Input() identifier: any;
 
   constructor(
     public domSanitizer: DomSanitizer
@@ -37,7 +38,8 @@ export class LaComponent implements OnInit {
     }, 0);
   }
   replaceLatexText() {
-    const mathTextDivs = document.getElementsByClassName('mathText');
+    const questionElement = document.getElementById(this.identifier);
+    const mathTextDivs = questionElement.getElementsByClassName('mathText');
     for (let i = 0; i < mathTextDivs.length; i++) {
       const mathExp = mathTextDivs[i];
       const textToRender = mathExp.innerHTML;

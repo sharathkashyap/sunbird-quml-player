@@ -1,0 +1,30 @@
+.slick-slider {
+  width: 90%;
+  margin: auto;
+}
+
+.btn-prev {
+  z-index: 1000;
+  position: absolute;
+  top: 50%;
+  left: 2.5%;
+  background-color: #281010;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 24px;
+  outline: 0;
+  border-color: #281010;
+}
+
+.btn-next {
+  z-index: 1000;
+  top: 50%;
+  position: absolute;
+  right: 2.5%;
+  background-color: #281010;
+  color: white;
+  font-size: 24px;
+  border-radius: 50%;
+  outline: none;
+  border: #281010;
+}
