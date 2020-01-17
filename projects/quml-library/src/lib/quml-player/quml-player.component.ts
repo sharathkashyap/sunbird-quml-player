@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
-import { SlickCarouselComponent } from 'ngx-slick-carousel';
+import { Component, OnInit, Input } from '@angular/core';
 
 
 
@@ -11,27 +10,11 @@ import { SlickCarouselComponent } from 'ngx-slick-carousel';
 })
 export class QumlPlayerComponent implements OnInit {
   slides = [1, 2, 3, 4, 5];
-  showMcq: Boolean;
-  @ViewChild('slickModal') slickModal: SlickCarouselComponent;
-  slideConfig = {
-    'slidesToShow': 1,
-    'slidesToScroll': 1,
-    'dots': false,
-    'infinite': false
-  };
 
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-  }
-
-  next() {
-    this.slickModal.slickNext();
-  }
-
-  prev() {
-    this.slickModal.slickPrev();
   }
 
   addSlide() {

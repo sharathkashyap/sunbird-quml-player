@@ -7,14 +7,14 @@ import { SaComponent } from './sa/sa.component';
 import { VsaComponent } from './vsa/vsa.component';
 import { LaComponent } from './la/la.component';
 import { QumlPlayerComponent } from './quml-player/quml-player.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [QumlLibraryComponent, McqComponent,
      LayoutstripComponent, SaComponent, SaComponent, VsaComponent, LaComponent, QumlPlayerComponent],
   imports: [
     BrowserModule,
-    SlickCarouselModule
+    CarouselModule
   ],
   exports: [QumlLibraryComponent, McqComponent, LayoutstripComponent, SaComponent, VsaComponent, LaComponent , QumlPlayerComponent]
 })
