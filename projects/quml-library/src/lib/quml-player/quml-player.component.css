@@ -1,1 +1,17 @@
+.carousel-container {
+  width: 88%;
+  margin: auto;
+}
 
+.button-container {
+  text-align: center;
+  margin: 10px 0px 10px 0px;
+}
+
+.arrow-button {
+  border-radius: 50%;
+  font-size: 0%;
+  outline: none;
+  background-color: black;
+  padding: 13px;
+}

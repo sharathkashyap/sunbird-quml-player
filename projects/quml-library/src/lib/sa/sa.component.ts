@@ -29,12 +29,15 @@ export class SaComponent implements OnInit {
     this.renderLatex();
     this.mcqData = this.mcqData ? this.mcqData : shortAnswerQuestionData;
     this.layout = this.layout ? this.layout : 'Multi';
+    // this.shortAnswerQuestion = this.domSanitizer.sanitize
+    //   (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(this.mcqData.result.assessment_item.body));
+    // this.ShortAnswerSolution = this.domSanitizer.sanitize(SecurityContext.HTML,
+    //   this.domSanitizer.bypassSecurityTrustHtml(this.mcqData.result.assessment_item.solutions[0]));
+    const parsedQuestionData = JSON.parse(this.mcqData['__cdata']);
     this.shortAnswerQuestion = this.domSanitizer.sanitize
-      (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(this.mcqData.result.assessment_item.body));
+      (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(parsedQuestionData.question));
     this.ShortAnswerSolution = this.domSanitizer.sanitize(SecurityContext.HTML,
-      this.domSanitizer.bypassSecurityTrustHtml(this.mcqData.result.assessment_item.solutions[0]));
-      console.log('Data from Component', this.mcqData , this.layout);
-      console.log('Questions and Answers', this.shortAnswerQuestion , this.ShortAnswerSolution);
+      this.domSanitizer.bypassSecurityTrustHtml(parsedQuestionData.answer));
   }
 
   renderLatex() {

@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-
-
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { CarouselComponent } from 'ngx-bootstrap/carousel';
 
 
 @Component({
@@ -9,12 +8,33 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./quml-player.component.css']
 })
 export class QumlPlayerComponent implements OnInit {
-  slides = [1, 2, 3, 4, 5];
+  @Input() questions: any;
+  @ViewChild('car') car: CarouselComponent;
+  slides: any;
+  slideInterval: number;
+  showIndicator: Boolean;
+  noWrapSlides: Boolean;
+  carouselConfig =  {
+   'NEXT': 1,
+   'PREV': 2
+  };
 
   constructor() {
   }
 
   ngOnInit() {
+    this.slideInterval = 0;
+    this.showIndicator = false;
+    this.noWrapSlides = false;
+
+  }
+
+  nextSlide() {
+    this.car.move(this.carouselConfig.NEXT);
+  }
+
+  prevSlide() {
+    this.car.move(this.carouselConfig.PREV);
   }
 
   addSlide() {
