@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { QumlLibraryComponent } from './quml-library.component';
 import { McqComponent } from './mcq/mcq.component';
 import { LayoutstripComponent } from './layoutstrip/layoutstrip.component';
@@ -13,7 +13,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   declarations: [QumlLibraryComponent, McqComponent,
      LayoutstripComponent, SaComponent, SaComponent, VsaComponent, LaComponent, QumlPlayerComponent],
   imports: [
-    BrowserModule,
+    CommonModule,
     CarouselModule
   ],
   exports: [QumlLibraryComponent, McqComponent, LayoutstripComponent, SaComponent, VsaComponent, LaComponent , QumlPlayerComponent]

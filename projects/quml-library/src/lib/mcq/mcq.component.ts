@@ -14,7 +14,7 @@ declare var katex: any;
 export class McqComponent implements OnInit {
 
 
-  @Input() public mcqData?: any;
+  @Input() public questions?: any;
   @Input() identifier: any;
   mcqQuestion: any;
   mcqOptions: any[] = [];
@@ -30,12 +30,12 @@ export class McqComponent implements OnInit {
 
     this.componentLoaded.emit({event: 'mcq component has been loaded'});
     this.renderLatex();
-    this.mcqData = this.mcqData ? this.mcqData : questionData;
+    this.questions = this.questions ? this.questions : questionData;
     this.layout = this.layout ? this.layout : 'Default';
-    console.log('mcqData after ternary', this.mcqData, this.layout);
+    console.log('mcqData after ternary', this.questions, this.layout);
     this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-      this.domSanitizer.bypassSecurityTrustHtml(this.mcqData.result.assessment_item.question));
-    const options = this.mcqData.result.assessment_item.options;
+      this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
+    const options = this.questions.result.assessment_item.options;
     for (let j = 0; j < options.length; j++) {
       const option = options[j];
       const optionValue = option.value.body;

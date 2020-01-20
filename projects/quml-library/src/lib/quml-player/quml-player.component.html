@@ -9,7 +9,7 @@
 <div class="carousel-container">
   <carousel [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides" #car>
     <slide *ngFor="let question of questions">
-      <lib-sa [mcqData]='question.data'></lib-sa>
+      <lib-sa [questions]='question.data'></lib-sa>
     </slide>
   </carousel>
 </div>

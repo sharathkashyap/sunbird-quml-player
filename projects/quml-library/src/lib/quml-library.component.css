@@ -47,12 +47,12 @@ img {
 
 .options{
     word-break: break-all;
-    display: inline !important;
+    /* display: inline !important; */
 }
 
 .even,
 .odd {
-    width: 48%;
+    width: 47%;
     display: inline-block;
     vertical-align: middle;
 }
@@ -80,7 +80,14 @@ img {
 
     .even,
     .odd {
-        width: 44%;
+        width: 38%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .column-block {
+        display: inline-block;
+        width: 42%;
+        vertical-align: middle;
     }
 }
 
@@ -91,6 +98,26 @@ img {
 
     .even,
     .odd {
-        width: 46%;
+        width: 43%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .column-block {
+        display: inline-block;
+        width: 45%;
+        vertical-align: middle;
+    }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1200px) {
+    .even,
+    .odd {
+        width: 45%;
+    }
+
+    .column-block {
+        display: inline-block;
+        width: 45%;
+        vertical-align: middle;
     }
 }

@@ -10,24 +10,21 @@ import { veryShortAnswerData } from './data';
 })
 export class VsaComponent implements OnInit {
 
-  @Input() mcqData?: any;
-  veryShortAnswerQuestion: string;
-  veryShortAnswerSolution: string;
+  @Input() questions?: any;
   @Input() layout?: string;
   @Output() componentLoaded = new EventEmitter<any>();
   @Input() identifier: any;
-
+  veryShortAnswerQuestion: string;
+  veryShortAnswerSolution: string;
   constructor() {
   }
 
   ngOnInit() {
     this.renderLatex();
-    this.mcqData = this.mcqData ? this.mcqData : veryShortAnswerData;
+    this.questions = this.questions ? this.questions : veryShortAnswerData;
     this.layout = this.layout ? this.layout : 'Default';
-
-    this.veryShortAnswerQuestion = this.mcqData.result.assessment_item.question;
-    this.veryShortAnswerSolution = this.mcqData.result.assessment_item.solutions[0];
-    this.componentLoaded.emit({event : 'Vsa Component Loaded'});
+    this.veryShortAnswerQuestion = this.questions.result.assessment_item.question;
+    this.veryShortAnswerSolution = this.questions.result.assessment_item.solutions[0];
   }
 
   renderLatex() {
