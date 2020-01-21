@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
+import { questionSet } from './data';
 import { Direction } from 'ngx-bootstrap/carousel/carousel.component';
 
 
@@ -15,6 +16,7 @@ export class QumlPlayerComponent implements OnInit {
   slideInterval: number;
   showIndicator: Boolean;
   noWrapSlides: Boolean;
+  questionData = questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
 
   constructor() {
   }
@@ -23,7 +25,7 @@ export class QumlPlayerComponent implements OnInit {
     this.slideInterval = 0;
     this.showIndicator = false;
     this.noWrapSlides = false;
-
+    this.questions = this.questions ? this.questions : this.questionData;
   }
 
   nextSlide() {
