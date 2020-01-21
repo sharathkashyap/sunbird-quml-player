@@ -29,7 +29,7 @@ export class SaComponent implements OnInit {
     this.renderLatex();
     this.questions = this.questions ? this.questions : shortAnswerQuestionData;
     this.layout = this.layout ? this.layout : 'Multi';
-    if (this.questions['__cdata']) {
+    if (this.questions['__cdata']! = null) {
       const parsedQuestionData = JSON.parse(this.questions['__cdata']);
       this.shortAnswerQuestion = this.domSanitizer.sanitize
         (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(parsedQuestionData.question));

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { questionSet } from './data';
+import { Direction } from 'ngx-bootstrap/carousel/carousel.component';
 
 
 @Component({
@@ -16,10 +17,6 @@ export class QumlPlayerComponent implements OnInit {
   showIndicator: Boolean;
   noWrapSlides: Boolean;
   questionData = questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
-  carouselConfig =  {
-   'NEXT': 1,
-   'PREV': 2
-  };
 
   constructor() {
   }
@@ -32,15 +29,15 @@ export class QumlPlayerComponent implements OnInit {
   }
 
   nextSlide() {
-    this.car.move(this.carouselConfig.NEXT);
+    this.car.move(Direction.NEXT);
   }
 
   prevSlide() {
-    this.car.move(this.carouselConfig.PREV);
+    this.car.move(Direction.PREV);
   }
 
   addSlide() {
-    this.slides.push(5);
+    this.slides.push(this.questions.length);
   }
 
   removeSlide() {
