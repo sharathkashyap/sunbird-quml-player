@@ -1,5 +1,15 @@
-<carousel>
-  <slide *ngFor="let slide of slides">
-    <lib-mcq [identifier]="slide" id={{slide}}></lib-mcq>
-  </slide>
-</carousel>
+<div class="button-container">
+  <button class="arrow-button" (click)="prevSlide()"><span aria-hidden="true"
+      class="icon-prev carousel-control-prev-icon">
+    </span></button>
+  <button class="arrow-button" (click)="nextSlide()"><span aria-hidden="true"
+      class="icon-next carousel-control-next-icon"></span></button>
+</div>
+
+<div class="carousel-container">
+  <carousel [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides" #car>
+    <slide *ngFor="let question of questions">
+      <lib-sa [questions]='question.data'></lib-sa>
+    </slide>
+  </carousel>
+</div>

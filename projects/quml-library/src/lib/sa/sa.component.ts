@@ -29,10 +29,18 @@ export class SaComponent implements OnInit {
     this.renderLatex();
     this.questions = this.questions ? this.questions : shortAnswerQuestionData;
     this.layout = this.layout ? this.layout : 'Multi';
-    this.shortAnswerQuestion = this.domSanitizer.sanitize
-      (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.body));
-    this.ShortAnswerSolution = this.domSanitizer.sanitize(SecurityContext.HTML,
-      this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.solutions[0]));
+    const parsedQuestionData = JSON.parse(this.questions['__cdata']);
+    if (parsedQuestionData) {
+      this.shortAnswerQuestion = this.domSanitizer.sanitize
+        (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(parsedQuestionData.question));
+      this.ShortAnswerSolution = this.domSanitizer.sanitize(SecurityContext.HTML,
+        this.domSanitizer.bypassSecurityTrustHtml(parsedQuestionData.answer));
+    } else {
+      this.shortAnswerQuestion = this.domSanitizer.sanitize
+        (SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.body));
+      this.ShortAnswerSolution = this.domSanitizer.sanitize(SecurityContext.HTML,
+        this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.solutions[0]));
+    }
   }
 
   renderLatex() {
