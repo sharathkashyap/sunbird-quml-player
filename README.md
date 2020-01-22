@@ -69,7 +69,7 @@ Import the NgModule for each component you want to use:
 
 |Feature| Notes| Selector|
 |--|--|--|
-| [mcqComponent](./projects/quml-library/src/lib/mcq/mcq-component.md) | Can be used in the Quml Player for displaying mcq questions| lib-mcq|
+| [mcqComponent](./projects/quml-library/src/lib/mcq/mcq-component.md) | Can be used in the Quml Player for displaying multiple choice questions| lib-mcq|
 | [saComponent](./projects/quml-library/src/lib/sa/sa-component.md)| Can be used in the Quml Player for displaying Short Answer Questions| lib-sa|
 | [vsaComponent](./projects/quml-library/src/lib/vsa/vsa.component.md)| Can be used in the Quml Player for displaying Very Short Answer Questions | lib-vsa|
 | [laComponent](./projects/quml-library/src/lib/la/la.component.md) | Can be used in the Quml Player for displaying Long Answer Questions| lib-la|
