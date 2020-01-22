@@ -4,13 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Common angular components for Sunbird QUML Player!
 
-Contains common UI components powered by angular. These components are designed to be used in sunbird consumption platforms *(mobile app, web portal, offline desktop app)* to drive reusability, maintainability hence reducing the redundant development effort significantly.
+Contains common UI components powered by angular. These components are designed to be used in sunbird Quml Player *(mobile app, web portal, offline desktop app)* to drive reusability, maintainability hence reducing the redundant development effort significantly.
 
 # Getting Started
 
 ## Step 1 : Clone the Project and install necessary dependencies of the Project by following steps: 
 
-    npm i 
+    npm install 
 
 ## Step 2 : Run ng build to build the project.
 
@@ -25,11 +25,11 @@ For help getting started with a new Angular app, check out the Angular CLI.
 
 For existing apps, follow these steps to begin using .
 
-## Step 1: Install the necessary packages for the Project by using npm i 
+## Step 1: Install the following packages
 
-    npm i 
+    npm install ngx-bootsrap
 
-    npm link 'PATH_TO_QUMLPLAYER/sunbird-quml-player/dist/quml-library/'
+    npm install katex
 	
 
   
@@ -53,13 +53,13 @@ For existing apps, follow these steps to begin using .
 Import the NgModule for each component you want to use:
 
     import {QumlLibraryModule} from 'quml-library';
-    import { CarouselModule } from 'ngx-bootstrap/carousel';
+    import {CarouselModule} from 'ngx-bootstrap/carousel';
 
 
     @NgModule({
 	    ...
 	    imports: [ QumlLibraryModule,
-   `     CarouselModule.forRoot()],
+        CarouselModule.forRoot()],
 	    ...
     })
 
@@ -67,8 +67,10 @@ Import the NgModule for each component you want to use:
 
 ## Available components
 
-| Feature | Notes| Selector|
+|Feature| Notes| Selector|
 |--|--|--|
-| [MCQComponent]([https://github.com/sharathkashyap
-/
-sunbird-quml-player](https://github.com/Sunbird-Ed/SunbirdEd-consumption-ngcomponents)) | Can be used in the library page for all consumption platforms| sb-library-card|
+| [MCQComponent] | Can be used in the Quml Player for displaying mcq questions| lib-mcq|
+| [saComponent] | Can be used in the Quml Player for displaying Short Answers| lib-sa|
+| [vsaComponent] | Can be used in the Quml Player for displaying Very Short Answers | lib-vsa|
+| [laComponent] | Can be used in the Quml Player for displaying Long Answers| lib-la|
+| [layoutStripComponent] | Can be used in the Quml Player for displaying Long Answers| lib-layoutstrip|
