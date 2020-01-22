@@ -1,11 +1,9 @@
 **vsa Component**
 
-This component can be used to show mcq Questions in Quml Player. It receives questions and layout 
-And emits component Loaded and options click event.
-
+This component can be used to show very short Answer Questions in Quml Player. It receives questions and layout emits component Loaded.
   
 
-**Selector**: `lib-vsa`
+**Selector**: `quml-vsa`
 
   
 

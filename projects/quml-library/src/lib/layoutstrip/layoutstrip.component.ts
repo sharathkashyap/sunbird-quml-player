@@ -1,24 +1,24 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'lib-layoutstrip',
+  selector: 'quml-layoutstrip',
   templateUrl: './layoutstrip.component.html',
   styleUrls: ['./layoutstrip.component.css']
 })
 export class LayoutstripComponent implements OnInit {
-  strips:any = [];
-  stripColors = ["green","brown","yellow"];
+  strips: any = [];
+  stripColors = ["green", "brown", "yellow"];
   @Output() onlayoutChange = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
-    
-    let stripTexts = ["Default","Multi","Column"];
+
+    let stripTexts = ["Default", "Multi", "Column"];
     let count = 0;
     this.stripColors.forEach(element => {
-      let stripObject:any = {};
+      let stripObject: any = {};
       stripObject.className = this.stripColors[count];
-      if(count == 2) {
+      if (count == 2) {
         stripObject.selected = true;
       } else {
         stripObject.selected = false;
@@ -30,10 +30,10 @@ export class LayoutstripComponent implements OnInit {
     });
   }
 
-  onLayoutSelect(event,stripObject) {
+  onLayoutSelect(event, stripObject) {
     this.strips.forEach(element => {
-      if(stripObject.index == element.index) {
-        element.className = this.stripColors[element.index]+" selected";
+      if (stripObject.index == element.index) {
+        element.className = this.stripColors[element.index] + " selected";
         element.selected = true;
         this.onlayoutChange.emit(element);
       } else {

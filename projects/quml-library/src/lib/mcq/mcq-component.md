@@ -1,11 +1,11 @@
 **mcq Component**
 
-This component can be used to show mcq Questions in Quml Player. It receives questions and layout 
+This component can be used to show Mutliple Choice Questions in Quml Player. It receives questions and layout 
 And emits component Loaded and options click event.
 
   
 
-**Selector**: `lib-mcq`
+**Selector**: `quml-mcq`
 
   
 
@@ -23,7 +23,7 @@ And emits component Loaded and options click event.
 | Name     |  Description  |
 |----------|:-------------:|
 | @Input() identifier |  Unique identifier for the question |
-| @Input() questions | Dataset to display the mcq question in the Quml Player|    |
+| @Input() questions | Dataset to display the multiple choice question in the Quml Player|    |
 | @Input() layout: string | Layout to display the questions in different formats. Ex: Default, Column|
 
 

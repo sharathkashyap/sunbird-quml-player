@@ -6,7 +6,7 @@ import { questionData } from './data';
 declare var katex: any;
 
 @Component({
-  selector: 'lib-mcq',
+  selector: 'quml-mcq',
   templateUrl: './mcq.component.html',
   styleUrls: ['./mcq.component.css' , '../quml-library.component.css'],
 

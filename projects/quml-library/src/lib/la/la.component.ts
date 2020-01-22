@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 declare var katex: any;
 
 @Component({
-  selector: 'lib-la',
+  selector: 'quml-la',
   templateUrl: './la.component.html',
   styleUrls: ['./la.component.css' , '../quml-library.component.css']
 })
