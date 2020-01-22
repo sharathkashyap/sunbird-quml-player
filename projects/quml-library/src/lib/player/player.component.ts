@@ -4,11 +4,11 @@ import { questionSet } from './data';
 
 
 @Component({
-  selector: 'lib-quml-player',
-  templateUrl: './quml-player.component.html',
-  styleUrls: ['./quml-player.component.css']
+  selector: 'quml-player',
+  templateUrl: './player.component.html',
+  styleUrls: ['./player.component.css']
 })
-export class QumlPlayerComponent implements OnInit {
+export class PlayerComponent implements OnInit {
   @Input() questions: any;
   @ViewChild('car') car: CarouselComponent;
   slides: any;

@@ -4,7 +4,7 @@ import { katex } from 'katex';
 import { veryShortAnswerData } from './data';
 
 @Component({
-  selector: 'lib-vsa',
+  selector: 'quml-vsa',
   templateUrl: './vsa.component.html',
   styleUrls: ['./vsa.component.css', '../quml-library.component.css']
 })

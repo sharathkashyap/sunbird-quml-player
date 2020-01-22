@@ -7,7 +7,7 @@
       "root": "projects/quml-library",
       "sourceRoot": "projects/quml-library/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "quml",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

@@ -4,7 +4,7 @@ This component can be used to show Long Answer Questions in Quml Player. It rece
 
   
 
-**Selector**: `lib-la`
+**Selector**: `quml-la`
 
   
 

@@ -4,7 +4,7 @@ This component can be used to show Question Set which contains different kind of
 
   
 
-**Selector**: `lib-quml-player`
+**Selector**: `quml-player`
 
   
 
