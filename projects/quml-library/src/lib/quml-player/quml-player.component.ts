@@ -15,13 +15,17 @@ export class QumlPlayerComponent implements OnInit {
   slideInterval: number;
   showIndicator: Boolean;
   noWrapSlides: Boolean;
-  questionData = questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
+  questionData = this.getQuestionData();
   CarouselConfig = {
     NEXT : 1,
     PREV : 2
   };
 
   constructor() {
+  }
+
+  getQuestionData() {
+     return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
   }
 
   ngOnInit() {
