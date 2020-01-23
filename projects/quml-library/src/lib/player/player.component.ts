@@ -15,7 +15,7 @@ export class PlayerComponent implements OnInit {
   slideInterval: number;
   showIndicator: Boolean;
   noWrapSlides: Boolean;
-  questionData = questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
+  questionData = this.getQuestionData();
   CarouselConfig = {
     NEXT : 1,
     PREV : 2
@@ -24,11 +24,23 @@ export class PlayerComponent implements OnInit {
   constructor() {
   }
 
+  getQuestionData() {
+     return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
+  }
+
   ngOnInit() {
     this.slideInterval = 0;
     this.showIndicator = false;
     this.noWrapSlides = false;
     this.questions = this.questions ? this.questions : this.questionData;
+    this.setQuestionType();
+  }
+
+  setQuestionType() {
+     this.questions.forEach(element => {
+       const config = JSON.parse(element.config.__cdata);
+       element.questionType = config.metadata.type;
+     });
   }
 
   nextSlide() {

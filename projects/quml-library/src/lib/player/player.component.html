@@ -5,11 +5,14 @@
   <button class="arrow-button" (click)="nextSlide()"><span aria-hidden="true"
       class="icon-next carousel-control-next-icon"></span></button>
 </div>
-
-<div class="carousel-container">
-  <carousel [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides" #car>
+  <carousel [interval]="slideInterval" [showIndicators]="showIndicator"
+    [noWrap]="noWrapSlides" #car>
     <slide *ngFor="let question of questions">
-      <lib-sa [questions]='question.data' [identifier]="question.id" id={{question.id}}></lib-sa>
+      <div *ngIf="question.questionType === 'reference'">
+        <lib-sa [questions]='question.data' [identifier]="question.id" id={{question.id}}></lib-sa>
+      </div>
+      <div *ngIf="question.questionType === 'mcq'">
+        <lib-mcq [questions]='question.data' [identifier]="question.id" id={{question.id}}></lib-mcq>
+      </div>
     </slide>
   </carousel>
-</div>
