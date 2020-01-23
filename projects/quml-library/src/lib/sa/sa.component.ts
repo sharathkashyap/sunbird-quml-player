@@ -6,7 +6,7 @@ import { shortAnswerQuestionData } from './data';
 declare var katex: any;
 
 @Component({
-  selector: 'lib-sa',
+  selector: 'quml-sa',
   templateUrl: './sa.component.html',
   styleUrls: ['./sa.component.css', '../quml-library.component.css']
 })

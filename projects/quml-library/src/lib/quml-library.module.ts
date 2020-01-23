@@ -6,16 +6,16 @@ import { LayoutstripComponent } from './layoutstrip/layoutstrip.component';
 import { SaComponent } from './sa/sa.component';
 import { VsaComponent } from './vsa/vsa.component';
 import { LaComponent } from './la/la.component';
-import { QumlPlayerComponent } from './quml-player/quml-player.component';
+import { PlayerComponent } from './player/player.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [QumlLibraryComponent, McqComponent,
-     LayoutstripComponent, SaComponent, SaComponent, VsaComponent, LaComponent, QumlPlayerComponent],
+     LayoutstripComponent, SaComponent, SaComponent, VsaComponent, LaComponent, PlayerComponent],
   imports: [
     CommonModule,
     CarouselModule
   ],
-  exports: [QumlLibraryComponent, McqComponent, LayoutstripComponent, SaComponent, VsaComponent, LaComponent , QumlPlayerComponent]
+  exports: [QumlLibraryComponent, McqComponent, LayoutstripComponent, SaComponent, VsaComponent, LaComponent , PlayerComponent]
 })
 export class QumlLibraryModule { }

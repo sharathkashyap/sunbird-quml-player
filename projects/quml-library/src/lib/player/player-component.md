@@ -4,7 +4,7 @@ This component can be used to show Question Set which contains different kind of
 
   
 
-**Selector**: `lib-quml-player`
+**Selector**: `quml-player`
 
   
 
@@ -21,7 +21,7 @@ This component can be used to show Question Set which contains different kind of
   
 | Name     |  Description  |
 |----------|:-------------:|
-| @Input() questions | Question Set to display different kind of questions like mcq,short answer etc., in the Quml Player |
+| @Input() questions | Question Set to display different kind of questions like multiple choice questions,short answer Questions, Long Answer Questions in the Quml Player |
 
 
   
