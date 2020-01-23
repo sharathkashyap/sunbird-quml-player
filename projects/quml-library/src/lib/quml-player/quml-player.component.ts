@@ -33,6 +33,14 @@ export class QumlPlayerComponent implements OnInit {
     this.showIndicator = false;
     this.noWrapSlides = false;
     this.questions = this.questions ? this.questions : this.questionData;
+    this.setQuestionType();
+  }
+
+  setQuestionType() {
+     this.questions.forEach(element => {
+       const config = JSON.parse(element.config.__cdata);
+       element.questionType = config.metadata.type;
+     });
   }
 
   nextSlide() {

@@ -17,6 +17,7 @@ export class McqComponent implements OnInit {
   @Input() public questions?: any;
   @Input() identifier: any;
   mcqQuestion: any;
+  options: any;
   mcqOptions: any[] = [];
   @Input() public layout?: string;
   @Output() componentLoaded = new EventEmitter<any>();
@@ -32,12 +33,19 @@ export class McqComponent implements OnInit {
     this.renderLatex();
     this.questions = this.questions ? this.questions : questionData;
     this.layout = this.layout ? this.layout : 'Default';
-    console.log('mcqData after ternary', this.questions, this.layout);
-    this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-      this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
-    const options = this.questions.result.assessment_item.options;
-    for (let j = 0; j < options.length; j++) {
-      const option = options[j];
+    if (this.questions['__cdata'] != null) {
+      const parsedQuestions = JSON.parse(this.questions.__cdata);
+      this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
+        this.domSanitizer.bypassSecurityTrustHtml(parsedQuestions.question));
+      this.options = parsedQuestions.options;
+
+    } else {
+      this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
+        this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
+      this.options = this.questions.result.assessment_item.options;
+    }
+    for (let j = 0; j < this.options.length; j++) {
+      const option = this.options[j];
       const optionValue = option.value.body;
       const optionHtml = this.domSanitizer.sanitize(SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(optionValue));
       const selected = false;
