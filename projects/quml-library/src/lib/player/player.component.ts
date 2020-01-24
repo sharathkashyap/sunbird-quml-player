@@ -10,6 +10,10 @@ import { questionSet } from './data';
 })
 export class PlayerComponent implements OnInit {
   @Input() questions: any;
+  @Output() componentLoaded = new EventEmitter<any>();
+  @Output() previousClicked = new EventEmitter<any>();
+  @Output() nextClicked = new EventEmitter<any>();
+  @Output() questionClicked = new EventEmitter<any>();
   @ViewChild('car') car: CarouselComponent;
   slides: any;
   slideInterval: number;
@@ -51,7 +55,9 @@ export class PlayerComponent implements OnInit {
   }
 
   nextSlide() {
-    console.log('optionselectedobj', this.optionSelectedObj);
+    if (!this.optionSelectedObj) {
+      this.car.move(this.CarouselConfig.NEXT);
+    }
     if (Boolean(this.optionSelectedObj.result)) {
       this.car.move(this.CarouselConfig.NEXT);
     } else {

@@ -11,18 +11,10 @@
   padding: 13px;
 }
 
-.left .carousel-control .carousel-control-prev {
-  visibility: hidden;
-}
-
-.right .carousel-control .carousel-control-next {
-  visibility: hidden;
-}
-
 .quml-card {
   background-color: #fff;
   padding: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
   width: 25%;
   position: absolute;
   left: 37%;
@@ -57,4 +49,12 @@
   width: 40%;
   display: inline;
   padding-right: 12px
+}
+
+::ng-deep .carousel.slide a.left.carousel-control.carousel-control-prev {
+  display: none;
+}
+
+::ng-deep .carousel.slide .carousel-control.carousel-control-next {
+  display: none;
 }
