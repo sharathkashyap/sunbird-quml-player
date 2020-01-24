@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { questionSet } from './data';
 
@@ -15,17 +15,19 @@ export class PlayerComponent implements OnInit {
   slideInterval: number;
   showIndicator: Boolean;
   noWrapSlides: Boolean;
+  optionSelectedObj: any;
+  showAlert: Boolean;
   questionData = this.getQuestionData();
   CarouselConfig = {
-    NEXT : 1,
-    PREV : 2
+    NEXT: 1,
+    PREV: 2
   };
 
   constructor() {
   }
 
   getQuestionData() {
-     return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
+    return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
   }
 
   ngOnInit() {
@@ -37,14 +39,28 @@ export class PlayerComponent implements OnInit {
   }
 
   setQuestionType() {
-     this.questions.forEach(element => {
-       const config = JSON.parse(element.config.__cdata);
-       element.questionType = config.metadata.type;
-     });
+    this.questions.forEach(element => {
+      const config = JSON.parse(element.config.__cdata);
+      element.questionType = config.metadata.type;
+    });
+  }
+
+  skip() {
+    this.car.move(this.CarouselConfig.NEXT);
+    this.showAlert = false;
   }
 
   nextSlide() {
-    this.car.move(this.CarouselConfig.NEXT);
+    console.log('optionselectedobj', this.optionSelectedObj);
+    if (Boolean(this.optionSelectedObj.result)) {
+      this.car.move(this.CarouselConfig.NEXT);
+    } else {
+      this.showAlert = true;
+    }
+  }
+
+  getOptionSelected(optionSelected) {
+    this.optionSelectedObj = optionSelected;
   }
 
   prevSlide() {
