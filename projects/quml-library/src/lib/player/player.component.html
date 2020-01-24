@@ -9,10 +9,10 @@
     [noWrap]="noWrapSlides" #car>
     <slide *ngFor="let question of questions">
       <div *ngIf="question.questionType === 'reference'">
-        <lib-sa [questions]='question.data' [identifier]="question.id" id={{question.id}}></lib-sa>
+        <quml-sa [questions]='question.data' [identifier]="question.id" id={{question.id}}></quml-sa>
       </div>
       <div *ngIf="question.questionType === 'mcq'">
-        <lib-mcq [questions]='question.data' [identifier]="question.id" id={{question.id}}></lib-mcq>
+        <quml-mcq [questions]='question.data' [identifier]="question.id" id={{question.id}}></quml-mcq>
       </div>
     </slide>
   </carousel>

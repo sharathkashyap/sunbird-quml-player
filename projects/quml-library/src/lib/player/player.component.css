@@ -10,3 +10,9 @@
   background-color: black;
   padding: 13px;
 }
+::ng-deep .carousel.slide a.left.carousel-control.carousel-control-prev {
+  display: none;
+}
+::ng-deep .carousel.slide .carousel-control.carousel-control-next {
+  display: none;
+}

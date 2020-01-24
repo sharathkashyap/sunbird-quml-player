@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { questionSet } from './data';
 
@@ -10,6 +10,10 @@ import { questionSet } from './data';
 })
 export class PlayerComponent implements OnInit {
   @Input() questions: any;
+  @Output() componentLoaded = new EventEmitter<any>();
+  @Output() previousClicked = new EventEmitter<any>();
+  @Output() nextClicked = new EventEmitter<any>();
+  @Output() questionClicked = new EventEmitter<any>();
   @ViewChild('car') car: CarouselComponent;
   slides: any;
   slideInterval: number;
