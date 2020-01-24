@@ -10,9 +10,51 @@
   background-color: black;
   padding: 13px;
 }
+
+.quml-card {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+  width: 25%;
+  position: absolute;
+  left: 37%;
+  text-align: center;
+  top: 25%;
+  z-index: 2;
+}
+
+.quml-card-title {
+  font-size: 20px;
+  text-align: center;
+}
+
+.quml-card-body .wrong {
+  color: red;
+}
+
+.quml-card-body .right {
+  color: green;
+}
+
+.quml-card-button-section .button-container button {
+  color: white;
+  background-color: #024f9d;
+  border-color: #024f9d;
+  outline: none;
+  font-size: 14px;
+  padding: 4px 23px;
+}
+
+.quml-card-button-section .button-container {
+  width: 40%;
+  display: inline;
+  padding-right: 12px
+}
+
 ::ng-deep .carousel.slide a.left.carousel-control.carousel-control-prev {
   display: none;
 }
+
 ::ng-deep .carousel.slide .carousel-control.carousel-control-next {
   display: none;
 }

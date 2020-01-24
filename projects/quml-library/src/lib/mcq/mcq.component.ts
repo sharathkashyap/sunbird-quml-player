@@ -22,6 +22,7 @@ export class McqComponent implements OnInit {
   @Input() public layout?: string;
   @Output() componentLoaded = new EventEmitter<any>();
   @Output() answerChanged = new EventEmitter<any>();
+  @Output() optionSelected = new EventEmitter<number>();
 
   constructor(public domSanitizer: DomSanitizer) {
 
@@ -60,7 +61,7 @@ export class McqComponent implements OnInit {
   renderLatex() {
     const _instance = this;
     setTimeout(function () {
-     _instance.replaceLatexText();
+      _instance.replaceLatexText();
     }, 0);
   }
 
@@ -75,7 +76,8 @@ export class McqComponent implements OnInit {
   }
 
   onOptionSelect(event, mcqOption) {
-    this.answerChanged.emit({event: 'Option has been changed' });
+    const parsedQuestion = JSON.parse(this.questions.__cdata);
+    this.answerChanged.emit({ event: 'Option has been changed' });
     this.mcqOptions.forEach(mcqOptionElement => {
       if (mcqOptionElement.index === mcqOption.index) {
         mcqOptionElement.selected = true;
@@ -83,7 +85,20 @@ export class McqComponent implements OnInit {
         mcqOptionElement.selected = false;
       }
     });
+    parsedQuestion.options.forEach((element) => {
+      if (element.value.body === mcqOption.optionHtml) {
+        const selectedOption = {
+            selectedOption : element,
+            result : element.answer
+        };
+      this.getSelectedOptionAndResult(selectedOption);
+      }
+    });
   }
+
+   getSelectedOptionAndResult (optionObj) {
+     this.optionSelected.emit(optionObj);
+   }
 
   switchLayout(stripData) {
     this.layout = stripData.text;
