@@ -15,6 +15,8 @@ export class PlayerComponent implements OnInit {
   @Output() nextClicked = new EventEmitter<any>();
   @Output() questionClicked = new EventEmitter<any>();
   @ViewChild('car') car: CarouselComponent;
+  
+  endPageReached:boolean;
   slides: any;
   slideInterval: number;
   showIndicator: Boolean;
@@ -26,6 +28,7 @@ export class PlayerComponent implements OnInit {
   };
 
   constructor() {
+    this.endPageReached = false;
   }
 
   getQuestionData() {
@@ -35,7 +38,7 @@ export class PlayerComponent implements OnInit {
   ngOnInit() {
     this.slideInterval = 0;
     this.showIndicator = false;
-    this.noWrapSlides = false;
+    this.noWrapSlides = true;
     this.questions = this.questions ? this.questions : this.questionData;
     this.setQuestionType();
   }
@@ -48,11 +51,18 @@ export class PlayerComponent implements OnInit {
   }
 
   nextSlide() {
+    if(this.car.getCurrentSlideIndex()+1 == this.questions.length) {
+      this.endPageReached = true;
+    }
     this.car.move(this.CarouselConfig.NEXT);
   }
 
   prevSlide() {
-    this.car.move(this.CarouselConfig.PREV);
+    if(this.car.getCurrentSlideIndex()+1 == this.questions.length && this.endPageReached) {
+      this.endPageReached = false;
+    } else {
+      this.car.move(this.CarouselConfig.PREV);
+    }
   }
 
   addSlide() {

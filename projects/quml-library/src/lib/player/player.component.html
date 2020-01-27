@@ -6,13 +6,14 @@
       class="icon-next carousel-control-next-icon"></span></button>
 </div>
   <carousel [interval]="slideInterval" [showIndicators]="showIndicator"
-    [noWrap]="noWrapSlides" #car>
-    <slide *ngFor="let question of questions">
+    [noWrap]="noWrapSlides" #car [hidden]="endPageReached">
+    <slide *ngFor="let question of questions;">
       <div *ngIf="question.questionType === 'reference'">
         <quml-sa [questions]='question.data' [identifier]="question.id" id={{question.id}}></quml-sa>
       </div>
       <div *ngIf="question.questionType === 'mcq'">
         <quml-mcq [questions]='question.data' [identifier]="question.id" id={{question.id}}></quml-mcq>
       </div>
-    </slide>
+    </slide>  
   </carousel>
+  <quml-endpage [hidden]="!endPageReached"></quml-endpage>
