@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'quml-endpage',
@@ -6,12 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./endpage.component.css']
 })
 export class EndpageComponent implements OnInit {
-  
-  constructor() { 
-  
+  @Input() scoreSummary;
+  score: any;
+  constructor() {
+
   }
 
   ngOnInit() {
+   console.log('score summary' , this.scoreSummary);
   }
 
 }
