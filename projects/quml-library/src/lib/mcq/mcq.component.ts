@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SecurityContext, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, SecurityContext, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { katex } from 'katex';
 import { questionData } from './data';
@@ -22,10 +22,12 @@ export class McqComponent implements OnInit {
   @Input() public layout?: string;
   @Output() componentLoaded = new EventEmitter<any>();
   @Output() answerChanged = new EventEmitter<any>();
+  elementRefer:any;
+  @ViewChild('question') questionTag: any;
   @Output() optionSelected = new EventEmitter<number>();
 
-  constructor(public domSanitizer: DomSanitizer) {
-
+  constructor(public domSanitizer: DomSanitizer,elementRef:ElementRef) {
+    this.elementRefer = elementRef;
   }
 
   ngOnInit() {
@@ -45,6 +47,7 @@ export class McqComponent implements OnInit {
         this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
       this.options = this.questions.result.assessment_item.options;
     }
+       
     for (let j = 0; j < this.options.length; j++) {
       const option = this.options[j];
       const optionValue = option.value.body;

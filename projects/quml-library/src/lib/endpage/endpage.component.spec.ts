@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VsaComponent } from './vsa.component';
+import { EndpageComponent } from './endpage.component';
 
-describe('VsaComponent', () => {
-  let component: VsaComponent;
-  let fixture: ComponentFixture<VsaComponent>;
+describe('EndpageComponent', () => {
+  let component: EndpageComponent;
+  let fixture: ComponentFixture<EndpageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VsaComponent ]
+      declarations: [ EndpageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VsaComponent);
+    fixture = TestBed.createComponent(EndpageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -4,7 +4,10 @@
             <div class="icon">
                 <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
             </div> 
-            <div class="mcqText" [innerHTML]="mcqQuestion"></div>
+            <div class="stretch">
+                expand
+            </div>
+            <div class="mcqText clipToTwoLines" #question [innerHTML]="mcqQuestion"></div>
     </div>
     <div class="options">
         <div *ngFor="let mcqOption of mcqOptions" [ngClass]="(mcqOption.selected==true)?'mcq-option selected':'mcq-option'" class="" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
@@ -20,7 +23,7 @@
                 <div class="icon">
                     <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
                 </div> 
-                <div class="mcqText" [innerHTML]="mcqQuestion"></div>
+                <div class="mcqText clipToTwoLines" #question [innerHTML]="mcqQuestion"></div>
         </div>
         <div class="options">
             <div *ngFor="let mcqOption of mcqOptions | slice:0:2" class="mcq-option odd" [ngClass]="{selected: mcqOption.selected==true}" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
@@ -37,7 +40,7 @@
                 <div class="icon">
                     <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
                 </div> 
-                <div class="mcqText" [innerHTML]="mcqQuestion"></div>
+                <div class="mcqText clipToTwoLines" #question [innerHTML]="mcqQuestion"></div>
         </div>
         <div class="options column-block">
             <div *ngFor="let mcqOption of mcqOptions" [ngClass]="(mcqOption.selected==true)?'mcq-option selected':'mcq-option'" class="" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
