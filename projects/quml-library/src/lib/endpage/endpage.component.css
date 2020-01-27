@@ -24,3 +24,9 @@
 .options {
     font-size: 1.1em;
 }
+.replay {
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAYCAYAAAAYl8YPAAABuklEQVRIS63Vz4tOcRTH8ddgWKGsMH41SMrKCqWIxSSJjY0F5R/AZvwo4zeTUpZkgSYbms2kLBAaMxtrKyWhLAax0DAmOtN56ulx73PnecZ3d+/33HfnnM/nnNuh+qzENtypCu2oCFiBZ7iLMzOBLcNzdOPsTGBdmdGazKZt2NIEra0r6wau4h1+l5Xb2LPFCVpX8sEPPEHAHzbGtAqr//4pDuJD7WWRmkVl3sR9bE7A6gR8wg68jucyazQTYDaO4RLm4D02YqyZz8Ia4bHIokjNfXiAWbiHA1WmXZ5eKzPtFfTiDzZUwaIVzcZpfgqwIKwzHVjVFA1EiXj1P2BHcQ3fAxYGDIVuY7gqjYL7w7iFyYB9xiIcR38bsBNpkylrvMBWDGFPG7AYq11ho4CdxEX8ynXzsQVg7Ls36IzKArYEbzEvR2Z/C7BBhHnHsaqm5uXsWXDOoW8awAs4lXHncboGm5tO35SXMSYxfzF3jSdKu469efES2zFR77NQNJpZA07gMUbxJRXfgp054MEawW58Ldoa0bco8wgi27LzM40aP5kQbuqUTUBsjEPowXosxLfcW4/S4P+o/hddOVi9l6xG+gAAAABJRU5ErkJggg==');
+    padding: 5px;
+    width: 24px;
+    height: 24px;
+}
