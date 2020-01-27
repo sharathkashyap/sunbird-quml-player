@@ -1,0 +1,26 @@
+.summary {
+    text-align: center;
+    background: #EEE;
+    min-height: 500px;
+    margin: 0 5px;
+}
+.completionStatus {
+    font-size: 1.4em;
+}
+.contentAuthor {
+    font-size: 0.9em;
+}
+.timeReport {
+    width: 80%;
+    min-height: 200px;
+    background: #CCC;
+    margin: 0 auto;
+}
+.option {
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+}
+.options {
+    font-size: 1.1em;
+}
