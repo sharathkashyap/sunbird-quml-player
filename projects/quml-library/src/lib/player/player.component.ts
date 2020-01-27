@@ -15,16 +15,18 @@ export class PlayerComponent implements OnInit {
   @Output() nextClicked = new EventEmitter<any>();
   @Output() questionClicked = new EventEmitter<any>();
   @ViewChild('car') car: CarouselComponent;
-  
+
   endPageReached:boolean;
   slides: any;
   slideInterval: number;
   showIndicator: Boolean;
   noWrapSlides: Boolean;
+  optionSelectedObj: any;
+  showAlert: Boolean;
   questionData = this.getQuestionData();
   CarouselConfig = {
-    NEXT : 1,
-    PREV : 2
+    NEXT: 1,
+    PREV: 2
   };
 
   constructor() {
@@ -32,7 +34,7 @@ export class PlayerComponent implements OnInit {
   }
 
   getQuestionData() {
-     return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
+    return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
   }
 
   ngOnInit() {
@@ -44,17 +46,35 @@ export class PlayerComponent implements OnInit {
   }
 
   setQuestionType() {
-     this.questions.forEach(element => {
-       const config = JSON.parse(element.config.__cdata);
-       element.questionType = config.metadata.type;
-     });
+    this.questions.forEach(element => {
+      const config = JSON.parse(element.config.__cdata);
+      element.questionType = config.metadata.type;
+    });
   }
 
   nextSlide() {
     if(this.car.getCurrentSlideIndex()+1 == this.questions.length) {
       this.endPageReached = true;
+      return;
     }
+    if (!this.optionSelectedObj) {
+      this.car.move(this.CarouselConfig.NEXT);
+    }
+    if (Boolean(this.optionSelectedObj.result)) {
+      this.car.move(this.CarouselConfig.NEXT);
+    } else {
+      this.showAlert = true;
+    }
+  }
+
+  skip() {
     this.car.move(this.CarouselConfig.NEXT);
+    this.showAlert = false;
+  }
+
+
+  getOptionSelected(optionSelected) {
+    this.optionSelectedObj = optionSelected;
   }
 
   prevSlide() {
