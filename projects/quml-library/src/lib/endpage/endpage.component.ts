@@ -13,5 +13,11 @@ export class EndpageComponent implements OnInit {
 
   ngOnInit() {
   }
+  replayContent($event) {
+    console.log("Replay Content");
+  }
+  exitContent($event) {
+    console.log("Exit Content");
+  }
 
 }
