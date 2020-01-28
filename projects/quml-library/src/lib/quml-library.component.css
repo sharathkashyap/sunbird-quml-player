@@ -73,6 +73,10 @@ img {
     display: inline !important;
 }
 
+.padding-top{
+    padding-top: 16px;
+}
+
 @media only screen and (min-width: 100px) and (max-width: 481px) {
     .mcqText {
         width: 75%;

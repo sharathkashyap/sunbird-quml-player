@@ -16,13 +16,16 @@ export class PlayerComponent implements OnInit {
   @Output() questionClicked = new EventEmitter<any>();
   @ViewChild('car') car: CarouselComponent;
 
-  endPageReached:boolean;
+  endPageReached: boolean;
   slides: any;
   slideInterval: number;
   showIndicator: Boolean;
   noWrapSlides: Boolean;
   optionSelectedObj: any;
   showAlert: Boolean;
+  skippedQuestion = 0;
+  answeredQuestionCorrectly = 0;
+  scoreSummary = {};
   questionData = this.getQuestionData();
   CarouselConfig = {
     NEXT: 1,
@@ -53,23 +56,37 @@ export class PlayerComponent implements OnInit {
   }
 
   nextSlide() {
-    if(this.car.getCurrentSlideIndex()+1 == this.questions.length) {
+    if (this.car.getCurrentSlideIndex() + 1 === this.questions.length) {
       this.endPageReached = true;
+      this.getScoreSummary();
       return;
     }
-    if (!this.optionSelectedObj) {
+    if (this.optionSelectedObj === undefined || Object.keys(this.optionSelectedObj).length === 0) {
       this.car.move(this.CarouselConfig.NEXT);
-    }
-    if (Boolean(this.optionSelectedObj.result)) {
+      this.optionSelectedObj = {};
+      this.skippedQuestion = this.skippedQuestion + 1;
+      this.scoreSummary['skippedQuestion'] = this.skippedQuestion;
+    } else if (this.optionSelectedObj.result) {
       this.car.move(this.CarouselConfig.NEXT);
-    } else {
+      this.answeredQuestionCorrectly = this.answeredQuestionCorrectly + 1;
+      this.scoreSummary['answeredQuestionCorrectly'] = this.answeredQuestionCorrectly;
+    } else if (this.optionSelectedObj.result === false) {
       this.showAlert = true;
     }
+  }
+
+  getScoreSummary() {
+    return this.scoreSummary = {
+        answeredQuestionCorrectly : this.answeredQuestionCorrectly,
+        skippedQuestion: this.skippedQuestion,
+        totalNoOfQuestions: this.questions.length
+    };
   }
 
   skip() {
     this.car.move(this.CarouselConfig.NEXT);
     this.showAlert = false;
+    this.optionSelectedObj = {};
   }
 
 
@@ -78,7 +95,7 @@ export class PlayerComponent implements OnInit {
   }
 
   prevSlide() {
-    if(this.car.getCurrentSlideIndex()+1 == this.questions.length && this.endPageReached) {
+    if (this.car.getCurrentSlideIndex() + 1 === this.questions.length && this.endPageReached) {
       this.endPageReached = false;
     } else {
       this.car.move(this.CarouselConfig.PREV);
@@ -91,22 +108,6 @@ export class PlayerComponent implements OnInit {
 
   removeSlide() {
     this.slides.length = this.slides.length - 1;
-  }
-
-  slickInit(e) {
-    console.log('slick initialized');
-  }
-
-  breakpoint(e) {
-    console.log('breakpoint');
-  }
-
-  afterChange(e) {
-    console.log('afterChange');
-  }
-
-  beforeChange(e) {
-    console.log('beforeChange');
   }
 
 }
