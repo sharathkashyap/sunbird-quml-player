@@ -7,14 +7,14 @@ solution:-
 <div [innerHTML]="ShortAnswerSolution"></div> -->
 <div class="mcq" *ngIf="layout=='Default'">
   <div class="question">
-      <div class="icon">
-          <img
-              src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg" />
-      </div>
-      <div class="mcqText" [innerHTML]="shortAnswerQuestion"></div>
+    <div class="icon">
+      <img
+        src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg" />
+    </div>
+    <div class="mcqText" [innerHTML]="shortAnswerQuestion"></div>
   </div>
   <div class="options">
-      <div class="mcq-option" [innerHTML]="ShortAnswerSolution"></div>
+    <div class="mcq-option" [innerHTML]="ShortAnswerSolution"></div>
 
   </div>
 </div>
@@ -22,29 +22,58 @@ solution:-
 
 <div class="mcq" *ngIf="layout=='Multi'">
   <div class="question">
-          <div class="icon">
-              <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
-          </div> 
-          <div class="mcqText" [innerHTML]="shortAnswerQuestion"></div>
+    <div class="icon">
+      <img
+        src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
+    </div>
+    <div class="mcqText" [innerHTML]="shortAnswerQuestion"></div>
   </div>
   <div class="options">
-      <div class="mcq-option odd" [innerHTML]="ShortAnswerSolution"></div>        
-  </div>        
+    <div class="mcq-option odd" [innerHTML]="ShortAnswerSolution"></div>
+  </div>
 </div>
 
 <!--coloumn-->
 
 <div class="mcq" *ngIf="layout=='Column'">
   <div class="question column-block">
-          <div class="icon">
-              <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
-          </div> 
-          <div class="mcqText" [innerHTML]="shortAnswerQuestion"></div>
+    <div class="icon">
+      <img
+        src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
+    </div>
+    <div class="mcqText" [innerHTML]="shortAnswerQuestion"></div>
   </div>
   <div class="options column-block">
-      <div class="mcq-option" [innerHTML]="ShortAnswerSolution"></div>        
-  </div>        
+    <div class="mcq-option" [innerHTML]="ShortAnswerSolution"></div>
+  </div>
 </div>
 
 
-<quml-layoutstrip (onlayoutChange)='switchLayout($event)'></quml-layoutstrip>
+<!-- <quml-layoutstrip (onlayoutChange)='switchLayout($event)'></quml-layoutstrip> -->
+
+<div class="quml-sujective-question-section" *ngIf="layout=='new'">
+  <div class="subjective-button-container">
+    <div class="question-text">
+      Question
+    </div>
+    <div>
+      <button class="answer-button">Answer</button>
+    </div>
+  </div>
+  <div class="qa-section" [innerHTML]="shortAnswerQuestion">
+     <!-- this is the question section -->
+  </div>
+</div>
+<div class="quml-sujective-answer-section">
+  <div class="subjective-button-container">
+    <div class="answer-text">
+      Answer
+    </div>
+    <div>
+      <button class="question-button">Question</button>
+    </div>
+  </div>
+  <div class="qa-section" [innerHTML]="ShortAnswerSolution">
+    <!-- this is the answer section -->
+  </div>
+</div>
