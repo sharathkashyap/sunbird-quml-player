@@ -28,7 +28,7 @@ export class SaComponent implements OnInit {
   ngOnInit() {
     this.renderLatex();
     this.questions = this.questions ? this.questions : shortAnswerQuestionData;
-    this.layout = this.layout ? this.layout : 'Multi';
+    this.layout = this.layout ? this.layout : 'new';
     if (this.questions['__cdata'] != null) {
       const parsedQuestionData = JSON.parse(this.questions['__cdata']);
       this.shortAnswerQuestion = this.domSanitizer.sanitize
