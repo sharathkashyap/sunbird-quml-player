@@ -1,0 +1,60 @@
+.quml-header{
+    background: #c2c2c2;
+    display: flow-root;
+    height: 36px;
+   }
+   .row {
+     margin-right: 0px;
+     margin-left: 0px;
+   }
+   .col {
+     padding-left: 0px;
+     padding-right: 0px;
+   }
+   .quml-button-container {
+     margin-right: 24px;
+     float: right; 
+   }
+   
+   .quml-button {
+     background-color: rgb(15, 5, 160); /* Navy Blue */
+     border: none;
+     color: white;
+     padding: 4px;
+     text-align: center;
+     text-decoration: none;
+     font-size: 16px;
+     margin: 2px 8px 2px 2px;
+     cursor: pointer;
+     width: 48px;
+     height: 30px;
+     border-radius: 10%;
+   }
+   
+   .quml-timer{
+     padding: 8px;
+   }
+   
+   .quml-header-text {
+     margin: 8px;
+     text-align: center;
+     text-overflow: ellipsis;
+     overflow: hidden;
+     white-space: nowrap;
+   }
+   
+   .quml-arrow-button {
+     border-radius: 28%;
+     font-size: 0%;
+     outline: none;
+     background-color: rgb(15, 5, 160);
+     padding: 8px;
+   }
+   
+   .quml-menu {
+     width: 35px;
+     height: 5px;
+     background-color: black;
+     margin: 6px 0;
+     margin-left: 40px;
+   }

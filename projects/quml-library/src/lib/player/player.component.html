@@ -1,33 +1,6 @@
-<div class="quml-header">
-  <div class="row">
-    <div class="col col-2">
-      <!-- <img class="quml-menu" src="../../assets/menu - material.png"/> -->
-    </div>
-    <div class="col col-5">
-      <div class="quml-header-text">
-        Unit 2 ,Triangles and Rectangles
-      </div>
-    </div>
-    <!-- <div class="col col-2">
-      <div class="quml-timer">O 03:78</div>
-    </div> for timeer need to be discussed--> 
-    <div class="col col-5">
-      <span class="quml-button-container">
-        <button type="button" class="button quml-button" (click)="prevSlide()">
-          <span aria-hidden="true" class="icon-prev carousel-control-prev-icon">
-          </span> 
-          <!-- <img class="quml-menu" src="../../assets/chevron_left.png"/> -->
-        </button>
-        <button type="button" class="button quml-button" (click)="nextSlide()">
-          <span aria-hidden="true" class="icon-next carousel-control-next-icon"></span> 
-          <!-- <img class="quml-menu" src="../../assets/chevron_right - material.png"/> -->
-       </button>
-      </span>
-    </div>
-  </div>
-</div>
 
-<!-- <quml-header  [questions]='question.data' (nextSlideClicked) = "nextSlide($event)"></quml-header> -->
+
+<quml-header (nextSlideClicked) = "nextSlideClicked($event)" (previousSlideClicked) = "previousSlideClicked($event)" *ngIf="!endPageReached"></quml-header>
 
 <carousel [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides" #car
   [hidden]="endPageReached">

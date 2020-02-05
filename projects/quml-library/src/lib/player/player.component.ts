@@ -110,4 +110,16 @@ export class PlayerComponent implements OnInit {
     this.slides.length = this.slides.length - 1;
   }
 
+  nextSlideClicked(event) {
+    if (event = 'next clicked') {
+      this.nextSlide();
+    }
+  }
+
+  previousSlideClicked(event) {
+    if (event = 'previous clicked') {
+      this.prevSlide();
+    }
+  }
+
 }
