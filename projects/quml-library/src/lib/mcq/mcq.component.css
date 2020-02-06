@@ -1,0 +1,12 @@
+.clipToTwoLines {
+    line-height: 1.2em;
+    max-height: 2.4em;
+    overflow: hidden;
+}
+.question.collapsible.end {
+    max-height: 3.6em;
+    overflow:hidden;
+}
+.question.collapsible {
+    max-height: unset;
+}
