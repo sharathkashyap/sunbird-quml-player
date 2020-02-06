@@ -15,5 +15,11 @@ export class EndpageComponent implements OnInit {
   ngOnInit() {
    console.log('score summary' , this.scoreSummary);
   }
+  replayContent($event) {
+    console.log("Replay Content");
+  }
+  exitContent($event) {
+    console.log("Exit Content");
+  }
 
 }
