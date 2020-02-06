@@ -1,12 +1,6 @@
 <!-- Default Layout-->
 <div class="mcq" *ngIf="layout=='Default'">
-    <div class="question">
-            <div class="icon">
-                <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
-            </div> 
-            <div class="stretch">
-                expand
-            </div>
+    <div class="question" #question>
             <div class="mcqText clipToTwoLines" #question [innerHTML]="mcqQuestion"></div>
     </div>
     <div class="options">
@@ -19,10 +13,7 @@
 
 <!-- Multi Option Layout-->
 <div class="mcq" *ngIf="layout=='Multi'">
-        <div class="question">
-                <div class="icon">
-                    <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
-                </div> 
+        <div class="question" #question>
                 <div class="mcqText clipToTwoLines" #question [innerHTML]="mcqQuestion"></div>
         </div>
         <div class="options">
@@ -36,10 +27,7 @@
 
 <!-- Multi Column Layout-->
 <div class="mcq" *ngIf="layout=='Column'">
-        <div class="question column-block">
-                <div class="icon">
-                    <img src="https://9b16f79ca967fd0708d1-2713572fef44aa49ec323e813b06d2d9.ssl.cf2.rackcdn.com/1140x_a10-7_cTC/questionmark1-1563038597.jpg"/>
-                </div> 
+        <div class="question column-block" #question>
                 <div class="mcqText clipToTwoLines" #question [innerHTML]="mcqQuestion"></div>
         </div>
         <div class="options column-block">
@@ -50,4 +38,3 @@
 </div>
 <!-- Multi Column Layout-->
 
-<quml-layoutstrip (onlayoutChange)='switchLayout($event)'></quml-layoutstrip>

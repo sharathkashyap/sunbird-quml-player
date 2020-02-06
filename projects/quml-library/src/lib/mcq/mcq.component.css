@@ -1,0 +1,5 @@
+.clipToTwoLines {
+    line-height: 1.2em;
+    max-height: 2.4em;
+    overflow: hidden;
+}

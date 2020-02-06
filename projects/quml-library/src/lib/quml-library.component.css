@@ -1,19 +1,13 @@
 .mcq {
     opacity: 0.9;
-    padding: 8px;
+    background: #CCC;
 }
 
 .question {
-    border: 1px solid;
     padding: 0.8em;
-    margin: 0.5em;
-    background: #024f9d;
+    background: #FFF;
 }
 
-img {
-    width: 50px;
-    height: 50px;
-}
 
 .answer {
     border: 1px solid;
@@ -30,23 +24,20 @@ img {
 }
 
 .mcqText {
-    width: 75%;
     display: inline-block;
-    color: #FFF;
     word-break: break-word;
 }
 
 .mcq-option {
     background: #FFF;
-    color: #024f9d;
     border-radius: 5px;
-    margin: 8px;
+    margin: 8px 16px;
     padding: 8px;
-    box-shadow: 1px 2px 1px 3px #8fa6bd;
 }
 
 .options{
     word-break: break-all;
+    padding: 15px 5px;
     /* display: inline !important; */
 }
 
