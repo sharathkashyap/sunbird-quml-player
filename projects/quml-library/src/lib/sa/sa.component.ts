@@ -20,6 +20,7 @@ export class SaComponent implements OnInit {
   ShortAnswerSolution: string;
   imageUrl;
   videoUrl;
+  showedAnswer = false;
   baseUrl = 'https://staging.ntp.net.in/';
 
   constructor(
