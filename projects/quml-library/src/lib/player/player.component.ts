@@ -49,9 +49,14 @@ export class PlayerComponent implements OnInit {
   }
 
   setQuestionType() {
+    console.log('this.questions in player', this.questions);
     this.questions.forEach(element => {
-      const config = JSON.parse(element.config.__cdata);
-      element.questionType = config.metadata.type;
+      if (typeof (element.config.__cdata) === 'string') {
+        const config = JSON.parse(element.config.__cdata);
+        element.questionType = config.metadata.type;
+      } else {
+        element.questionType = element.config.metadata.type;
+      }
     });
   }
 
@@ -77,9 +82,9 @@ export class PlayerComponent implements OnInit {
 
   getScoreSummary() {
     return this.scoreSummary = {
-        answeredQuestionCorrectly : this.answeredQuestionCorrectly,
-        skippedQuestion: this.skippedQuestion,
-        totalNoOfQuestions: this.questions.length
+      answeredQuestionCorrectly : this.answeredQuestionCorrectly,
+      skippedQuestion: this.skippedQuestion,
+      totalNoOfQuestions: this.questions.length
     };
   }
 
