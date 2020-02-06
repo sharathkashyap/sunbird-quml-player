@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angular/core';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { questionSet } from './data';
-
 @Component({
   selector: 'quml-header',
   templateUrl: './header.component.html',
@@ -26,6 +25,13 @@ export class HeaderComponent implements OnInit {
 
   prevSlide() {
     this.nextSlideClicked.emit({event : 'previous clicked'});
+  }
+
+ openNav() {
+    document.getElementById('mySidenav').style.width = '100%';
+  }
+   closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
   }
 
 
