@@ -6,14 +6,15 @@ import { SaComponent } from './sa/sa.component';
 import { PlayerComponent } from './player/player.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { EndpageComponent } from './endpage/endpage.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [QumlLibraryComponent, McqComponent,
+  declarations: [QumlLibraryComponent, McqComponent, HeaderComponent,
       SaComponent, PlayerComponent, EndpageComponent],
   imports: [
     CommonModule,
     CarouselModule
   ],
-  exports: [QumlLibraryComponent, McqComponent, SaComponent, PlayerComponent]
+  exports: [QumlLibraryComponent, McqComponent, SaComponent, PlayerComponent, HeaderComponent]
 })
 export class QumlLibraryModule { }

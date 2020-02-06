@@ -19,6 +19,7 @@ export class McqComponent implements OnInit {
   mcqQuestion: any;
   options: any;
   mcqOptions: any[] = [];
+  isExpanded: boolean =true;
   @Input() public layout?: string;
   @Output() componentLoaded = new EventEmitter<any>();
   @Output() answerChanged = new EventEmitter<any>();
@@ -77,7 +78,9 @@ export class McqComponent implements OnInit {
       katex.render(textToRender, mathExp, { displayMode: false, output: 'html', throwOnError: true });
     }
   }
-
+  toggleCollapse() {
+    this.isExpanded = !this.isExpanded;
+  }
   onOptionSelect(event, mcqOption) {
     const parsedQuestion = JSON.parse(this.questions.__cdata);
     this.answerChanged.emit({ event: 'Option has been changed' });

@@ -1,8 +1,9 @@
 <!-- Default Layout-->
 <div class="mcq" *ngIf="layout=='Default'">
-    <div class="question" #question>
-            <div class="mcqText clipToTwoLines" #question [innerHTML]="mcqQuestion"></div>
+    <div class="question collapsible" [ngClass]="isExpanded == true?'':'end'" #question>
+            <div class="mcqText" #question [innerHTML]="mcqQuestion"></div>
     </div>
+    <span (click)="toggleCollapse()">{{isExpanded == true?'collapsible':'Expand'}}</span>
     <div class="options">
         <div *ngFor="let mcqOption of mcqOptions" [ngClass]="(mcqOption.selected==true)?'mcq-option selected':'mcq-option'" class="" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
 
@@ -13,8 +14,8 @@
 
 <!-- Multi Option Layout-->
 <div class="mcq" *ngIf="layout=='Multi'">
-        <div class="question" #question>
-                <div class="mcqText clipToTwoLines" #question [innerHTML]="mcqQuestion"></div>
+        <div class="question collapsible" #question>
+                <div class="mcqText" #question [innerHTML]="mcqQuestion"></div>
         </div>
         <div class="options">
             <div *ngFor="let mcqOption of mcqOptions | slice:0:2" class="mcq-option odd" [ngClass]="{selected: mcqOption.selected==true}" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
@@ -27,8 +28,8 @@
 
 <!-- Multi Column Layout-->
 <div class="mcq" *ngIf="layout=='Column'">
-        <div class="question column-block" #question>
-                <div class="mcqText clipToTwoLines" #question [innerHTML]="mcqQuestion"></div>
+        <div class="question column-block collapsible" #question>
+                <div class="mcqText" #question [innerHTML]="mcqQuestion"></div>
         </div>
         <div class="options column-block">
             <div *ngFor="let mcqOption of mcqOptions" [ngClass]="(mcqOption.selected==true)?'mcq-option selected':'mcq-option'" class="" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
