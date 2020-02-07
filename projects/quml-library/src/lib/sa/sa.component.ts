@@ -85,12 +85,4 @@ export class SaComponent implements OnInit {
     this.renderLatex();
   }
 
-  scrollToBottom() {
-    window.scrollTo({ top:  document.body.scrollHeight , behavior: 'smooth'});
-  }
-
-  scrollToTop() {
-    window.scrollTo({ top: 0 , behavior: 'smooth'});
-  }
-
 }

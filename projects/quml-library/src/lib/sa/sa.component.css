@@ -3,12 +3,6 @@
   height: auto;
   padding: 0px 16px 16px 16px;
   }
-  
-  /* .quml-sujective-answer-section{
-    background-color:#d3e9fe;
-    height: 80vh;
-    padding: 16px;
-  } */
   .container {
     background-color: #d4e9fe;
     padding: 16px;
@@ -22,9 +16,6 @@
     color: white;
     font-size:13px;
   }
-  .quml-small-text{
-    font-size:13px;
-  }
   .border-bottom{
     border-bottom: 1px solid #e5e5e5;
     padding: 0px 10px 0px 10px;
@@ -36,28 +27,6 @@
     margin-top: 10px;
     padding:20px;
     font-size: 15px;
-  }
-  .question-button{
-    background-color:#024f9d;
-    border-color:#024f9d;
-    border-radius: 5px;
-    padding: 8px;
-    color: white;
-    float:right;
-  }
-  .subjective-button-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 1em;
-  }
-  .subjective-button-container .text{
-    font-size:13px;
-    padding-top: 1.2em;
-    padding-left:0.8em;
-    color:#135ca5;
-  }
-  .question-button{
-    background-color:#024f9d;
   }
   .answer-text{
     font-size:13px;
