@@ -63,7 +63,7 @@
      margin-bottom: 3em;
   }
   .blurred {
-    filter: blur(20px);
+    filter: blur(18px);
   }
   .subjective-answer-text{
     padding: 10px 10px 0px 20px;
