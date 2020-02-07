@@ -48,7 +48,6 @@ export class McqComponent implements OnInit {
         this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
       this.options = this.questions.result.assessment_item.options;
     }
-       
     for (let j = 0; j < this.options.length; j++) {
       const option = this.options[j];
       const optionValue = option.value.body;
