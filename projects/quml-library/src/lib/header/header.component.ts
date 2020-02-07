@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   prevSlide() {
-    this.nextSlideClicked.emit({event : 'previous clicked'});
+    this.prevSlideClicked.emit({event : 'previous clicked'});
   }
 
  openNav() {
