@@ -1,7 +1,7 @@
 <div class="quml-header">
   <div class="row">
     <div class="col col-2">
-      <!-- <img class="quml-menu" src="../../assets/menu - material.png"/> -->
+      <div class="quml-menu" (click)="openNav()"><span class="quml-optionMenu"></span></div>
     </div>
     <div class="col col-5">
       <div class="quml-header-text">
@@ -24,5 +24,16 @@
        </button>
       </span>
     </div>
+  </div>
+</div>
+
+<div id="mySidenav" class="sidenav">
+  <a class="closebtn" style="color: aliceblue;" (click)="closeNav()">&times;</a>
+  <div class="navBlock">
+    <div class="quml-nav-unit">UNIT-2.3: Topics, Indian Culture and the Civilisation</div>
+    <a class="quml-nav-items">Teacher's Note</a>
+    <a class="quml-nav-items">Pause</a>
+    <a class="quml-nav-items">Home</a>
+    <a class="quml-nav-items">Replay</a>
   </div>
 </div>

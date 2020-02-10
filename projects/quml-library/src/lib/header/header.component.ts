@@ -27,6 +27,13 @@ export class HeaderComponent implements OnInit {
     this.prevSlideClicked.emit({event : 'previous clicked'});
   }
 
+ openNav() {
+    document.getElementById('mySidenav').style.width = '100%';
+  }
+   closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+  }
+
 
 
 }

@@ -52,9 +52,72 @@
    }
    
    .quml-menu {
-     width: 35px;
-     height: 5px;
-     background-color: black;
-     margin: 6px 0;
-     margin-left: 40px;
+     width: 40px;
+     height: 100%;
+     margin: 0px 16px;
    }
+
+   .quml-optionMenu {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background:  url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNjQiIGhlaWdodD0iNjQiCnZpZXdCb3g9IjAgMCA1MCA1MCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBkPSJNIDAgNy41IEwgMCAxMi41IEwgNTAgMTIuNSBMIDUwIDcuNSBaIE0gMCAyMi41IEwgMCAyNy41IEwgNTAgMjcuNSBMIDUwIDIyLjUgWiBNIDAgMzcuNSBMIDAgNDIuNSBMIDUwIDQyLjUgTCA1MCAzNy41IFoiPjwvcGF0aD48L3N2Zz4=') 50% 50% no-repeat;
+    background-size: 100%;
+    margin: 4px;
+   }
+
+   .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .navBlock {
+    width: 40%;
+    height: 100%;
+    background: white;
+  }
+  
+  .sidenav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 0px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .quml-nav-unit{
+    background: rgb(15, 5, 160);;
+    color: white;
+    padding: 16px;
+    text-overflow: ellipsis;
+  }
+  .quml-nav-items {
+    border-bottom: 1px solid grey;
+    padding: 16px;
+  }
+
