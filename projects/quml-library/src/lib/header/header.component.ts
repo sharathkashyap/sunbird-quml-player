@@ -27,13 +27,14 @@ export class HeaderComponent implements OnInit {
     this.prevSlideClicked.emit({event : 'previous clicked'});
   }
 
- openNav() {
+  openNav() {
     document.getElementById('mySidenav').style.width = '100%';
+    document.body.style.backgroundColor = 'rgba(0,0,0,0.4)';
   }
-   closeNav() {
+
+  closeNav() {
     document.getElementById('mySidenav').style.width = '0';
+    document.body.style.backgroundColor = 'white';
   }
-
-
 
 }
