@@ -126,5 +126,9 @@ export class PlayerComponent implements OnInit {
       this.prevSlide();
     }
   }
+  replayContent() {
+    this.endPageReached = false;
+   this.car.selectSlide(0);
+  }
 
 }

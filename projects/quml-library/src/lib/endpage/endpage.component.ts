@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'quml-endpage',
@@ -7,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EndpageComponent implements OnInit {
   @Input() scoreSummary;
+  @Output() replayContentEvent = new EventEmitter<any>();
   score: any;
   constructor() {
 
@@ -16,7 +18,7 @@ export class EndpageComponent implements OnInit {
    console.log('score summary' , this.scoreSummary);
   }
   replayContent($event) {
-    console.log("Replay Content");
+    this.replayContentEvent.emit({});
   }
   exitContent($event) {
     console.log("Exit Content");
