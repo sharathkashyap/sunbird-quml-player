@@ -1,6 +1,6 @@
 
 
-<quml-header (nextSlideClicked) = "nextSlideClicked($event)" (previousSlideClicked) = "previousSlideClicked($event)" *ngIf="!endPageReached"></quml-header>
+<quml-header (nextSlideClicked) = "nextSlideClicked($event)" (prevSlideClicked) = "previousSlideClicked($event)" *ngIf="!endPageReached"></quml-header>
 
 <carousel [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides" #car
   [hidden]="endPageReached">
