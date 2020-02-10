@@ -6,7 +6,34 @@
 .question.collapsible.end {
     max-height: 3.6em;
     overflow:hidden;
+    transition: max-height 0.3s ease-in-out;
 }
 .question.collapsible {
-    max-height: unset;
+    max-height: 30em;
+    transition: max-height 0.3s ease-in;
+}
+.downIcon {
+    position: relative;
+    top: -3px;
+    background: #FFF;
+    width: 20px;
+    height: 20px;
+    left: 40px;
+}
+.downIcon.expand {
+    display: block;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlElEQVQ4T82STQ5AMBBGn3AI5+EubBzABeyx8nMXB+IEdjJJRwTVJhZ02fS9fPN1Al6e4CXPPwQRMAAlMHuOFAMVkOkIBZADqYdE4Aloge7YgUoSYLEkUbgBenlzLvFJcoHvBHInksyMo0kUrk1fe0DbNx4loZn5AtsSqF0lIhB4vOvFtUgiWW2wK4HXSrgSOCXfCzYpORoU1SJ0uwAAAABJRU5ErkJggg==');
+}
+.downIcon.collapse {
+    display: block;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAkklEQVQ4T+XSIQoCURSF4W82YTS7C0GZZhfBaLAPiMFiEnEFZosuwKYIsw2j0UUoyBPkMU+RiXPr5fz38nMyNSermdcAwBwPrFOuvjmYYhyCO2yrICnACAX6vESfscE+hlQBBlihh3sItHDBDMdPSAzohldz3KJrbZwwQfnexYADFrgmpHWwxDAF+LuYDWjiTydP7B4SEc6KZ/AAAAAASUVORK5CYII=');
+}
+.section {
+    background: #FFF;
+    position: absolute;
+    right: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100px;
+    cursor: pointer;
 }

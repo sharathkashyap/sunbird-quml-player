@@ -3,7 +3,9 @@
     <div class="question collapsible" [ngClass]="isExpanded == true?'':'end'" #question>
             <div class="mcqText" #question [innerHTML]="mcqQuestion"></div>
     </div>
-    <span (click)="toggleCollapse()">{{isExpanded == true?'collapsible':'Expand'}}</span>
+    <div class="section" (click)="toggleCollapse()">
+        <span class="downIcon {{isExpanded == true?'collapse':'expand'}}"></span>
+    </div>
     <div class="options">
         <div *ngFor="let mcqOption of mcqOptions" [ngClass]="(mcqOption.selected==true)?'mcq-option selected':'mcq-option'" class="" [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
 
