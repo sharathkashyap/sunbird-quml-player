@@ -1,78 +1,153 @@
-.quml-sujective-question-section{
-  background-color:#d3e9fe;
+.quml-sujective-question-section {
+  background-color: #d3e9fe;
   height: auto;
-  padding: 0px 16px 16px 16px;
+  padding: 0px 24px 24px 24px;
+}
+
+.subjective-container {
+  background-color: #d4e9fe;
+  padding: 16px;
+}
+
+.answer-button {
+  background-color: #07bc81;
+  border-color: #07bc81;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 13px;
+  height: 32px;
+  text-align: center;
+  width: 106px;
+  border-style: solid;
+}
+
+.quml-sujective-answer-section {
+  padding: 0px 24px 24px 24px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0px 10px 0px 10px;
+}
+
+.quml-subjective-qa-section {
+  background-color: white;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 10px;
+  padding: 20px;
+  font-size: 15px;
+}
+
+.quml-subjective-solution-header {
+  font-size: 13px;
+  padding-top: 18px;
+  padding-left: 8px;
+  color: #776e61;
+}
+
+.quml-subjective-answer {
+  font-size: 14px;
+  padding-left: 8px;
+}
+
+.quml-subjective-solution {
+  font-size: 14px;
+}
+
+.quml-solution-and-image .wrapper {
+  display: grid;
+  grid-template-columns: 200px auto;
+  grid-gap: 2em;
+  padding: 10px 0px 0px 10px;
+}
+
+.quml-solution-and-image .wrapper .image-container {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.quml-solution-and-image .wrapper .quml-outline-button {
+  background-color: white;
+  border: 1px solid #024f9d;
+  color: #2568ab;
+  font-size: 12px;
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.quml-solution-and-image .wrapper .button-container {
+  padding-top: 10px;
+
+}
+
+.subjective-quml-btn-container {
+  text-align: center;
+}
+
+.blurr-in {
+  filter: blur(4px);
+}
+
+.blurr-out {
+  filter: blur(0px);
+  transition: 0.8s;
+}
+
+.quml-sm-text {
+  padding: 8px 0px 0px 24px;
+  font-size: 13px;
+  color: #024f9d;
+}
+
+.subjective-question-text {
+  padding: 8px 0px 0px 24px;
+  font-size: 13px;
+  color: #024f9d;
+}
+
+.quml-popup {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .4);
+  top: 0;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quml-popup .quml-popup-icon {
+  color: white;
+  font-size: 20px;
+  top: 12%;
+  /* left: 72%; */
+  right: 14%;
+  position: absolute;
+  cursor: pointer;
+}
+
+.quml-popup img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  height: 75%;
+  border-radius: 8px;
+}
+
+@media only screen and (max-width: 320px) {
+  .quml-solution-and-image .wrapper {
+    display: grid;
+    grid-template-columns: auto;
   }
-  .container {
-    background-color: #d4e9fe;
-    padding: 16px;
-    margin-top: 16px;
+
+  .quml-popup img {
+    height: 32%;
   }
-  .answer-button{
-    background-color:#07bc81;
-    border-color:#07bc81;
-    border-radius: 5px;
-    padding: 8px;
-    color: white;
-    font-size:13px;
+
+  .quml-popup .quml-popup-icon {
+    top: 32%;
+    left: 92%;
   }
-  .border-bottom{
-    border-bottom: 1px solid #e5e5e5;
-    padding: 0px 10px 0px 10px;
-  }
-  .qa-section{
-    background-color: white;
-    height: auto; 
-    border-radius: 15px;
-    margin-top: 10px;
-    padding:20px;
-    font-size: 15px;
-  }
-  .answer-text{
-    font-size:13px;
-    padding-top: 1.2em;
-    padding-left:0.8em;
-    color:#776e61;
-  }
-  .solution-and-image .wrapper {
-     display: grid;
-     grid-template-columns: 200px auto;
-     grid-gap: 2em;
-     padding: 10px 0px 0px 10px;
-  }
-  .solution-and-image .wrapper .image-container {
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    height: 25vh
-  }
-  .solution-and-image .wrapper .quml-outline-button {
-       background-color: white;
-       border: 1px solid #024f9d;
-       color:#2568ab;
-       font-size: 12px;
-       padding: 8px;
-       border-radius: 5px;
-       outline: none;
-  }
-  .solution-and-image .wrapper .button-container {
-    padding: 10px 0px 10px 0px;
-  
-  }
-  .btn-container{
-     text-align:center;
-     margin-bottom: 3em;
-  }
-  .blurred {
-    filter: blur(18px);
-  }
-  .subjective-answer-text{
-    padding: 10px 10px 0px 20px;
-    font-size: 13px;
-    color: #6c757d;
-  }
-  .subjective-question-text{
-    padding: 10px 10px 0px 20px;
-    font-size: 13px;
-    color: #135ca5;
-  }
-  
+}
