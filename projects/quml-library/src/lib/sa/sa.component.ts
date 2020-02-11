@@ -21,6 +21,7 @@ export class SaComponent implements OnInit {
   imageUrl;
   videoUrl;
   showedAnswer = false;
+  showImagePopup = false;
   baseUrl = 'https://staging.ntp.net.in/';
 
   constructor(
@@ -72,12 +73,12 @@ export class SaComponent implements OnInit {
   }
   replaceLatexText() {
     const questionElement = document.getElementById(this.identifier);
-    const mathTextDivs = questionElement.getElementsByClassName('mathText');
-    for (let i = 0; i < mathTextDivs.length; i++) {
-      const mathExp = mathTextDivs[i];
-      const textToRender = mathExp.innerHTML;
-      katex.render(textToRender, mathExp, { displayMode: false, output: 'html', throwOnError: true });
-    }
+      const mathTextDivs = questionElement.getElementsByClassName('mathText');
+      for (let i = 0; i < mathTextDivs.length; i++) {
+        const mathExp = mathTextDivs[i];
+        const textToRender = mathExp.innerHTML;
+        katex.render(textToRender, mathExp, { displayMode: false, output: 'html', throwOnError: true });
+      }
   }
 
   switchLayout(stripData) {

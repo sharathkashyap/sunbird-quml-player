@@ -51,66 +51,64 @@ solution:-
 
 <!-- <quml-layoutstrip (onlayoutChange)='switchLayout($event)'></quml-layoutstrip> -->
 
-<div class="container">
+<div class="subjective-container">
   <div class="subjective-question-text">Question</div>
   <div class="quml-sujective-question-section" *ngIf="layout=='new'">
-    <div class="qa-section" [innerHTML]="shortAnswerQuestion">
+    <div class="quml-subjective-qa-section" [innerHTML]="shortAnswerQuestion">
       <!--this is the question section-->
     </div>
 
   </div>
-  <div class="btn-container">
+  <div class="subjective-quml-btn-container">
     <button class="answer-button" (click)="showedAnswer = true;">Show Answer</button>
   </div>
-  <div class="subjective-answer-text">Answer</div>
-  <div class="quml-sujective-answer-section" [ngClass]="showedAnswer? 'quml-sujective-answer-section': 'quml-sujective-answer-section blurred'">
-    <div class="qa-section">
-      <div [innerHTML]="ShortAnswerSolution" *ngIf="!imageUrl && !videoUrl">
-        <!-- this is the solution section -->
-      </div>
-      <!-- <div  class="solution-explain">
-        (ii) was following
-        <p class="answer-text">Solution/Explaination</p>
-        <div class="border-bottom"></div>
-        <p [innerHTML]="ShortAnswerSolution">
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-          laborum. 
-        </p>
-      </div> -->
-      <div class="solution-and-image" *ngIf="imageUrl">
-        <p class="answer-text">Solution/Explaination</p>
-        <div class="border-bottom"></div>
-        <div class="wrapper">
-          <div class="image-container">
-            <img src={{imageUrl}} style="width: 100%;
-            height: 100%;">
+  <div class="answer-container" [ngClass]="showedAnswer? 'answer-container blurr-out': 'answer-container blurr-in'">
+    <div class="quml-sm-text">Answer</div>
+    <div class="quml-sujective-answer-section">
+      <div class="quml-subjective-qa-section">
+        <div [innerHTML]="ShortAnswerSolution" *ngIf="!imageUrl && !videoUrl">
+          <!-- this is the solution section -->
+        </div>
+        <div class="quml-solution-and-image" *ngIf="imageUrl">
+          <div class="quml-subjective-answer" [innerHTML]="ShortAnswerSolution">
           </div>
-          <div class="solution-text" [innerHTML]="ShortAnswerSolution">
+          <p class="quml-subjective-solution-header">Solution/Explaination</p>
+          <div class="border-bottom"></div>
+          <div class="wrapper">
+            <div class="image-container">
+              <img src={{imageUrl}} style="width: 100%;
+            height: 100%; max-width: 100%;" (click)="showImagePopup = true">
+            </div>
+            <div class="quml-subjective-solution" [innerHTML]="ShortAnswerSolution">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="solution-and-image" *ngIf="videoUrl">
-        <p class="answer-text">Solution/Explaination</p>
-        <div class="border-bottom"></div>
-        <div class="wrapper">
-          <div class="video-container">
-            <video width="100%" controls>
-              <source src={{videoUrl}} type="video/mp4">
-              <source src={{videoUrl}} type="video/ogg">
-              Your browser does not support HTML5 video.
-            </video>
+        <div class="quml-solution-and-image" *ngIf="videoUrl">
+          <div class="subjective-answer-section" [innerHTML]="ShortAnswerSolution">
           </div>
-          <div class="solution-text" [innerHTML]="ShortAnswerSolution">
-            <!-- understand the solutin and mixtrue play the video -->
-            <div class="button-container">
-              <button class="quml-outline-button">Play Video</button>
+          <p class="quml-subjective-solution-header">Solution/Explaination</p>
+          <div class="border-bottom"></div>
+          <div class="wrapper">
+            <div class="video-container">
+              <video width="100%" controls>
+                <source src={{videoUrl}} type="video/mp4">
+                <source src={{videoUrl}} type="video/ogg">
+                Your browser does not support HTML5 video.
+              </video>
+            </div>
+            <div class="quml-subjective-solution" [innerHTML]="ShortAnswerSolution">
+              <!-- understand the solutin and mixtrue play the video -->
+              <div class="button-container">
+                <button class="quml-outline-button">Play Video</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+<div class="quml-popup" *ngIf="showImagePopup && imageUrl">
+    <div class="quml-popup-icon" (click)="showImagePopup = false">&#10005;</div>
+  <img src={{imageUrl}}>
 </div>
