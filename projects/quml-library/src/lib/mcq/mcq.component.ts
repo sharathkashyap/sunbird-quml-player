@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SecurityContext, Output, EventEmitter, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, SecurityContext, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { katex } from 'katex';
 import { questionData } from './data';
@@ -11,7 +11,7 @@ declare var katex: any;
   styleUrls: ['./mcq.component.css' , '../quml-library.component.css'],
 
 })
-export class McqComponent implements OnInit {
+export class McqComponent implements OnInit , AfterViewInit {
 
 
   @Input() public questions?: any;
@@ -19,7 +19,7 @@ export class McqComponent implements OnInit {
   mcqQuestion: any;
   options: any;
   mcqOptions: any[] = [];
-  isExpanded: boolean =true;
+  isExpanded: boolean = true;
   @Input() public layout?: string;
   @Output() componentLoaded = new EventEmitter<any>();
   @Output() answerChanged = new EventEmitter<any>();
@@ -27,7 +27,8 @@ export class McqComponent implements OnInit {
   @ViewChild('question') questionTag: any;
   @Output() optionSelected = new EventEmitter<number>();
 
-  constructor(public domSanitizer: DomSanitizer,elementRef:ElementRef) {
+  constructor(public domSanitizer: DomSanitizer,
+    elementRef: ElementRef) {
     this.elementRefer = elementRef;
   }
 
@@ -59,6 +60,11 @@ export class McqComponent implements OnInit {
       optionToBePushed.selected = selected;
       this.mcqOptions.push(optionToBePushed);
     }
+  }
+
+  ngAfterViewInit() {
+    const el = document.getElementsByClassName('mcq-options');
+    el[0].remove();
   }
 
   renderLatex() {
