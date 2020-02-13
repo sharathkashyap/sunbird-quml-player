@@ -37,7 +37,7 @@ export class McqComponent implements OnInit , AfterViewInit {
     this.componentLoaded.emit({event: 'mcq component has been loaded'});
     this.renderLatex();
     this.questions = this.questions ? this.questions : questionData;
-    this.layout = this.layout ? this.layout : 'Default';
+    this.layout = this.layout ? this.layout : 'new';
     if (this.questions['__cdata'] != null) {
       const parsedQuestions = JSON.parse(this.questions.__cdata);
       this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
