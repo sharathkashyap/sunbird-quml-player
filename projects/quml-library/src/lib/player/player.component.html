@@ -1,7 +1,4 @@
-
-
-<quml-header (nextSlideClicked) = "nextSlideClicked($event)" (prevSlideClicked) = "previousSlideClicked($event)" *ngIf="!endPageReached"></quml-header>
-
+<!-- <quml-header (nextSlideClicked) = "nextSlideClicked($event)" (prevSlideClicked) = "previousSlideClicked($event)" *ngIf="!endPageReached"></quml-header> -->
 <carousel [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides" #car
   [hidden]="endPageReached">
   <slide *ngFor="let question of questions">
@@ -9,7 +6,7 @@
       <quml-sa [questions]='question.data' [identifier]="question.id" id={{question.id}}></quml-sa>
     </div>
     <div *ngIf="question.questionType === 'mcq'">
-      <quml-mcq [questions]='question.data' (optionSelected)="getOptionSelected($event)" [identifier]="question.id"
+      <quml-mcq [questions]='question.data' (optionSelected)="getOptionSelected($event , question)" [identifier]="question.id"
         id={{question.id}}></quml-mcq>
     </div>
   </slide>
@@ -34,5 +31,15 @@
     <!-- <div class="button-container">
       <button> Next </button>
     </div> -->
+  </div>
+</div>
+<div class="devcon-navbar-bottom">
+  <div class="devcon-button-container">
+    <button (click)="prevSlide()">
+      <span class="quml-previousIcon"></span>
+    </button>
+    <button (click)="nextSlide()">
+      <span class="quml-nextIcon"></span>
+    </button>
   </div>
 </div>

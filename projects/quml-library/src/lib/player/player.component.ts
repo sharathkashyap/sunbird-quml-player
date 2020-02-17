@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { questionSet } from './data';
+import { QumlLibraryService } from '../quml-library.service';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -10,6 +12,7 @@ import { questionSet } from './data';
 })
 export class PlayerComponent implements OnInit {
   @Input() questions: any;
+  @Input() telemetry: any;
   @Output() componentLoaded = new EventEmitter<any>();
   @Output() previousClicked = new EventEmitter<any>();
   @Output() nextClicked = new EventEmitter<any>();
@@ -26,30 +29,42 @@ export class PlayerComponent implements OnInit {
   skippedQuestion = 0;
   answeredQuestionCorrectly = 0;
   scoreSummary = {};
-  questionData = this.getQuestionData();
+  questionData: any;
+  telemetryObject: any;
+  currentQuestion: any;
   CarouselConfig = {
     NEXT: 1,
     PREV: 2
   };
 
-  constructor() {
+  constructor(public qumlLibraryService: QumlLibraryService,
+    public http: HttpClient) {
     this.endPageReached = false;
-  }
-
-  getQuestionData() {
-    return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
   }
 
   ngOnInit() {
     this.slideInterval = 0;
     this.showIndicator = false;
     this.noWrapSlides = true;
-    this.questions = this.questions ? this.questions : this.questionData;
-    this.setQuestionType();
+    this.init();
+    console.log('here is the telemetry sent from front' , this.telemetry);
   }
 
-  setQuestionType() {
-    console.log('this.questions in player', this.questions);
+  async init() {
+    await this.getQuestionData();
+    this.questions = this.questions ? this.questions : this.questionData;
+    await this.setQuestionType();
+
+  }
+
+  async getQuestionData() {
+    return this.qumlLibraryService.getQuestions().then((data) => {
+    }).catch((e) => {
+       this.questionData = questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
+    });
+  }
+
+  async setQuestionType() {
     this.questions.forEach(element => {
       if (typeof (element.config.__cdata) === 'string') {
         const config = JSON.parse(element.config.__cdata);
@@ -78,11 +93,12 @@ export class PlayerComponent implements OnInit {
     } else if (this.optionSelectedObj.result === false) {
       this.showAlert = true;
     }
+    this.qumlLibraryService.generateTelemetry(this.generateTelemetry());
   }
 
   getScoreSummary() {
     return this.scoreSummary = {
-      answeredQuestionCorrectly : this.answeredQuestionCorrectly,
+      answeredQuestionCorrectly: this.answeredQuestionCorrectly,
       skippedQuestion: this.skippedQuestion,
       totalNoOfQuestions: this.questions.length
     };
@@ -95,8 +111,10 @@ export class PlayerComponent implements OnInit {
   }
 
 
-  getOptionSelected(optionSelected) {
+  getOptionSelected(optionSelected , question) {
+    this.currentQuestion = question;
     this.optionSelectedObj = optionSelected;
+    this.telemetryObject = JSON.parse(question.config.__cdata);
   }
 
   prevSlide() {
@@ -121,6 +139,17 @@ export class PlayerComponent implements OnInit {
     }
   }
 
+  generateTelemetry() {
+    this.telemetry.contentId = this.currentQuestion.id;
+    this.telemetry.contentType = this.currentQuestion.type;
+    this.telemetry.contentName = undefined;
+    this.telemetry.edata = {};
+    this.telemetry.edata.duration = undefined;
+    this.telemetry.edata.maxScore = JSON.parse(this.currentQuestion.config.__cdata).max_score;
+    this.telemetry.edata.score = undefined;
+    return this.telemetry;
+  }
+
   previousSlideClicked(event) {
     if (event = 'previous clicked') {
       this.prevSlide();
@@ -128,7 +157,7 @@ export class PlayerComponent implements OnInit {
   }
   replayContent() {
     this.endPageReached = false;
-   this.car.selectSlide(0);
+    this.car.selectSlide(0);
   }
 
 }
