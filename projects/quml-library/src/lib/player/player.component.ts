@@ -30,8 +30,9 @@ export class PlayerComponent implements OnInit {
   answeredQuestionCorrectly = 0;
   scoreSummary = {};
   questionData: any;
-  telemetryObject: any;
   currentQuestion: any;
+  defaultTelemetry = { did: '1234' , profileId: '1234' ,
+  stallId: '1234', ideaId: '1234' , sid: '1234' };
   CarouselConfig = {
     NEXT: 1,
     PREV: 2
@@ -43,11 +44,11 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.telemetry = this.telemetry ? this.telemetry : this.defaultTelemetry;
     this.slideInterval = 0;
     this.showIndicator = false;
     this.noWrapSlides = true;
     this.init();
-    console.log('here is the telemetry sent from front' , this.telemetry);
   }
 
   async init() {
@@ -114,7 +115,6 @@ export class PlayerComponent implements OnInit {
   getOptionSelected(optionSelected , question) {
     this.currentQuestion = question;
     this.optionSelectedObj = optionSelected;
-    this.telemetryObject = JSON.parse(question.config.__cdata);
   }
 
   prevSlide() {
