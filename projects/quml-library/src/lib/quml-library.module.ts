@@ -7,13 +7,15 @@ import { PlayerComponent } from './player/player.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { EndpageComponent } from './endpage/endpage.component';
 import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [QumlLibraryComponent, McqComponent, HeaderComponent,
       SaComponent, PlayerComponent, EndpageComponent],
   imports: [
     CommonModule,
-    CarouselModule
+    CarouselModule,
+    HttpClientModule
   ],
   exports: [QumlLibraryComponent, McqComponent, SaComponent, PlayerComponent, HeaderComponent]
 })
