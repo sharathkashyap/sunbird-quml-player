@@ -2,7 +2,6 @@ import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angu
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { questionSet } from './data';
 import { QumlLibraryService } from '../quml-library.service';
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -38,13 +37,14 @@ export class PlayerComponent implements OnInit {
     PREV: 2
   };
 
-  constructor(public qumlLibraryService: QumlLibraryService,
-    public http: HttpClient) {
+  constructor(public qumlLibraryService: QumlLibraryService) {
     this.endPageReached = false;
   }
 
   ngOnInit() {
-    this.telemetry = this.telemetry ? this.telemetry : this.defaultTelemetry;
+    // this.telemetry = this.telemetry ? this.telemetry : this.defaultTelemetry;
+    this.telemetry = window['queryParamsObj'];
+    console.log('telemetry on init' , this.telemetry , window['queryParamsObj']);
     this.slideInterval = 0;
     this.showIndicator = false;
     this.noWrapSlides = true;
@@ -140,7 +140,8 @@ export class PlayerComponent implements OnInit {
   }
 
   generateTelemetry() {
-    this.telemetry.contentId = this.currentQuestion.id;
+    console.log('this . telemetry generated here' , this.telemetry);
+    // this.telemetry.contentId = this.currentQuestion.id;
     this.telemetry.contentType = this.currentQuestion.type;
     this.telemetry.contentName = undefined;
     this.telemetry.edata = {};

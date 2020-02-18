@@ -18,7 +18,7 @@ export class QumlLibraryService {
     const telemetryData = {
       'eid': 'DC_ASSESS', // asses
       'mid': undefined,  // uuid
-      'ets': new Date().toUTCString(), // time stamp
+      'ets': Date.now(), // time stamp
       'did': telemetryObject.did,
       'profileId': telemetryObject.profileId, // query param
       'stallId': telemetryObject.stallId, // query param
