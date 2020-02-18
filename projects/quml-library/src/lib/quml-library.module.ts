@@ -8,15 +8,18 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { EndpageComponent } from './endpage/endpage.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { QumlLibraryService } from './quml-library.service';
 
 @NgModule({
   declarations: [QumlLibraryComponent, McqComponent, HeaderComponent,
-      SaComponent, PlayerComponent, EndpageComponent],
+    SaComponent, PlayerComponent, EndpageComponent],
   imports: [
     CommonModule,
     CarouselModule,
     HttpClientModule
   ],
-  exports: [QumlLibraryComponent, McqComponent, SaComponent, PlayerComponent, HeaderComponent]
+  providers: [QumlLibraryService],
+  exports: [QumlLibraryComponent, McqComponent, SaComponent, PlayerComponent, HeaderComponent
+  ]
 })
 export class QumlLibraryModule { }
