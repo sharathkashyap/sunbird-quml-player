@@ -131,29 +131,33 @@
 
 .devcon-button-container button {
   border-radius: 40%;
-  padding: 0px 20px;
-  margin: 5px;
+  padding: 1px 16px 1px 16px;
   border: 8px solid #000037;
   background-color: #fff;
-  outline: none;
+  outline: 0;
 }
 
 .devcon-button-container {
   position: absolute;
-  right: 0;
-  top: -28px;
+  right: 5px;
+  margin: 1px;
+  top: -22px;
 }
 
 .quml-previousIcon {
   display: inline-block;
-  width: 26px;
-  height: 26px;
+  width: 23px;
+  height: 11px;
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAsUlEQVRIS7XVQQrCMBCF4b/30UN14Upa7EUUFLyM0KtUD+FeAikIYjLzJs1+3peEmaRj49VtnE8EOAAP4FnapApMwDmH74D3P0QB1vCUeQTuLU/gCk+w5wTucA8ghVsBOdwChMJrQDi8BJyAS26/aisqbToA11w4Ajf1SSm1aROkNgdhpAakmwkhFiCEWAEZ8QAS4gXciAJ8Iwuwb/3hrDPXAzPwUiZZHdyfOvWKzBv4AB/hKhm95sDLAAAAAElFTkSuQmCC') 50% 50% no-repeat;
+  margin-top: 4px;
+  color: #3c2a7d;
 }
 
 .quml-nextIcon {
   display: inline-block;
-  width: 26px;
-  height: 26px;
+  width: 23px;
+  height: 11px;
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAArUlEQVRIS7XVwQnCQBRF0ZsCLEEULET7EQUbcWHEnQtrEvuRgeAiBOa9N85sw9yTwA9/oPMZOvdRgB1wAJ7Jy9SAFfAB1sAZGF2kBpTeCbhNYRtRgCZEBWLEASLEBWwkASwkBWSkBZgjZZzv8/+kFbgA1yl6BB7/BKrxgqVfIMVTQI4ngBV3ATvuAFFcBeK4ApSF8wY2wOKc1xaQMqZbYA+8arGl5wqQdH93ugNfPMwmGYditHUAAAAASUVORK5CYII=') 50% 50% no-repeat;
+  margin-top: 4px;
+  color: #3c2a7d;
 }
