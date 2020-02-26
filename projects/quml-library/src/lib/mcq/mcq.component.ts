@@ -91,7 +91,7 @@ export class McqComponent implements OnInit , AfterViewInit {
     const parsedQuestion = JSON.parse(this.questions.__cdata);
     this.answerChanged.emit({ event: 'Option has been changed' });
     this.mcqOptions.forEach(mcqOptionElement => {
-      if (mcqOptionElement.index === mcqOption.index) {
+      if (mcqOptionElement.index === event.option.index) {
         mcqOptionElement.selected = true;
       } else {
         mcqOptionElement.selected = false;
