@@ -1,19 +1,22 @@
-.quml-header{
- background: #c2c2c2;
- display: flow-root;
- height: 36px;
+.quml-header {
+  background: #c2c2c2;
+  display: flow-root;
+  height: 36px;
 }
+
 .col {
   padding-left: 0px;
   padding-right: 0px;
 }
+
 .quml-button-container {
   margin-right: 24px;
-  float: right; 
+  float: right;
 }
 
 .quml-button {
-  background-color: rgb(15, 5, 160); /* Navy Blue */
+  background-color: rgb(15, 5, 160);
+  /* Navy Blue */
   border: none;
   color: white;
   padding: 4px;
@@ -27,7 +30,7 @@
   border-radius: 10%;
 }
 
-.quml-timer{
+.quml-timer {
   padding: 8px;
 }
 
@@ -48,7 +51,7 @@
 }
 
 .quml-menu {
-  width:24px;
+  width: 24px;
   height: 24px;
 }
 
@@ -102,17 +105,61 @@
 
 @media only screen and (min-width: 100px) and (max-width: 481px) and (min-width: 481px) and (max-width: 800px) {
 
-.quml-timer {
-  padding: 8px 4px;
-}
-.quml-button {
-  padding: 4px;
-  font-size: 15px;
+  .quml-timer {
+    padding: 8px 4px;
+  }
+
+  .quml-button {
+    padding: 4px;
+    font-size: 15px;
+  }
 }
 
+.potrait-header-top {
+  visibility: hidden;
 }
+
+.potrait-header-top {
+  margin-top: -30px;
+}
+
+.potrait-header-top .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 15fr;
+}
+
+.potrait-header-top .quml-menu {
+  color: #6250f5;
+  font-size: 25px;
+  padding-left: 20px;
+  margin-top: 3px;
+}
+
+.potrait-header-top .quml-header-text {
+  font-size: 14px;
+  color: #6250f5;
+}
+
 
 .row {
   margin-right: 0px;
   margin-left: 0px;
+}
+
+.portrait-header {
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 480px) {
+  .main-header {
+    visibility: hidden;
+  }
+
+  .portrait-header {
+    visibility: visible;
+  }
+
+  .potrait-header-top {
+    visibility: visible;
+  }
 }

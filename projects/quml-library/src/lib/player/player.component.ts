@@ -35,7 +35,6 @@ export class PlayerComponent implements OnInit {
   constructor() {
     this.endPageReached = false;
   }
-
   getQuestionData() {
     return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
   }
@@ -49,7 +48,6 @@ export class PlayerComponent implements OnInit {
   }
 
   setQuestionType() {
-    console.log('this.questions in player', this.questions);
     this.questions.forEach(element => {
       if (typeof (element.config.__cdata) === 'string') {
         const config = JSON.parse(element.config.__cdata);
@@ -82,7 +80,7 @@ export class PlayerComponent implements OnInit {
 
   getScoreSummary() {
     return this.scoreSummary = {
-      answeredQuestionCorrectly : this.answeredQuestionCorrectly,
+      answeredQuestionCorrectly: this.answeredQuestionCorrectly,
       skippedQuestion: this.skippedQuestion,
       totalNoOfQuestions: this.questions.length
     };
@@ -128,7 +126,7 @@ export class PlayerComponent implements OnInit {
   }
   replayContent() {
     this.endPageReached = false;
-   this.car.selectSlide(0);
+    this.car.selectSlide(0);
   }
 
 }
