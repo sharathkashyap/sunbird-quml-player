@@ -1,123 +1,14 @@
-.clipToTwoLines {
-    line-height: 1.2em;
-    max-height: 2.4em;
-    overflow: hidden;
-}
-.question.collapsible.end {
-    max-height: 3.6em;
-    overflow:hidden;
-    transition: max-height 0.3s ease-in-out;
-}
-.question.collapsible {
-    max-height: 30em;
-    transition: max-height 0.3s ease-in;
-}
-.downIcon {
-    position: relative;
-    top: -3px;
-    background: #FFF;
-    width: 20px;
-    height: 20px;
-    left: 40px;
-}
-.downIcon.expand {
-    display: block;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAlElEQVQ4T82STQ5AMBBGn3AI5+EubBzABeyx8nMXB+IEdjJJRwTVJhZ02fS9fPN1Al6e4CXPPwQRMAAlMHuOFAMVkOkIBZADqYdE4Aloge7YgUoSYLEkUbgBenlzLvFJcoHvBHInksyMo0kUrk1fe0DbNx4loZn5AtsSqF0lIhB4vOvFtUgiWW2wK4HXSrgSOCXfCzYpORoU1SJ0uwAAAABJRU5ErkJggg==');
-}
-.downIcon.collapse {
-    display: block;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAkklEQVQ4T+XSIQoCURSF4W82YTS7C0GZZhfBaLAPiMFiEnEFZosuwKYIsw2j0UUoyBPkMU+RiXPr5fz38nMyNSermdcAwBwPrFOuvjmYYhyCO2yrICnACAX6vESfscE+hlQBBlihh3sItHDBDMdPSAzohldz3KJrbZwwQfnexYADFrgmpHWwxDAF+LuYDWjiTydP7B4SEc6KZ/AAAAAASUVORK5CYII=');
-}
-.section {
-    background: #FFF;
-    position: absolute;
-    right: 20px;
-    border-radius: 5px;
-    text-align: center;
-    width: 100px;
-    cursor: pointer;
-}
+
  
 .quml-mcq{
     padding: 16px;
 }
-
-.quml-mcq .quml-mcq-questions{
-    display: grid;
-    grid-template-columns: 1fr 10fr 1fr;
-    grid-gap: 1em;
-    margin-bottom: 16px;
-    align-items: center;
-  }
   .quml-mcq .quml-mcq{
     padding: 16px;
     background-color: white;
   }
-  .quml-mcq .quml-question{
-    font-size:14px;
-    color:#666666;
-    font-weight: bold;
-  }
-  .quml-mcq .quml-question-icon{
-    font-size: 24px;
-    color: #08bc82;
-    border-radius: 50%;
-    text-align:center;
-    height: 30px;
-    width: 30px;
-    border:4px solid #ccc;
-    position: relative;
-  }
-
-  .quml-mcq .quml-question-icon::after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      content: '\266A';
-      display: inline-block;
-  }
-  .quml-mcq .quml-mcq-options{
-    align-items:center;
-    margin-bottom: 16px; 
-  }
-  .quml-mcq .quml-option-card .option {
-    font-weight: bold;
-    color:#666666;
-    margin-top: 1em;
-  }
-  .quml-mcq .quml-option-card{  
-    display: grid;
-    grid-template-columns: 1fr 15fr;
-    grid-gap: 0.5em;
-    margin-bottom: 16px;    
-  }
-  .quml-mcq .option-border{
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    display: grid;
-    grid-template-columns: 13fr 1fr;
-    grid-gap: 1em;
-    padding-left: 16px;
-    align-items: center;
-  }
-
-  .quml-mcq .option-border-selected{
-    border: 2px solid #5649dc;
-  }
-
-  .quml-mcq .quml-option-card .option{
-    color:#666666;
-    font-size:14px;
-    margin-top: 1em;
-  }
   
-  .quml-mcq .selected-option{
-    border: 2px solid #5649dc;
-  }
-  .quml-mcq .selected-option-text {
-    color: #3769eb !important;
-  }
+  
   
   /* The container */
   .quml-mcq .container {
@@ -132,51 +23,7 @@
     user-select: none;
   }
   
-  /* Hide the browser's default radio button */
-  .quml-mcq .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
   
-  /* Create a custom radio button */
-  .quml-mcq .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 18px;
-    width: 18px;
-    border-radius: 50%;
-    border: 2px solid #cdcdcd;
-  }
-  
-  /* When the radio button is checked, add a blue background */
-  .quml-mcq .container input:checked ~ .checkmark {
-    background-color:white;
-     border: 2px solid #5b53f4; 
-  }
-  
-  /* Create the indicator (the dot/circle - hidden when not checked) */
-  .quml-mcq .checkmark:after {
-    content: "";
-    position: absolute;
-    display: none; 
-  }
-  
-  /* Show the indicator (dot/circle) when checked */
-  .quml-mcq .container input:checked ~ .checkmark:after {
-    display: block;
-  }
-  
-  /* Style the indicator (dot/circle) */
-  .quml-mcq .container .checkmark:after {
-       top: 2px;
-      left: 2px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #5b53f4;
-  }
  /* layout 2 */
   .quml-mcq .quml-mcq-img-option-container {
     display: grid;

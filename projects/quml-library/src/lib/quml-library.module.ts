@@ -7,14 +7,18 @@ import { PlayerComponent } from './player/player.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { EndpageComponent } from './endpage/endpage.component';
 import { HeaderComponent } from './header/header.component';
+import { McqQuestionComponent } from './mcq-question/mcq-question.component';
+import { PortraitHeaderComponent } from './portrait-header/portrait-header.component';
+import { McqOptionComponent } from './mcq-option/mcq-option.component';
 
 @NgModule({
   declarations: [QumlLibraryComponent, McqComponent, HeaderComponent,
-      SaComponent, PlayerComponent, EndpageComponent],
+      SaComponent, PlayerComponent, EndpageComponent, McqQuestionComponent,PortraitHeaderComponent, McqOptionComponent],
   imports: [
     CommonModule,
     CarouselModule
   ],
-  exports: [QumlLibraryComponent, McqComponent, SaComponent, PlayerComponent, HeaderComponent]
+  exports: [QumlLibraryComponent, McqComponent, SaComponent, PlayerComponent, HeaderComponent,PortraitHeaderComponent,
+    McqOptionComponent]
 })
 export class QumlLibraryModule { }

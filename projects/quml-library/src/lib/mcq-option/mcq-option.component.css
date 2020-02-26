@@ -1,0 +1,84 @@
+.quml-mcq-options{
+    align-items:center;
+    margin-bottom: 16px; 
+}
+.quml-option-card .option {
+    font-weight: bold;
+    color:#666666;
+    margin-top: 1em;
+  }
+.quml-option-card{  
+    display: grid;
+    grid-template-columns: 1fr 15fr;
+    grid-gap: 0.5em;
+    margin-bottom: 16px;    
+  }
+.option-border{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 13fr 1fr;
+    grid-gap: 1em;
+    padding-left: 16px;
+    align-items: center;
+  }
+
+ .option-border-selected{
+    border: 2px solid #5649dc;
+  }
+
+ .quml-option-card .option{
+    color:#666666;
+    font-size:14px;
+    margin-top: 1em;
+  }
+  
+.selected-option{
+    border: 2px solid #5649dc;
+}
+ .selected-option-text {
+    color: #3769eb !important;
+  }
+  /* Create a custom radio button */
+  .checkmark {
+    display: block;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: 2px solid #cdcdcd;
+  }
+
+  /* Hide the browser's default radio button */
+ .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+ .container input:checked ~ .checkmark {
+    background-color:white;
+     border: 2px solid #5b53f4; 
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+ .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none; 
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+ .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+ .container .checkmark:after {
+      display:none;
+      margin: 2px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #5b53f4;
+  }
