@@ -10,10 +10,12 @@ import { HeaderComponent } from './header/header.component';
 import { McqQuestionComponent } from './mcq-question/mcq-question.component';
 import { PortraitHeaderComponent } from './portrait-header/portrait-header.component';
 import { McqOptionComponent } from './mcq-option/mcq-option.component';
+import { QumlPopupComponent } from './quml-popup/quml-popup.component';
 
 @NgModule({
   declarations: [QumlLibraryComponent, McqComponent, HeaderComponent,
-      SaComponent, PlayerComponent, EndpageComponent, McqQuestionComponent,PortraitHeaderComponent, McqOptionComponent],
+      SaComponent, PlayerComponent, EndpageComponent, McqQuestionComponent,
+      PortraitHeaderComponent, McqOptionComponent, QumlPopupComponent],
   imports: [
     CommonModule,
     CarouselModule

@@ -106,48 +106,9 @@
   font-size: 13px;
   color: #024f9d;
 }
-
-.quml-popup {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: rgba(0, 0, 0, .4);
-  top: 0;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.quml-popup .quml-popup-icon {
-  color: white;
-  font-size: 20px;
-  top: 12%;
-  /* left: 72%; */
-  right: 14%;
-  position: absolute;
-  cursor: pointer;
-}
-
-.quml-popup img {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  height: 75%;
-  border-radius: 8px;
-}
-
 @media only screen and (max-width: 320px) {
   .quml-solution-and-image .wrapper {
     display: grid;
     grid-template-columns: auto;
-  }
-
-  .quml-popup img {
-    height: 32%;
-  }
-
-  .quml-popup .quml-popup-icon {
-    top: 32%;
-    left: 92%;
   }
 }

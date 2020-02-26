@@ -13,16 +13,8 @@
     </div> for timeer need to be discussed--> 
     <div class="col col-5">
       <span class="quml-button-container">
-        <button type="button" class="button quml-button-skin">
-        <button type="button" class="button quml-button" (click)="prevSlide()">
-            <span class="quml-previousIcon"></span>
-        </button>
-        </button>
-        <button type="button" class="button quml-button-skin">
-        <button type="button" class="button quml-button" (click)="nextSlide()">
-            <span class="quml-nextIcon"></span>
-       </button>
-       </button>
+            <span class="quml-previousIcon" (click)="prevSlide()"></span>
+            <span (click)="nextSlide()" class="quml-nextIcon"></span>
       </span>
     </div>
   </div>

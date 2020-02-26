@@ -1,5 +1,9 @@
 <div class="quml-mcq-questions">
-  <img src="https://via.placeholder.com/65">
+  <div class="question-image">
+    <img src="https://via.placeholder.com/65">
+    <span class="icon-zommin" (click)="showQumlPopup()"></span>
+  </div>
+
   <div class="quml-question" #question [innerHTML]="mcqQuestion">
   </div>
   <div class="quml-question-icon"></div>
