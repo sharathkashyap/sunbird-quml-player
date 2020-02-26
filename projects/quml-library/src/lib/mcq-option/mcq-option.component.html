@@ -1,7 +1,7 @@
 <div class="quml-mcq-options">
   <div class="quml-option-card" *ngFor="let mcqOption of mcqOptions"
        (click)="onOptionSelect($event,mcqOption)">
-       <div class="option-img" [ngClass]="(mcqOption.selected==true)?'option-img option-border-selected':'option-img'">
+       <div class="option-img">
           <img src="https://via.placeholder.com/54">
       </div>
       <div class="option-border"  [ngClass]="(mcqOption.selected==true)?'option-border option-border-selected':'option-border'">
