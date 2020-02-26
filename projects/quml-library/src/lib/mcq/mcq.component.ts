@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SecurityContext, Output, EventEmitter, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, SecurityContext, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { katex } from 'katex';
 import { questionData } from './data';
@@ -12,29 +12,25 @@ declare var katex: any;
 
 })
 export class McqComponent implements OnInit , AfterViewInit {
-
-
   @Input() public questions?: any;
   @Input() identifier: any;
+  @Input() public layout?: string;
+
+  @Output() componentLoaded = new EventEmitter<any>();
+  @Output() answerChanged = new EventEmitter<any>();
+  @Output() optionSelected = new EventEmitter<number>();
+
   mcqQuestion: any;
   options: any;
   mcqOptions: any[] = [];
-  isExpanded: Boolean = true;
   selectedOptionTarget: any;
-  @Input() public layout?: string;
-  @Output() componentLoaded = new EventEmitter<any>();
-  @Output() answerChanged = new EventEmitter<any>();
-  elementRefer: any;
-  @ViewChild('question') questionTag: any;
-  @Output() optionSelected = new EventEmitter<number>();
 
-  constructor(public domSanitizer: DomSanitizer,
-    elementRef: ElementRef) {
-    this.elementRefer = elementRef;
+  
+
+  constructor(public domSanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
-
     this.componentLoaded.emit({event: 'mcq component has been loaded'});
     this.renderLatex();
     this.questions = this.questions ? this.questions : questionData;
@@ -50,6 +46,15 @@ export class McqComponent implements OnInit , AfterViewInit {
         this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
       this.options = this.questions.result.assessment_item.options;
     }
+    this.initOptions();
+  }
+
+  ngAfterViewInit() {
+    const el = document.getElementsByClassName('mcq-options');
+    el[0].remove();
+  }
+
+  initOptions() {
     for (let j = 0; j < this.options.length; j++) {
       const option = this.options[j];
       const optionValue = option.value.body;
@@ -63,10 +68,7 @@ export class McqComponent implements OnInit , AfterViewInit {
     }
   }
 
-  ngAfterViewInit() {
-    const el = document.getElementsByClassName('mcq-options');
-    el[0].remove();
-  }
+  
 
   renderLatex() {
     const _instance = this;
@@ -84,9 +86,7 @@ export class McqComponent implements OnInit , AfterViewInit {
       katex.render(textToRender, mathExp, { displayMode: false, output: 'html', throwOnError: true });
     }
   }
-  toggleCollapse() {
-    this.isExpanded = !this.isExpanded;
-  }
+
   onOptionSelect(event, mcqOption) {
     const parsedQuestion = JSON.parse(this.questions.__cdata);
     this.answerChanged.emit({ event: 'Option has been changed' });
@@ -107,14 +107,9 @@ export class McqComponent implements OnInit , AfterViewInit {
       }
     });
   }
-
+  
    getSelectedOptionAndResult (optionObj) {
      this.optionSelected.emit(optionObj);
    }
-
-  switchLayout(stripData) {
-    this.layout = stripData.text;
-    this.renderLatex();
-  }
 
 }
