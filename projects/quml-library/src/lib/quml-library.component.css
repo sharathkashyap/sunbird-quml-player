@@ -1,20 +1,8 @@
-.mcq {
-    opacity: 0.9;
-    background: #CCC;
-}
-
-.question {
-    padding: 0.8em;
-    background: #FFF;
-}
-
-
 .answer {
     border: 1px solid;
     padding: 0.2em;
     margin: 0.5em;
 }
-
 .icon {
     width: 15%;
     max-width: 70px;

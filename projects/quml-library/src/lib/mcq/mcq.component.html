@@ -1,110 +1,16 @@
 <!-- Default Layout-->
-<div class="mcq" *ngIf="layout=='Default'">
-    <div class="question collapsible" [ngClass]="isExpanded == true?'':'end'" #question>
-        <div class="mcqText" #question [innerHTML]="mcqQuestion"></div>
-    </div>
-    <div class="section" (click)="toggleCollapse()">
-        <span class="downIcon {{isExpanded == true?'collapse':'expand'}}"></span>
-    </div>
-    <div class="options">
-        <div *ngFor="let mcqOption of mcqOptions"
-            [ngClass]="(mcqOption.selected==true)?'mcq-option selected':'mcq-option'" class=""
-            [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
-
-        </div>
-    </div>
+<div class="quml-mcq" *ngIf="layout=='Default'">
+    <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout" ></quml-mcq-question>
+    <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout" (optionSelect)="onOptionSelect($event,selectedOptionTarget)"></quml-mcq-option>
 </div>
 <!-- End of Default Layout-->
 
-<!-- Multi Option Layout-->
-<div class="mcq" *ngIf="layout=='Multi'">
-    <div class="question collapsible" #question>
-        <div class="mcqText" #question [innerHTML]="mcqQuestion"></div>
-    </div>
-    <div class="options">
-        <div *ngFor="let mcqOption of mcqOptions | slice:0:2" class="mcq-option odd"
-            [ngClass]="{selected: mcqOption.selected==true}" [innerHTML]="mcqOption.optionHtml"
-            (click)="onOptionSelect($event,mcqOption)">
-        </div>
-        <div *ngFor="let mcqOption of mcqOptions | slice:2:4" class="mcq-option even"
-            [ngClass]="{selected: mcqOption.selected==true}" [innerHTML]="mcqOption.optionHtml"
-            (click)="onOptionSelect($event,mcqOption)">
-        </div>
-    </div>
-</div>
-<!-- Multi Option Layout-->
-
 <!-- Multi Column Layout-->
 <div class="mcq" *ngIf="layout=='Column'">
-    <div class="question column-block collapsible" #question>
-        <div class="mcqText" #question [innerHTML]="mcqQuestion"></div>
-    </div>
+    <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
     <div class="options column-block">
-        <div *ngFor="let mcqOption of mcqOptions"
-            [ngClass]="(mcqOption.selected==true)?'mcq-option selected':'mcq-option'" class=""
-            [innerHTML]="mcqOption.optionHtml" (click)="onOptionSelect($event,mcqOption)">
+        <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout" (optionSelect)="onOptionSelect($event,selectedOptionTarget)"></quml-mcq-option>
+    </div>
+</div>
 
-        </div>
-    </div>
-</div>
-<div *ngIf="layout == 'layout1'">
-    <div class="quml-mcq">
-        <div class="quml-mcq-questions">
-            <img src="https://via.placeholder.com/65">
-            <div class="quml-question" #question [innerHTML]="mcqQuestion">
-            </div>
-            <div class="quml-question-icon"></div>
-        </div>
-        <div class="quml-mcq-options" *ngFor="let mcqOption of mcqOptions">
-            <div class="quml-option-card"
-                (click)="onOptionSelect($event,mcqOption)">
-                <div class="option-img">
-                    <img src="https://via.placeholder.com/54">
-                </div>
-                <div class="option-border"  [ngClass]="(mcqOption.selected==true)?'option-border option-border-selected':'option-border'">
-                    <div class="option" [ngClass]="(mcqOption.selected==true)?'option selected-option-text':'option'"
-                        [innerHTML]="mcqOption.optionHtml">
-                    </div>
-                    <label class="container">
-                        <input type="radio" name="radio" [attr.checked]="(mcqOption.selected)== true? 'checked': null">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div *ngIf="layout == 'layout2'">
-    <div class="quml-mcq">
-        <div class="quml-mcq-questions">
-            <img src="https://via.placeholder.com/65">
-            <div class="quml-question" #question [innerHTML]="mcqQuestion">
-            </div>
-            <div class="quml-question-icon"></div>
-        </div>
-        <div class="quml-mcq-img-option-container">
-            <div class="quml-mcq-img-option-card" *ngFor="let mcqOption of mcqOptions">
-             <div class="image-section">
-               <img src="https://via.placeholder.com/136">
-             </div>
-             <div class="option-text">
-                 Answer Here
-             </div>
-           </div>
-         </div>
-    </div>
-</div>
-<div *ngIf="layout == 'layout3'">
-    <div class="quml-mcq">
-        <div class="quml-mcq-questions">
-            <img src="https://via.placeholder.com/65">
-            <div class="quml-question" #question [innerHTML]="mcqQuestion">
-            </div>
-            <div class="quml-question-icon"></div>
-        </div>
-        <div class="quml-mcq">
-           <p>third layout</p>
-        </div>
-    </div>
-</div>
 <!-- Multi Column Layout-->
