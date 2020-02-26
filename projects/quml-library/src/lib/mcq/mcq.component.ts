@@ -19,11 +19,12 @@ export class McqComponent implements OnInit , AfterViewInit {
   mcqQuestion: any;
   options: any;
   mcqOptions: any[] = [];
-  isExpanded: boolean = true;
+  layoutValue = 'layout1'; // to be removed
+  isExpanded: Boolean = true;
   @Input() public layout?: string;
   @Output() componentLoaded = new EventEmitter<any>();
   @Output() answerChanged = new EventEmitter<any>();
-  elementRefer:any;
+  elementRefer: any;
   @ViewChild('question') questionTag: any;
   @Output() optionSelected = new EventEmitter<number>();
 
@@ -37,7 +38,7 @@ export class McqComponent implements OnInit , AfterViewInit {
     this.componentLoaded.emit({event: 'mcq component has been loaded'});
     this.renderLatex();
     this.questions = this.questions ? this.questions : questionData;
-    this.layout = this.layout ? this.layout : 'new';
+    this.layout = this.layout ? this.layout : 'layout1';
     if (this.questions['__cdata'] != null) {
       const parsedQuestions = JSON.parse(this.questions.__cdata);
       this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,

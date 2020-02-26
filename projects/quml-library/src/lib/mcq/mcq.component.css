@@ -44,7 +44,7 @@
 
 .quml-mcq .quml-mcq-questions{
     display: grid;
-    grid-template-columns: auto auto 25px;
+    grid-template-columns: 1fr 10fr 1fr;
     grid-gap: 1em;
     margin-bottom: 16px;
     align-items: center;
@@ -81,23 +81,35 @@
     align-items:center;
     margin-bottom: 16px; 
   }
-  .quml-mcq .quml-option-card .option{
+  .quml-mcq .quml-option-card .option {
     font-weight: bold;
     color:#666666;
+    margin-top: 1em;
   }
   .quml-mcq .quml-option-card{  
-     display: grid;
-    justify-content:space-between;
-    grid-template-columns: auto auto;
-    grid-gap: 1em;
-    padding: 16px;
-    border: 2px solid #cccccc;
-    margin-bottom: 16px; 
-    
+    display: grid;
+    grid-template-columns: 1fr 15fr;
+    grid-gap: 0.5em;
+    margin-bottom: 16px;    
   }
+  .quml-mcq .option-border{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 13fr 1fr;
+    grid-gap: 1em;
+    padding-left: 16px;
+    align-items: center;
+  }
+
+  .quml-mcq .option-border-selected{
+    border: 2px solid #5649dc;
+  }
+
   .quml-mcq .quml-option-card .option{
     color:#666666;
     font-size:14px;
+    margin-top: 1em;
   }
   
   .quml-mcq .selected-option{
@@ -111,8 +123,7 @@
   .quml-mcq .container {
     display: block;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    margin-bottom: 0.6em;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
@@ -165,6 +176,38 @@
       height: 10px;
       border-radius: 50%;
       background: #5b53f4;
+  }
+ /* layout 2 */
+  .quml-mcq .quml-mcq-img-option-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+  }
+  .quml-mcq  .quml-mcq-img-option-card {
+     background-color: white;
+     padding: 2px;
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+  }
+  .quml-mcq  .option-text{
+    padding: 8px;
+    text-align:center;
+  }
+  .quml-mcq .quml-mcq-img-option-container img {
+    height: 104.77px;
+    min-width: 100%;
+  }
+  .quml-mcq  .option-text {
+    font-size: 14px;
+    font-weight: 500;
+    color:#666666;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .quml-mcq .quml-mcq-img-option-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 1em;
+    }
   }
   
   

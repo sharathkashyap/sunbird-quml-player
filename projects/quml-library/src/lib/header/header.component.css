@@ -47,8 +47,8 @@
    .quml-header-text {
      margin: 8px;
      text-align: center;
-     text-overflow: ellipsis;
-     overflow: hidden;
+     /* text-overflow: ellipsis;
+     overflow: hidden; */
      white-space: nowrap;
    }
    
