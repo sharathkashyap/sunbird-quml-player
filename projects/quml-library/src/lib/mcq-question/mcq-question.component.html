@@ -1,10 +1,10 @@
-<div class="quml-mcq-questions">
-  <div class="question-image">
-    <img src="https://via.placeholder.com/65">
-    <span class="icon-zommin" (click)="showQumlPopup()"></span>
-  </div>
-
+<div class="quml-mcq-questions" *ngIf="layout=='DEFAULT' || layout=='IMAGEGRID' || layout=='MULTIIMAGEGRID'">
+    
+  <quml-mcq-image-option></quml-mcq-image-option>
   <div class="quml-question" #question [innerHTML]="mcqQuestion">
   </div>
   <div class="quml-question-icon"></div>
+</div>
+<div class="" *ngIf="layout=='IMAGEQAGRID' || layout=='IMAGEQOPTION'">
+    <quml-mcq-image-option></quml-mcq-image-option>
 </div>

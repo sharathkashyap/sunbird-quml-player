@@ -1,10 +1,7 @@
 <div class="quml-mcq-options">
   <div class="quml-option-card" *ngFor="let mcqOption of mcqOptions"
        (click)="onOptionSelect($event,mcqOption)">
-       <div class="option-img">
-          <img src="https://via.placeholder.com/54">
-          <span class="icon-zommin" (click)="showQumlPopup()"></span>
-      </div>
+      <quml-mcq-image-option></quml-mcq-image-option>
       <div class="option-border"  [ngClass]="(mcqOption.selected==true)?'option-border option-border-selected':'option-border'">
           <div class="option" [ngClass]="(mcqOption.selected==true)?'option selected-option-text':'option'"
               [innerHTML]="mcqOption.optionHtml">
@@ -16,4 +13,6 @@
       </div>
   </div>
 </div>
+
+
 
