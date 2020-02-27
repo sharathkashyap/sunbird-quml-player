@@ -7,8 +7,18 @@
     padding: 16px;
     background-color: white;
   }
+  .quml-mcq .columnBlock {
+    width: 42%;
+    display: inline-block;
+    min-width: 300px;
+    padding: 5px;
+    max-height: 200px;
+  }
   
-  
+  .quml-mcq .columnBlock .questionBlock img {
+    max-width: 250px;
+    max-height: 250px;
+  } 
   
   /* The container */
   .quml-mcq .container {
