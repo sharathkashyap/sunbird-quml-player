@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'quml-mcq-image-option',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mcq-image-option.component.css']
 })
 export class McqImageOptionComponent implements OnInit {
-
+  showQumlPopup = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  closePopUp() {
+    this.showQumlPopup = false;
   }
 
 }
