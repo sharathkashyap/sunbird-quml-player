@@ -22,6 +22,6 @@ import { McqImageOptionComponent } from './mcq-image-option/mcq-image-option.com
     CarouselModule
   ],
   exports: [QumlLibraryComponent, McqComponent, SaComponent, PlayerComponent, HeaderComponent,PortraitHeaderComponent,
-    McqOptionComponent]
+    McqOptionComponent,McqImageOptionComponent]
 })
 export class QumlLibraryModule { }
