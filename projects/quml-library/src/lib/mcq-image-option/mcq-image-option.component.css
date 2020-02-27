@@ -1,21 +1,16 @@
-.qumlImageOption .wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 1em;
-  }
-  
-  .qumlImageOption .wrapper .quml-mcq-option-card {
+ 
+ .quml-mcq-option-card {
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
   }
-  .qumlImageOption .wrapper .quml-mcq-option-card .option-image {
+ .quml-mcq-option-card .option-image {
        position: relative;
   }
   
-  .qumlImageOption .wrapper .quml-mcq-option-card .option-image img{
+  .quml-mcq-option-card .option-image img{
     min-width: 100%;
   }
-  .qumlImageOption .wrapper .quml-mcq-option-card .option {
+  .quml-mcq-option-card .option {
     text-align: center;
   }
   .icon-zommin {
