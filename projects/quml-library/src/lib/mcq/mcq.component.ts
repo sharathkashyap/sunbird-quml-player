@@ -52,7 +52,9 @@ export class McqComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     const el = document.getElementsByClassName('mcq-options');
-    el[0].remove();
+    if(el!=null && el.length > 0) {
+      el[0].remove();
+    }
   }
 
   initOptions() {

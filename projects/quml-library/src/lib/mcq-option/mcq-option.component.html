@@ -1,4 +1,4 @@
-<div class="quml-mcq-options">
+<div class="quml-mcq-options" *ngIf="layout=='DEFAULT' || layout=='IMAGEQOPTION'">
   <div class="quml-option-card" *ngFor="let mcqOption of mcqOptions"
        (click)="onOptionSelect($event,mcqOption)">
       <quml-mcq-image-option></quml-mcq-image-option>
@@ -13,6 +13,30 @@
       </div>
   </div>
 </div>
+<div class="" *ngIf="layout=='IMAGEGRID'">
+    <div class="qumlImageOption">
+    <div class="wrapper">
+            <quml-mcq-image-option></quml-mcq-image-option>
+            <quml-mcq-image-option></quml-mcq-image-option>
+            <quml-mcq-image-option></quml-mcq-image-option>
+            <quml-mcq-image-option></quml-mcq-image-option>
+    </div>
+    </div>
 
-
+</div>
+<div class="" *ngIf="layout=='MULTIIMAGEGRID'">
+        <div class="qumlImageOption">
+        <div class="wrapper">
+                <quml-mcq-image-option></quml-mcq-image-option>
+                <quml-mcq-image-option></quml-mcq-image-option>
+                <quml-mcq-image-option></quml-mcq-image-option>
+                <quml-mcq-image-option></quml-mcq-image-option>
+                <quml-mcq-image-option></quml-mcq-image-option>
+                <quml-mcq-image-option></quml-mcq-image-option>
+                <quml-mcq-image-option></quml-mcq-image-option>
+                <quml-mcq-image-option></quml-mcq-image-option>
+        </div>
+        </div>
+    
+    </div>
 
