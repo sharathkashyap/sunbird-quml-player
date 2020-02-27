@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'quml-mcq-question',
@@ -7,12 +7,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class McqQuestionComponent implements OnInit {
 
-  @Input() mcqQuestion:any;
-  @Input() layout:any;
+  @Input() mcqQuestion: any;
+  @Output() showPopup = new EventEmitter();
+  @Input() layout: any;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showQumlPopup() {
+    this.showPopup.emit();
   }
 
 }

@@ -7,9 +7,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class McqOptionComponent implements OnInit {
 
-  @Input() mcqOptions:any;
-  @Input() layout:any;
-
+  @Input() mcqOptions: any;
+  @Input() layout: any;
+  @Output() showPopup = new EventEmitter();
   @Output() optionSelected = new EventEmitter<any>();
 
   constructor() { }
@@ -18,6 +18,10 @@ export class McqOptionComponent implements OnInit {
   }
 
   onOptionSelect(event, mcqOption) {
-    this.optionSelected.emit({name:'optionSelect',option:mcqOption});
+    this.optionSelected.emit({name: 'optionSelect', option: mcqOption});
+  }
+
+  showQumlPopup() {
+    this.showPopup.emit();
   }
 }
