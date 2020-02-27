@@ -8,10 +8,10 @@ declare var katex: any;
 @Component({
   selector: 'quml-mcq',
   templateUrl: './mcq.component.html',
-  styleUrls: ['./mcq.component.css' , '../quml-library.component.css'],
+  styleUrls: ['./mcq.component.css', '../quml-library.component.css'],
 
 })
-export class McqComponent implements OnInit , AfterViewInit {
+export class McqComponent implements OnInit, AfterViewInit {
   @Input() public questions?: any;
   @Input() identifier: any;
   @Input() public layout?: string;
@@ -24,14 +24,15 @@ export class McqComponent implements OnInit , AfterViewInit {
   options: any;
   mcqOptions: any[] = [];
   selectedOptionTarget: any;
+  showQumlPopup = false;
 
-  
+
 
   constructor(public domSanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
-    this.componentLoaded.emit({event: 'mcq component has been loaded'});
+    this.componentLoaded.emit({ event: 'mcq component has been loaded' });
     this.renderLatex();
     this.questions = this.questions ? this.questions : questionData;
     this.layout = this.layout ? this.layout : 'IMAGEGRID';
@@ -68,7 +69,7 @@ export class McqComponent implements OnInit , AfterViewInit {
     }
   }
 
-  
+
 
   renderLatex() {
     const _instance = this;
@@ -100,16 +101,23 @@ export class McqComponent implements OnInit , AfterViewInit {
     parsedQuestion.options.forEach((element) => {
       if (element.value.body === mcqOption.optionHtml) {
         const selectedOption = {
-            selectedOption : element,
-            result : element.answer
+          selectedOption: element,
+          result: element.answer
         };
-      this.getSelectedOptionAndResult(selectedOption);
+        this.getSelectedOptionAndResult(selectedOption);
       }
     });
   }
 
-   getSelectedOptionAndResult (optionObj) {
-     this.optionSelected.emit(optionObj);
-   }
+  getSelectedOptionAndResult(optionObj) {
+    this.optionSelected.emit(optionObj);
+  }
+
+  showPopup() {
+    this.showQumlPopup = true;
+  }
+  closePopUp() {
+    this.showQumlPopup = false;
+  }
 
 }
