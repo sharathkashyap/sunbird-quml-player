@@ -11,7 +11,7 @@
 
 .quml-option-card {
   display: grid;
-  grid-template-columns: 1fr 15fr;
+  grid-template-columns: 0.5fr 15fr;
   grid-gap: 0.5em;
   margin-bottom: 16px;
 }
