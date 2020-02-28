@@ -10,7 +10,7 @@
   .quml-mcq .columnBlock {
     width: 42%;
     display: inline-block;
-    min-width: 300px;
+    min-width: 200px;
     padding: 5px;
     max-height: 200px;
   }
