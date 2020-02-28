@@ -58,6 +58,16 @@
     font-weight: 500;
     color:#666666;
   }
+  .imageqa-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+  }
+  .imageqa-option-wrapper{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+  }
 
   @media only screen and (max-width: 480px) {
     .quml-mcq .quml-mcq-img-option-container {
