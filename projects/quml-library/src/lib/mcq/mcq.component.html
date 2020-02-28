@@ -35,9 +35,12 @@
 <!--End of Image QA Grid Layout-->
 <!--Image QOption Layout-->
 <div class="quml-mcq" *ngIf="layout=='IMAGEQOPTION'">
-
-    <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"
-        (optionSelected)="onOptionSelect($event,selectedOptionTarget)"></quml-mcq-option>
+    <div class="columnBlock questionBlock">
+        <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
+    </div>
+    <div class="columnBlock">
+        <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout" (optionSelected)="onOptionSelect($event,selectedOptionTarget)"></quml-mcq-option>
+    </div>
 </div>
 
 <!--End of Image QOption Layout-->

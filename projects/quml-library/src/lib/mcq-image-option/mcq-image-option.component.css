@@ -9,6 +9,7 @@
   
   .quml-mcq-option-card .option-image img{
     min-width: 100%;
+    vertical-align: bottom;
   }
   .quml-mcq-option-card .option {
     text-align: center;
