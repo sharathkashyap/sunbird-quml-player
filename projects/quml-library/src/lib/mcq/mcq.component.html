@@ -38,9 +38,8 @@
     <div class="columnBlock questionBlock">
         <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
     </div>
-    <div class="columnBlock">
-        <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"
-            (optionSelected)="onOptionSelect($event,selectedOptionTarget)"></quml-mcq-option>
+    <div class="columnBlock optionBlock">
+        <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout" (optionSelected)="onOptionSelect($event,selectedOptionTarget)"></quml-mcq-option>
     </div>
 </div>
 

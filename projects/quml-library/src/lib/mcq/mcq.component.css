@@ -8,17 +8,21 @@
     background-color: white;
   }
   .quml-mcq .columnBlock {
-    width: 42%;
+    
     display: inline-block;
     min-width: 200px;
     padding: 5px;
-    max-height: 200px;
+    min-height: 200px;
+    vertical-align: top;
   }
-  
-  .quml-mcq .columnBlock .questionBlock img {
-    max-width: 250px;
-    max-height: 250px;
-  } 
+  .quml-mcq .questionBlock {
+    max-width: 275px;
+    width: 30%;
+  }
+  .quml-mcq .optionBlock {
+    width: 62%;
+  }
+
   
   /* The container */
   .quml-mcq .container {
