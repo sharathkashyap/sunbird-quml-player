@@ -35,7 +35,7 @@ export class McqComponent implements OnInit, AfterViewInit {
     this.componentLoaded.emit({ event: 'mcq component has been loaded' });
     this.renderLatex();
     this.questions = this.questions ? this.questions : questionData;
-    this.layout = this.layout ? this.layout : 'IMAGEQOPTION';
+    this.layout = this.layout ? this.layout : 'IMAGEQAGRID';
     if (this.questions['__cdata'] != null) {
       const parsedQuestions = JSON.parse(this.questions.__cdata);
       this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
@@ -52,7 +52,7 @@ export class McqComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     const el = document.getElementsByClassName('mcq-options');
-    if(el!=null && el.length > 0) {
+    if (el != null && el.length > 0) {
       el[0].remove();
     }
   }
@@ -91,6 +91,7 @@ export class McqComponent implements OnInit, AfterViewInit {
   }
 
   onOptionSelect(event, mcqOption) {
+    console.log('mcq option on click is' , mcqOption);
     const parsedQuestion = JSON.parse(this.questions.__cdata);
     this.answerChanged.emit({ event: 'Option has been changed' });
     this.mcqOptions.forEach(mcqOptionElement => {
@@ -109,6 +110,9 @@ export class McqComponent implements OnInit, AfterViewInit {
         this.getSelectedOptionAndResult(selectedOption);
       }
     });
+  }
+  optionSelectedInImage(event) {
+    this.onOptionSelect(event , event.option);
   }
 
   getSelectedOptionAndResult(optionObj) {
