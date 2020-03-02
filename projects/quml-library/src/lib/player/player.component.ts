@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
-import { questionSet } from './data';
+import { newQuestionFormatMcq } from './data';
 
 
 @Component({
@@ -36,7 +36,8 @@ export class PlayerComponent implements OnInit {
     this.endPageReached = false;
   }
   getQuestionData() {
-    return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
+    // return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
+    return newQuestionFormatMcq.result;
   }
 
   ngOnInit() {
@@ -44,18 +45,22 @@ export class PlayerComponent implements OnInit {
     this.showIndicator = false;
     this.noWrapSlides = true;
     this.questions = this.questions ? this.questions : this.questionData;
-    this.setQuestionType();
+    // this.setQuestionType();
+    // console.log('after set question type', this.questions);
   }
 
   setQuestionType() {
-    this.questions.forEach(element => {
-      if (typeof (element.config.__cdata) === 'string') {
-        const config = JSON.parse(element.config.__cdata);
-        element.questionType = config.metadata.type;
-      } else {
-        element.questionType = element.config.metadata.type;
-      }
+    this.questionClicked.forEach((ele) => {
+      ele.questionType = 'mcq';
     });
+    // this.questions.forEach(element => {
+    //   if (typeof (element.config.__cdata) === 'string') {
+    //     const config = JSON.parse(element.config.__cdata);
+    //     element.questionType = config.metadata.type;
+    //   } else {
+    //     element.questionType = element.config.metadata.type;
+    //   }
+    // });
   }
 
   nextSlide() {

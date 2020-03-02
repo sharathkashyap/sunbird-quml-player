@@ -11,11 +11,11 @@
 <carousel [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides" #car
   [hidden]="endPageReached">
   <slide *ngFor="let question of questions">
-    <div *ngIf="question.questionType === 'reference'">
+    <div *ngIf="question.type === 'reference'">
       <quml-sa [questions]='question.data' [identifier]="question.id" id={{question.id}}></quml-sa>
     </div>
-    <div *ngIf="question.questionType === 'mcq'">
-      <quml-mcq [questions]='question.data' (optionSelected)="getOptionSelected($event)" [identifier]="question.id"
+    <div *ngIf="question.type === 'mcq'">
+      <quml-mcq [question]='question.editorState' (optionSelected)="getOptionSelected($event)" [identifier]="question.id"
         id={{question.id}}></quml-mcq>
     </div>
   </slide>

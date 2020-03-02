@@ -12,7 +12,7 @@ declare var katex: any;
 
 })
 export class McqComponent implements OnInit, AfterViewInit {
-  @Input() public questions?: any;
+  @Input() public question?: any;
   @Input() identifier: any;
   @Input() public layout?: string;
 
@@ -34,19 +34,22 @@ export class McqComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.componentLoaded.emit({ event: 'mcq component has been loaded' });
     this.renderLatex();
-    this.questions = this.questions ? this.questions : questionData;
-    this.layout = this.layout ? this.layout : 'IMAGEQAGRID';
-    if (this.questions['__cdata'] != null) {
-      const parsedQuestions = JSON.parse(this.questions.__cdata);
-      this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-        this.domSanitizer.bypassSecurityTrustHtml(parsedQuestions.question));
-      this.options = parsedQuestions.options;
+    this.question = this.question ? this.question : questionData;
+    this.layout = this.layout ? this.layout : 'DEFAULT';
+    // if (this.questions['__cdata'] != null) {
+    //   const parsedQuestions = JSON.parse(this.questions.__cdata);
+    //   this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
+    //     this.domSanitizer.bypassSecurityTrustHtml(parsedQuestions.question));
+    //   this.options = parsedQuestions.options;
 
-    } else {
-      this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-        this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
-      this.options = this.questions.result.assessment_item.options;
-    }
+    // } else {
+    //   this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
+    //     this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
+    //   this.options = this.questions.result.assessment_item.options;
+    // }
+    this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
+    this.domSanitizer.bypassSecurityTrustHtml(this.question.question));
+    this.options = this.question.options;
     this.initOptions();
   }
 
@@ -90,9 +93,10 @@ export class McqComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onOptionSelect(event, mcqOption) {
+  onOptionSelect(event ) {
+    const mcqOption = event.option;
     console.log('mcq option on click is' , mcqOption);
-    const parsedQuestion = JSON.parse(this.questions.__cdata);
+    // const parsedQuestion = JSON.parse(this.question.__cdata);
     this.answerChanged.emit({ event: 'Option has been changed' });
     this.mcqOptions.forEach(mcqOptionElement => {
       if (mcqOptionElement.index === event.option.index) {
@@ -101,7 +105,7 @@ export class McqComponent implements OnInit, AfterViewInit {
         mcqOptionElement.selected = false;
       }
     });
-    parsedQuestion.options.forEach((element) => {
+    this.mcqOptions.forEach((element) => {
       if (element.value.body === mcqOption.optionHtml) {
         const selectedOption = {
           selectedOption: element,
@@ -112,7 +116,7 @@ export class McqComponent implements OnInit, AfterViewInit {
     });
   }
   optionSelectedInImage(event) {
-    this.onOptionSelect(event , event.option);
+    this.onOptionSelect(event);
   }
 
   getSelectedOptionAndResult(optionObj) {

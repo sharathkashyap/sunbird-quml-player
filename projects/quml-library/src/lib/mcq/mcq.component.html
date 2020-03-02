@@ -2,14 +2,14 @@
 <div class="quml-mcq" *ngIf="layout=='DEFAULT'">
     <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout" (showPopup)="showPopup()"></quml-mcq-question>
     <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"
-        (optionSelected)="onOptionSelect($event,selectedOptionTarget)" (showPopup)="showPopup()"></quml-mcq-option>
+        (optionSelected)="onOptionSelect($event)" (showPopup)="showPopup()"></quml-mcq-option>
 </div>
 <!-- End of Default Layout-->
 <!--Image Grid Layout-->
 <div class="quml-mcq" *ngIf="layout=='IMAGEGRID'">
     <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
     <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"
-        (optionSelected)="onOptionSelect($event,selectedOptionTarget)"></quml-mcq-option>
+        (optionSelected)="onOptionSelect($event)"></quml-mcq-option>
 </div>
 <!--End of Grid Layout-->
 <!--Image Multi Grid Layout-->
@@ -40,7 +40,7 @@
     </div>
     <div class="columnBlock">
         <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"
-            (optionSelected)="onOptionSelect($event,selectedOptionTarget)"></quml-mcq-option>
+            (optionSelected)="onOptionSelect($event)"></quml-mcq-option>
     </div>
 </div>
 
