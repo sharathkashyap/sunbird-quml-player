@@ -67,6 +67,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
+    padding: 24px;
   }
 
   @media only screen and (max-width: 480px) {
@@ -75,6 +76,15 @@
       grid-template-columns: repeat(2, 1fr);
       grid-gap: 1em;
     }
+    .imageqa-wrapper{
+      display: grid;
+      grid-template-columns: none;
+      grid-gap: 1em;
+    }
+    .imageqa-option-wrapper{
+      padding: 0px;
+    }
+
   }
   
   
