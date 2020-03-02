@@ -1,7 +1,8 @@
  .quml-mcq-option-card {
    background-color: white;
-   padding: 2px;
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2);
+   padding: 5px;
+   border-radius: 5px;
+   border: 1px solid #CCCCCC;
  }
 
  .quml-mcq-option-card .option-image {
@@ -15,7 +16,16 @@
 
  .quml-mcq-option-card .option {
    text-align: center;
+   color: #666666;
+   font-size: 14px;
+   margin-top: 0.2em;
+   font-weight: bold;
+   margin-bottom: -1em;
  }
+
+ .selected-option-text {
+  color: #3769eb !important;
+}
 
  .icon-zommin {
    position: absolute;

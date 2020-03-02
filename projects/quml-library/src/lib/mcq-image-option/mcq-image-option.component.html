@@ -4,7 +4,7 @@
     <span class="icon-zommin" (click)="showQumlPopup = true;"></span>
   </div>
   <div class="option" *ngIf="mcqQuestion" [innerHTML]="mcqQuestion"></div>
-  <div class="option" *ngIf="mcqOption" 
+  <div class="option" [ngClass]="(mcqOption?.selected==true)?'option selected-option-text':'option'" *ngIf="mcqOption" 
    [innerHTML]="mcqOption?.optionHtml"></div>
 </div>
 <quml-quml-popup *ngIf="showQumlPopup" (popUpClose)="closePopUp()"></quml-quml-popup>
