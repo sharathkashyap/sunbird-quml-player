@@ -1857,6 +1857,322 @@ export const newQuestionFormatMcq = {
       'programId': '87757b50-257b-11ea-bb1d-39fae8103631',
       'board': 'State (Rajasthan)',
       'status': 'Live'
+    },
+    {
+      'itemType': 'UNIT',
+      'code': '3ac71f6f-5b89-9ae6-b55a-ef05a7c77832',
+      'subject': 'I Language Kannada',
+      'qumlVersion': 1,
+      'qlevel': 'MEDIUM',
+      'channel': '0129492660404797447',
+      'organisation': [
+        'My School'
+      ],
+      'responseDeclaration': {
+        'responseValue': {
+          'cardinality': 'single',
+          'type': 'integer',
+          'correct_response': {
+            'value': '0'
+          }
+        }
+      },
+      'language': [
+        'English'
+      ],
+      'program': 'State KA Program',
+      'media': [
+        {
+          'id': 'do_212969726517911552121',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969726517911552121/artifact/screenshot-from-2019-11-14-12-26-45_1583218565885.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212969726665367552122',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969726665367552122/artifact/screenshot-from-2019-09-05-12-08-23_1583218583973.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212969726737481728123',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969726737481728123/artifact/screenshot-from-2019-12-03-18-56-57_1583218592706.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212969726816124928124',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969726816124928124/artifact/screenshot-from-2020-02-18-11-39-23_1583218602189.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212969726931607552125',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969726931607552125/artifact/screenshot-from-2020-03-03-11-48-14_1583218616264.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        }
+      ],
+      'medium': 'Kannada',
+      'templateId': 'mcq-horizontal',
+      'type': 'mcq',
+      'editorState': {
+        'question': '<figure class="image"><img src="/assets/public/content/do_212969726517911552121/artifact/screenshot-from-2019-11-14-12-26-45_1583218565885.png" alt="do_212969726517911552121" data-asset-variable="do_212969726517911552121"></figure>',
+        'options': [
+          {
+            'answer': true,
+            'value': {
+              'type': 'text',
+              'body': '<figure class="image"><img src="/assets/public/content/do_212969726665367552122/artifact/screenshot-from-2019-09-05-12-08-23_1583218583973.png" alt="do_212969726665367552122" data-asset-variable="do_212969726665367552122"></figure>'
+            }
+          },
+          {
+            'answer': false,
+            'value': {
+              'type': 'text',
+              'body': '<figure class="image"><img src="/assets/public/content/do_212969726737481728123/artifact/screenshot-from-2019-12-03-18-56-57_1583218592706.png" alt="do_212969726737481728123" data-asset-variable="do_212969726737481728123"></figure>'
+            }
+          },
+          {
+            'answer': false,
+            'value': {
+              'type': 'text',
+              'body': '<figure class="image"><img src="/assets/public/content/do_212969726816124928124/artifact/screenshot-from-2020-02-18-11-39-23_1583218602189.png" alt="do_212969726816124928124" data-asset-variable="do_212969726816124928124"></figure>'
+            }
+          },
+          {
+            'answer': false,
+            'value': {
+              'type': 'text',
+              'body': '<figure class="image"><img src="/assets/public/content/do_212969726931607552125/artifact/screenshot-from-2020-03-03-11-48-14_1583218616264.png" alt="do_212969726931607552125" data-asset-variable="do_212969726931607552125"></figure>'
+            }
+          }
+        ]
+      },
+      'body': '<div class=\'mcq-horizontal cheveron-helper\'><div class=\'mcq-title\'><figure class="image"><img src="/assets/public/content/do_212969726517911552121/artifact/screenshot-from-2019-11-14-12-26-45_1583218565885.png" alt="do_212969726517911552121" data-asset-variable="do_212969726517911552121"></figure></div><i class=\'chevron down icon\'></i><div class=\'mcq-options\'><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=0 class=\'mcq-option\'><figure class="image"><img src="/assets/public/content/do_212969726665367552122/artifact/screenshot-from-2019-09-05-12-08-23_1583218583973.png" alt="do_212969726665367552122" data-asset-variable="do_212969726665367552122"></figure></div><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=1 class=\'mcq-option\'><figure class="image"><img src="/assets/public/content/do_212969726737481728123/artifact/screenshot-from-2019-12-03-18-56-57_1583218592706.png" alt="do_212969726737481728123" data-asset-variable="do_212969726737481728123"></figure></div><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=2 class=\'mcq-option\'><figure class="image"><img src="/assets/public/content/do_212969726816124928124/artifact/screenshot-from-2020-02-18-11-39-23_1583218602189.png" alt="do_212969726816124928124" data-asset-variable="do_212969726816124928124"></figure></div><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=3 class=\'mcq-option\'><figure class="image"><img src="/assets/public/content/do_212969726931607552125/artifact/screenshot-from-2020-03-03-11-48-14_1583218616264.png" alt="do_212969726931607552125" data-asset-variable="do_212969726931607552125"></figure></div></div></div>',
+      'createdOn': '2020-03-03T06:55:34.596+0000',
+      'gradeLevel': [
+        'Class 8'
+      ],
+      'appId': 'preprod.diksha.portal',
+      'options': [
+        {
+          'answer': true,
+          'value': {
+            'type': 'text',
+            'body': '<figure class="image"><img src="/assets/public/content/do_212969726665367552122/artifact/screenshot-from-2019-09-05-12-08-23_1583218583973.png" alt="do_212969726665367552122" data-asset-variable="do_212969726665367552122"></figure>',
+            'resvalue': 0,
+            'resindex': 0
+          }
+        },
+        {
+          'answer': false,
+          'value': {
+            'type': 'text',
+            'body': '<figure class="image"><img src="/assets/public/content/do_212969726737481728123/artifact/screenshot-from-2019-12-03-18-56-57_1583218592706.png" alt="do_212969726737481728123" data-asset-variable="do_212969726737481728123"></figure>',
+            'resvalue': 1,
+            'resindex': 1
+          }
+        },
+        {
+          'answer': false,
+          'value': {
+            'type': 'text',
+            'body': '<figure class="image"><img src="/assets/public/content/do_212969726816124928124/artifact/screenshot-from-2020-02-18-11-39-23_1583218602189.png" alt="do_212969726816124928124" data-asset-variable="do_212969726816124928124"></figure>',
+            'resvalue': 2,
+            'resindex': 2
+          }
+        },
+        {
+          'answer': false,
+          'value': {
+            'type': 'text',
+            'body': '<figure class="image"><img src="/assets/public/content/do_212969726931607552125/artifact/screenshot-from-2020-03-03-11-48-14_1583218616264.png" alt="do_212969726931607552125" data-asset-variable="do_212969726931607552125"></figure>',
+            'resvalue': 3,
+            'resindex': 3
+          }
+        }
+      ],
+      'lastUpdatedOn': '2020-03-03T06:57:29.259+0000',
+      'identifier': 'do_21296972623541862411611',
+      'lastStatusChangedOn': '2020-03-03T06:55:34.596+0000',
+      'creator': '2.7contribute',
+      'question': null,
+      'author': '2.7contribute',
+      'consumerId': '2bb02b87-db6a-45b0-92d6-d1c948a98cae',
+      'solutions': '',
+      'maxScore': 1,
+      'bloomsLevel': [
+        'remember'
+      ],
+      'version': 3,
+      'versionKey': '1583218649259',
+      'license': 'CC BY 4.0',
+      'framework': 'ka_k-12',
+      'rejectComment': '',
+      'name': 'mcq_ka_k-12',
+      'category': 'MCQ',
+      'programId': '31f73460-466f-11ea-abf3-c3d01bed4f1f',
+      'board': 'State (Karnataka)',
+      'status': 'Review'
+    },
+    {
+      'itemType': 'UNIT',
+      'code': '540ef688-8da4-c903-9669-ff7cfd3734b8',
+      'subject': 'I Language Kannada',
+      'qumlVersion': 1,
+      'qlevel': 'MEDIUM',
+      'channel': '0129492660404797447',
+      'organisation': [
+        'My School'
+      ],
+      'responseDeclaration': {
+        'responseValue': {
+          'cardinality': 'single',
+          'type': 'integer',
+          'correct_response': {
+            'value': '0'
+          }
+        }
+      },
+      'language': [
+        'English'
+      ],
+      'program': 'State KA Program',
+      'media': [
+        {
+          'id': 'do_212969809123729408145',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969809123729408145/artifact/screenshot-from-2020-02-18-11-39-23_1583228653078.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212969809245937664146',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969809245937664146/artifact/screenshot-from-2020-03-03-11-48-14_1583228667986.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212969809326399488147',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969809326399488147/artifact/screenshot-from-2020-03-03-11-48-14_1583228677820.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212969809405902848148',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969809405902848148/artifact/screenshot-from-2019-11-11-15-06-08_1583228687479.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212969809543274496149',
+          'type': 'image',
+          'src': '/assets/public/content/do_212969809543274496149/artifact/screenshot-from-2020-02-26-10-25-43_1583228704365.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        }
+      ],
+      'medium': 'Kannada',
+      'templateId': 'mcq-vertical mcq-split',
+      'type': 'mcq',
+      'editorState': {
+        'question': '<figure class="image"><img src="/assets/public/content/do_212969809123729408145/artifact/screenshot-from-2020-02-18-11-39-23_1583228653078.png" alt="do_212969809123729408145" data-asset-variable="do_212969809123729408145"></figure>',
+        'options': [
+          {
+            'answer': true,
+            'value': {
+              'type': 'text',
+              'body': '<figure class="image"><img src="/assets/public/content/do_212969809245937664146/artifact/screenshot-from-2020-03-03-11-48-14_1583228667986.png" alt="do_212969809245937664146" data-asset-variable="do_212969809245937664146"></figure>'
+            }
+          },
+          {
+            'answer': false,
+            'value': {
+              'type': 'text',
+              'body': '<figure class="image"><img src="/assets/public/content/do_212969809326399488147/artifact/screenshot-from-2020-03-03-11-48-14_1583228677820.png" alt="do_212969809326399488147" data-asset-variable="do_212969809326399488147"></figure>'
+            }
+          },
+          {
+            'answer': false,
+            'value': {
+              'type': 'text',
+              'body': '<figure class="image"><img src="/assets/public/content/do_212969809405902848148/artifact/screenshot-from-2019-11-11-15-06-08_1583228687479.png" alt="do_212969809405902848148" data-asset-variable="do_212969809405902848148"></figure>'
+            }
+          },
+          {
+            'answer': false,
+            'value': {
+              'type': 'text',
+              'body': '<figure class="image"><img src="/assets/public/content/do_212969809543274496149/artifact/screenshot-from-2020-02-26-10-25-43_1583228704365.png" alt="do_212969809543274496149" data-asset-variable="do_212969809543274496149"></figure>'
+            }
+          }
+        ]
+      },
+      'body': '<div class=\'mcq-vertical mcq-split cheveron-helper\'><div class=\'mcq-title\'><figure class="image"><img src="/assets/public/content/do_212969809123729408145/artifact/screenshot-from-2020-02-18-11-39-23_1583228653078.png" alt="do_212969809123729408145" data-asset-variable="do_212969809123729408145"></figure></div><i class=\'chevron down icon\'></i><div class=\'mcq-options\'><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=0 class=\'mcq-option\'><figure class="image"><img src="/assets/public/content/do_212969809245937664146/artifact/screenshot-from-2020-03-03-11-48-14_1583228667986.png" alt="do_212969809245937664146" data-asset-variable="do_212969809245937664146"></figure></div><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=1 class=\'mcq-option\'><figure class="image"><img src="/assets/public/content/do_212969809326399488147/artifact/screenshot-from-2020-03-03-11-48-14_1583228677820.png" alt="do_212969809326399488147" data-asset-variable="do_212969809326399488147"></figure></div><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=2 class=\'mcq-option\'><figure class="image"><img src="/assets/public/content/do_212969809405902848148/artifact/screenshot-from-2019-11-11-15-06-08_1583228687479.png" alt="do_212969809405902848148" data-asset-variable="do_212969809405902848148"></figure></div><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=3 class=\'mcq-option\'><figure class="image"><img src="/assets/public/content/do_212969809543274496149/artifact/screenshot-from-2020-02-26-10-25-43_1583228704365.png" alt="do_212969809543274496149" data-asset-variable="do_212969809543274496149"></figure></div></div></div>',
+      'createdOn': '2020-03-03T09:43:52.776+0000',
+      'gradeLevel': [
+        'Class 8'
+      ],
+      'appId': 'preprod.diksha.portal',
+      'options': [
+        {
+          'answer': true,
+          'value': {
+            'type': 'text',
+            'body': '<figure class="image"><img src="/assets/public/content/do_212969809245937664146/artifact/screenshot-from-2020-03-03-11-48-14_1583228667986.png" alt="do_212969809245937664146" data-asset-variable="do_212969809245937664146"></figure>',
+            'resvalue': 0,
+            'resindex': 0
+          }
+        },
+        {
+          'answer': false,
+          'value': {
+            'type': 'text',
+            'body': '<figure class="image"><img src="/assets/public/content/do_212969809326399488147/artifact/screenshot-from-2020-03-03-11-48-14_1583228677820.png" alt="do_212969809326399488147" data-asset-variable="do_212969809326399488147"></figure>',
+            'resvalue': 1,
+            'resindex': 1
+          }
+        },
+        {
+          'answer': false,
+          'value': {
+            'type': 'text',
+            'body': '<figure class="image"><img src="/assets/public/content/do_212969809405902848148/artifact/screenshot-from-2019-11-11-15-06-08_1583228687479.png" alt="do_212969809405902848148" data-asset-variable="do_212969809405902848148"></figure>',
+            'resvalue': 2,
+            'resindex': 2
+          }
+        },
+        {
+          'answer': false,
+          'value': {
+            'type': 'text',
+            'body': '<figure class="image"><img src="/assets/public/content/do_212969809543274496149/artifact/screenshot-from-2020-02-26-10-25-43_1583228704365.png" alt="do_212969809543274496149" data-asset-variable="do_212969809543274496149"></figure>',
+            'resvalue': 3,
+            'resindex': 3
+          }
+        }
+      ],
+      'lastUpdatedOn': '2020-03-03T09:45:39.246+0000',
+      'identifier': 'do_21296980895970099211621',
+      'lastStatusChangedOn': '2020-03-03T09:43:52.776+0000',
+      'creator': '2.7contribute',
+      'question': null,
+      'author': '2.7contribute',
+      'consumerId': 'fde858c3-b922-499c-b2f6-648d0765dbec',
+      'solutions': '',
+      'maxScore': 1,
+      'bloomsLevel': [
+        'remember'
+      ],
+      'version': 3,
+      'versionKey': '1583228739246',
+      'license': 'CC BY 4.0',
+      'framework': 'ka_k-12',
+      'rejectComment': '',
+      'name': 'mcq_ka_k-12',
+      'category': 'MCQ',
+      'programId': '31f73460-466f-11ea-abf3-c3d01bed4f1f',
+      'board': 'State (Karnataka)',
+      'status': 'Draft'
     }
   ]
 };
