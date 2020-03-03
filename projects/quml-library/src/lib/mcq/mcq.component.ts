@@ -25,6 +25,7 @@ export class McqComponent implements OnInit, AfterViewInit {
   mcqOptions: any[] = [];
   selectedOptionTarget: any;
   showQumlPopup = false;
+  baseUrl = 'https://programs.diksha.gov.in';
 
 
 
@@ -35,7 +36,7 @@ export class McqComponent implements OnInit, AfterViewInit {
     this.componentLoaded.emit({ event: 'mcq component has been loaded' });
     this.renderLatex();
     this.question = this.question ? this.question : questionData;
-    this.layout = this.layout ? this.layout : 'DEFAULT';
+    this.layout = this.layout ? this.layout : 'IMAGEGRID';
     // if (this.questions['__cdata'] != null) {
     //   const parsedQuestions = JSON.parse(this.questions.__cdata);
     //   this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
@@ -47,9 +48,9 @@ export class McqComponent implements OnInit, AfterViewInit {
     //     this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
     //   this.options = this.questions.result.assessment_item.options;
     // }
-    this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-    this.domSanitizer.bypassSecurityTrustHtml(this.question.question));
-    this.options = this.question.options;
+      this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
+        this.domSanitizer.bypassSecurityTrustHtml(this.question.editorState.question));
+      this.options = this.question.editorState.options;
     this.initOptions();
   }
 
@@ -93,9 +94,9 @@ export class McqComponent implements OnInit, AfterViewInit {
     }
   }
 
-  onOptionSelect(event ) {
+  onOptionSelect(event) {
     const mcqOption = event.option;
-    console.log('mcq option on click is' , mcqOption);
+    console.log('mcq option on click is', mcqOption);
     // const parsedQuestion = JSON.parse(this.question.__cdata);
     this.answerChanged.emit({ event: 'Option has been changed' });
     this.mcqOptions.forEach(mcqOptionElement => {
