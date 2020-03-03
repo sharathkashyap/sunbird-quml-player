@@ -15,7 +15,7 @@
       <quml-sa [questions]='question.data' [identifier]="question.id" id={{question.id}}></quml-sa>
     </div>
     <div *ngIf="question.type === 'mcq'">
-      <quml-mcq [question]='question.editorState' (optionSelected)="getOptionSelected($event)" [identifier]="question.id"
+      <quml-mcq [question]='question' (optionSelected)="getOptionSelected($event)" [identifier]="question.id"
         id={{question.id}}></quml-mcq>
     </div>
   </slide>
