@@ -37,6 +37,14 @@ export class McqComponent implements OnInit, AfterViewInit {
     this.renderLatex();
     this.question = this.question ? this.question : questionData;
     this.layout = this.layout ? this.layout : 'IMAGEGRID';
+    console.log('question in mcq', this.question);
+    if (this.question.templateId === 'mcq-vertical') {
+       this.layout = 'DEFAULT';
+    } else if ( this.question.templateId === 'mcq-horizontal') {
+          this.layout = 'IMAGEGRID';
+    } else if (this.question.templateId === 'mcq-vertical mcq-split') {
+           this.layout = 'IMAGEQAGRID';
+    }
     // if (this.questions['__cdata'] != null) {
     //   const parsedQuestions = JSON.parse(this.questions.__cdata);
     //   this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
