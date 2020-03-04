@@ -1,34 +1,32 @@
 <!-- Default Layout-->
 <div class="quml-mcq" *ngIf="layout=='DEFAULT'">
     <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout" (showPopup)="showPopup()"></quml-mcq-question>
-    <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"
-        (optionSelected)="onOptionSelect($event)" (showPopup)="showPopup()"></quml-mcq-option>
+    <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout" (optionSelected)="onOptionSelect($event)"
+        (showPopup)="showPopup()"></quml-mcq-option>
 </div>
 <!-- End of Default Layout-->
 <!--Image Grid Layout-->
 <div class="quml-mcq" *ngIf="layout=='IMAGEGRID'">
     <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
-    <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"
-        (optionSelected)="onOptionSelect($event)"></quml-mcq-option>
+    <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout" (optionSelected)="onOptionSelect($event)">
+    </quml-mcq-option>
 </div>
 <!--End of Grid Layout-->
 <!--Image Multi Grid Layout-->
 <div class="quml-mcq" *ngIf="layout=='MULTIIMAGEGRID'">
     <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
-    <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"
-    ></quml-mcq-option>
+    <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"></quml-mcq-option>
 </div>
 <!--End of Image Multi Grid Layout-->
 <!--Image QA Grid Layout-->
 <div class="quml-mcq" *ngIf="layout=='IMAGEQAGRID'">
     <div class="imageqa-wrapper">
-        <!-- <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question> -->
-        <quml-mcq-image-option  [mcqQuestion]="mcqQuestion"></quml-mcq-image-option>
+        <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
+        <!-- <quml-mcq-image-option  [mcqQuestion]="mcqQuestion"></quml-mcq-image-option> -->
 
         <!-- <div>option</div> -->
         <div class="imageqa-option-wrapper">
-                <quml-mcq-image-option *ngFor="let mcqOption of mcqOptions" [mcqOption]="mcqOption"
-                (imgOptionSelected)="optionSelectedInImage($event)"></quml-mcq-image-option>
+            <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"></quml-mcq-option>
         </div>
     </div>
 </div>
@@ -39,8 +37,8 @@
         <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
     </div>
     <div class="columnBlock">
-        <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout"
-            (optionSelected)="onOptionSelect($event)"></quml-mcq-option>
+        <quml-mcq-option [mcqOptions]="mcqOptions" [layout]="layout" (optionSelected)="onOptionSelect($event)">
+        </quml-mcq-option>
     </div>
 </div>
 

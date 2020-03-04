@@ -1,42 +1,44 @@
 <div class="quml-mcq-options" *ngIf="layout=='DEFAULT' || layout=='IMAGEQOPTION'">
-  <div class="quml-option-card" *ngFor="let mcqOption of mcqOptions"
-       (click)="onOptionSelect($event,mcqOption)">
-      <quml-mcq-image-option></quml-mcq-image-option>
-      <div class="option-border"  [ngClass]="(mcqOption.selected==true)?'option-border option-border-selected':'option-border'">
-          <div class="option" [ngClass]="(mcqOption.selected==true)?'option selected-option-text':'option'"
-              [innerHTML]="mcqOption.optionHtml">
-          </div>
-          <label class="container">
-              <input type="radio" name="radio" [attr.checked]="(mcqOption.selected)== true? 'checked': null">
-              <span class="checkmark"></span>
-          </label>
-      </div>
-  </div>
+    <div class="quml-option-card" *ngFor="let mcqOption of mcqOptions" (click)="onOptionSelect($event,mcqOption)">
+        <quml-mcq-image-option></quml-mcq-image-option>
+        <div class="option-border"
+            [ngClass]="(mcqOption.selected==true)?'option-border option-border-selected':'option-border'">
+            <div class="option" [ngClass]="(mcqOption.selected==true)?'option selected-option-text':'option'"
+                [innerHTML]="mcqOption.optionHtml">
+            </div>
+            <label class="container">
+                <input type="radio" name="radio" [attr.checked]="(mcqOption.selected)== true? 'checked': null">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
 </div>
 <div class="" *ngIf="layout=='IMAGEGRID'">
     <div class="qumlImageOption">
-    <div class="wrapper">
-            <quml-mcq-image-option></quml-mcq-image-option>
-            <quml-mcq-image-option></quml-mcq-image-option>
-            <quml-mcq-image-option></quml-mcq-image-option>
-            <quml-mcq-image-option></quml-mcq-image-option>
-    </div>
+        <div class="wrapper">
+            <div *ngFor="let mcqOption of mcqOptions">
+                <quml-mcq-image-option [mcqOption]='mcqOption'></quml-mcq-image-option>
+            </div>
+        </div>
     </div>
 
 </div>
-<div class="" *ngIf="layout=='MULTIIMAGEGRID'">
-        <div class="qumlImageOption">
+<div *ngIf="layout == 'IMAGEQAGRID'">
+    <div class="qumlOption-imageQaGrid">
         <div class="wrapper">
-                <quml-mcq-image-option></quml-mcq-image-option>
-                <quml-mcq-image-option></quml-mcq-image-option>
-                <quml-mcq-image-option></quml-mcq-image-option>
-                <quml-mcq-image-option></quml-mcq-image-option>
-                <quml-mcq-image-option></quml-mcq-image-option>
-                <quml-mcq-image-option></quml-mcq-image-option>
-                <quml-mcq-image-option></quml-mcq-image-option>
-                <quml-mcq-image-option></quml-mcq-image-option>
+            <div *ngFor="let mcqOption of mcqOptions">
+                <quml-mcq-image-option [mcqOption]='mcqOption'></quml-mcq-image-option>
+            </div>
         </div>
+    </div>
+</div>
+<div class="" *ngIf="layout=='MULTIIMAGEGRID'">
+    <div class="qumlImageOption">
+        <div class="wrapper">
+            <div *ngFor="let mcqOption of mcqOptions">
+                <quml-mcq-image-option [mcqOption]='mcqOption'></quml-mcq-image-option>
+            </div>
         </div>
-    
     </div>
 
+</div>

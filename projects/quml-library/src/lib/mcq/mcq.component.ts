@@ -25,40 +25,47 @@ export class McqComponent implements OnInit, AfterViewInit {
   mcqOptions: any[] = [];
   selectedOptionTarget: any;
   showQumlPopup = false;
-  baseUrl = 'https://programs.diksha.gov.in';
 
 
 
   constructor(public domSanitizer: DomSanitizer) {
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.componentLoaded.emit({ event: 'mcq component has been loaded' });
     this.renderLatex();
     this.question = this.question ? this.question : questionData;
     this.layout = this.layout ? this.layout : 'IMAGEGRID';
-    console.log('question in mcq', this.question);
     if (this.question.templateId === 'mcq-vertical') {
-       this.layout = 'DEFAULT';
-    } else if ( this.question.templateId === 'mcq-horizontal') {
-          this.layout = 'IMAGEGRID';
+      this.layout = 'DEFAULT';
+    } else if (this.question.templateId === 'mcq-horizontal') {
+      const urlArr = [];
+      for (let i = 0; i < this.question.media.length; i++) {
+        const url = 'https://preprod.ntp.net.in' + this.question.media[i].src;
+        urlArr.push(url);
+      }
+      this.question.editorState.quwstionUrl = urlArr[0];
+      urlArr.shift();
+      for (let i = 0; i < urlArr.length; i++) {
+        this.question.editorState.options[i].url = urlArr[i];
+      }
+      this.layout = 'IMAGEGRID';
     } else if (this.question.templateId === 'mcq-vertical mcq-split') {
-           this.layout = 'IMAGEQAGRID';
+      const urlArr = [];
+      for (let i = 0; i < this.question.media.length; i++) {
+        const url = 'https://preprod.ntp.net.in' + this.question.media[i].src;
+        urlArr.push(url);
+      }
+      this.question.editorState.quwstionUrl = urlArr[0];
+      urlArr.shift();
+      for (let i = 0; i < urlArr.length; i++) {
+        this.question.editorState.options[i].url = urlArr[i];
+      }
+      this.layout = 'IMAGEQAGRID';
     }
-    // if (this.questions['__cdata'] != null) {
-    //   const parsedQuestions = JSON.parse(this.questions.__cdata);
-    //   this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-    //     this.domSanitizer.bypassSecurityTrustHtml(parsedQuestions.question));
-    //   this.options = parsedQuestions.options;
-
-    // } else {
-    //   this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-    //     this.domSanitizer.bypassSecurityTrustHtml(this.questions.result.assessment_item.question));
-    //   this.options = this.questions.result.assessment_item.options;
-    // }
-      this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-        this.domSanitizer.bypassSecurityTrustHtml(this.question.editorState.question));
-      this.options = this.question.editorState.options;
+    this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
+      this.domSanitizer.bypassSecurityTrustHtml(this.question.editorState.question));
+    this.options = this.question.editorState.options;
     this.initOptions();
   }
 
@@ -71,6 +78,10 @@ export class McqComponent implements OnInit, AfterViewInit {
 
   initOptions() {
     for (let j = 0; j < this.options.length; j++) {
+      let imageUrl;
+      if (this.options[j].url) {
+        imageUrl = this.options[j].url;
+      }
       const option = this.options[j];
       const optionValue = option.value.body;
       const optionHtml = this.domSanitizer.sanitize(SecurityContext.HTML, this.domSanitizer.bypassSecurityTrustHtml(optionValue));
@@ -79,6 +90,7 @@ export class McqComponent implements OnInit, AfterViewInit {
       optionToBePushed.index = j;
       optionToBePushed.optionHtml = optionHtml;
       optionToBePushed.selected = selected;
+      optionToBePushed.url = imageUrl;
       this.mcqOptions.push(optionToBePushed);
     }
   }
@@ -104,7 +116,6 @@ export class McqComponent implements OnInit, AfterViewInit {
 
   onOptionSelect(event) {
     const mcqOption = event.option;
-    console.log('mcq option on click is', mcqOption);
     // const parsedQuestion = JSON.parse(this.question.__cdata);
     this.answerChanged.emit({ event: 'Option has been changed' });
     this.mcqOptions.forEach(mcqOptionElement => {
