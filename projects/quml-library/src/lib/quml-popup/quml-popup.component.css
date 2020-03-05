@@ -32,11 +32,29 @@
     z-index: 2;
 }
 
-.quml-popup img {
-    height: 32%;
-}
-
 .quml-popup .quml-popup-icon {
     top: 32%;
     left: 92%;
+}
+
+@media only screen and (max-width: 480px) {
+
+    .quml-popup .quml-popup-icon {
+        font-size: 20px;
+        right: 14%;
+        position: absolute;
+        cursor: pointer;
+        z-index: 2;
+        color: #fff;
+        top: 20%;
+        left: 48%;
+    }
+    .quml-popup img {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        height: 35%;
+        border-radius: 8px;
+        position: absolute;
+        z-index: 2;
+    }
+
 }
