@@ -1917,7 +1917,7 @@ export const newQuestionFormatMcq = {
       'templateId': 'mcq-horizontal',
       'type': 'mcq',
       'editorState': {
-        'question': '<figure class="image"><img src="/assets/public/content/do_212969726517911552121/artifact/screenshot-from-2019-11-14-12-26-45_1583218565885.png" alt="do_212969726517911552121" data-asset-variable="do_212969726517911552121"></figure>',
+        'question': '<figure class="image"><img src="https://preprod.ntp.net.in/assets/public/content/do_212969726517911552121/artifact/screenshot-from-2019-11-14-12-26-45_1583218565885.png" alt="do_212969726517911552121" data-asset-variable="do_212969726517911552121"></figure>',
         'options': [
           {
             'answer': true,
@@ -2075,7 +2075,7 @@ export const newQuestionFormatMcq = {
       'templateId': 'mcq-vertical mcq-split',
       'type': 'mcq',
       'editorState': {
-        'question': '<figure class="image"><img src="/assets/public/content/do_212969809123729408145/artifact/screenshot-from-2020-02-18-11-39-23_1583228653078.png" alt="do_212969809123729408145" data-asset-variable="do_212969809123729408145"></figure>',
+        'question': '<figure class="image"><img src="https://preprod.ntp.net.in/assets/public/content/do_212969809123729408145/artifact/screenshot-from-2020-02-18-11-39-23_1583228653078.png" alt="do_212969809123729408145" data-asset-variable="do_212969809123729408145"></figure>',
         'options': [
           {
             'answer': true,
@@ -2166,6 +2166,142 @@ export const newQuestionFormatMcq = {
       'version': 3,
       'versionKey': '1583228739246',
       'license': 'CC BY 4.0',
+      'framework': 'ka_k-12',
+      'rejectComment': '',
+      'name': 'mcq_ka_k-12',
+      'category': 'MCQ',
+      'programId': '31f73460-466f-11ea-abf3-c3d01bed4f1f',
+      'board': 'State (Karnataka)',
+      'status': 'Draft'
+    },
+    {
+      'itemType': 'UNIT',
+      'code': '81356585-0f48-7916-52e7-5873662598fa',
+      'subject': 'I Language Kannada',
+      'qumlVersion': 1,
+      'qlevel': 'MEDIUM',
+      'channel': '0129492660404797447',
+      'organisation': [
+        'My School'
+      ],
+      'responseDeclaration': {
+        'responseValue': {
+          'cardinality': 'single',
+          'type': 'integer',
+          'correct_response': {
+            'value': '0'
+          }
+        }
+      },
+      'language': [
+        'English'
+      ],
+      'program': 'State KA Program',
+      'media': [
+        {
+          'id': 'do_212970474018291712147',
+          'type': 'image',
+          'src': '/assets/public/content/do_212970474018291712147/artifact/screenshot-from-2020-02-18-11-39-23_1583309813280.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212970474221174784148',
+          'type': 'image',
+          'src': '/assets/public/content/do_212970474221174784148/artifact/screenshot-from-2020-02-18-11-39-23_1583309837947.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212970474427916288149',
+          'type': 'image',
+          'src': '/assets/public/content/do_212970474427916288149/artifact/screenshot-from-2020-03-03-11-48-14_1583309863313.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        },
+        {
+          'id': 'do_212970474660495360150',
+          'type': 'image',
+          'src': '/assets/public/content/do_212970474660495360150/artifact/screenshot-from-2019-09-05-12-08-23_1583309891650.png',
+          'baseUrl': 'https://programs.diksha.gov.in'
+        }
+      ],
+      'medium': 'Kannada',
+      'templateId': 'mcq-horizontal',
+      'type': 'mcq',
+      'editorState': {
+        'question': '<p>this is the second layout , Question with image grid</p>',
+        'options': [
+          {
+            'answer': true,
+            'value': {
+              'type': 'text',
+              'body': '<p>option 1</p><figure class="image"><img src="/assets/public/content/do_212970474221174784148/artifact/screenshot-from-2020-02-18-11-39-23_1583309837947.png" alt="do_212970474221174784148" data-asset-variable="do_212970474221174784148"></figure>'
+            }
+          },
+          {
+            'answer': false,
+            'value': {
+              'type': 'text',
+              'body': '<p>option 2</p><figure class="image"><img src="/assets/public/content/do_212970474427916288149/artifact/screenshot-from-2020-03-03-11-48-14_1583309863313.png" alt="do_212970474427916288149" data-asset-variable="do_212970474427916288149"></figure>'
+            }
+          },
+          {
+            'answer': false,
+            'value': {
+              'type': 'text',
+              'body': '<p>option 3</p><figure class="image"><img src="/assets/public/content/do_212970474660495360150/artifact/screenshot-from-2019-09-05-12-08-23_1583309891650.png" alt="do_212970474660495360150" data-asset-variable="do_212970474660495360150"></figure>'
+            }
+          }
+        ]
+      },
+      'body': '<div class=\'mcq-horizontal cheveron-helper\'><div class=\'mcq-title\'><p>this is the second layout , Question with image grid</p></div><i class=\'chevron down icon\'></i><div class=\'mcq-options\'><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=0 class=\'mcq-option\'><p>option 1</p><figure class="image"><img src="/assets/public/content/do_212970474221174784148/artifact/screenshot-from-2020-02-18-11-39-23_1583309837947.png" alt="do_212970474221174784148" data-asset-variable="do_212970474221174784148"></figure></div><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=1 class=\'mcq-option\'><p>option 2</p><figure class="image"><img src="/assets/public/content/do_212970474427916288149/artifact/screenshot-from-2020-03-03-11-48-14_1583309863313.png" alt="do_212970474427916288149" data-asset-variable="do_212970474427916288149"></figure></div><div data-simple-choice-interaction data-response-variable=\'responseValue\' value=2 class=\'mcq-option\'><p>option 3</p><figure class="image"><img src="/assets/public/content/do_212970474660495360150/artifact/screenshot-from-2019-09-05-12-08-23_1583309891650.png" alt="do_212970474660495360150" data-asset-variable="do_212970474660495360150"></figure></div></div></div>',
+      'createdOn': '2020-03-04T06:46:27.251+0000',
+      'gradeLevel': [
+        'Class 8'
+      ],
+      'appId': 'preprod.diksha.portal',
+      'options': [
+        {
+          'answer': true,
+          'value': {
+            'type': 'text',
+            'body': '<p>option 1</p><figure class="image"><img src="/assets/public/content/do_212970474221174784148/artifact/screenshot-from-2020-02-18-11-39-23_1583309837947.png" alt="do_212970474221174784148" data-asset-variable="do_212970474221174784148"></figure>',
+            'resvalue': 0,
+            'resindex': 0
+          }
+        },
+        {
+          'answer': false,
+          'value': {
+            'type': 'text',
+            'body': '<p>option 2</p><figure class="image"><img src="/assets/public/content/do_212970474427916288149/artifact/screenshot-from-2020-03-03-11-48-14_1583309863313.png" alt="do_212970474427916288149" data-asset-variable="do_212970474427916288149"></figure>',
+            'resvalue': 1,
+            'resindex': 1
+          }
+        },
+        {
+          'answer': false,
+          'value': {
+            'type': 'text',
+            'body': '<p>option 3</p><figure class="image"><img src="/assets/public/content/do_212970474660495360150/artifact/screenshot-from-2019-09-05-12-08-23_1583309891650.png" alt="do_212970474660495360150" data-asset-variable="do_212970474660495360150"></figure>',
+            'resvalue': 2,
+            'resindex': 2
+          }
+        }
+      ],
+      'lastUpdatedOn': '2020-03-04T08:18:40.484+0000',
+      'identifier': 'do_21297042954036019211636',
+      'lastStatusChangedOn': '2020-03-04T06:46:27.251+0000',
+      'creator': '2.7contribute',
+      'question': null,
+      'author': '2.7contribute',
+      'consumerId': '2eaff3db-cdd1-42e5-a611-bebbf906e6cf',
+      'solutions': '',
+      'maxScore': 1,
+      'bloomsLevel': [
+        'apply'
+      ],
+      'version': 3,
+      'versionKey': '1583309920484',
+      'license': 'CC BY-NC-SA 4.0',
       'framework': 'ka_k-12',
       'rejectComment': '',
       'name': 'mcq_ka_k-12',

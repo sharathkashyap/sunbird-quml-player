@@ -1,10 +1,15 @@
-<div class="quml-mcq-option-card" (click)="optionClicked(mcqOption)" [ngClass]="(mcqOption?.selected==true)?'quml-mcq-option-card image-option-selected':'quml-mcq-option-card'">
-  <div class="option-image">
-    <img src="https://via.placeholder.com/54">
+<div class="quml-mcq-option-card" (click)="optionClicked(mcqOption)"
+  [ngClass]="(mcqOption?.selected==true)?'quml-mcq-option-card image-option-selected':'quml-mcq-option-card'">
+  <div class="option-image" *ngIf="mcqOption?.url">
+    <img src={{mcqOption?.url}} style="width: 50%;">
+    <span class="icon-zommin" (click)="showPopup(mcqOption.url)"></span>
+  </div>
+  <div class="option-image" *ngIf="!mcqOption?.url">
+    <img src='https://via.placeholder.com/54'>
     <span class="icon-zommin" (click)="showQumlPopup = true;"></span>
   </div>
-  <div class="option" *ngIf="mcqQuestion" [innerHTML]="mcqQuestion"></div>
-  <div class="option" [ngClass]="(mcqOption?.selected==true)?'option selected-option-text':'option'" *ngIf="mcqOption" 
-   [innerHTML]="mcqOption?.optionHtml"></div>
+  <div class="option" *ngIf="mcqQuestion" id="mcqQuestionSection" [innerHTML]="mcqQuestion"></div>
+  <div class="option" [ngClass]="(mcqOption?.selected==true)?'option selected-option-text':'option'" *ngIf="mcqOption"
+    [innerHTML]="mcqOption?.optionHtml"></div>
 </div>
-<quml-quml-popup *ngIf="showQumlPopup" (popUpClose)="closePopUp()"></quml-quml-popup>
+<quml-quml-popup *ngIf="showQumlPopup" [image]="qumlPopupImage" (popUpClose)="closePopUp()"></quml-quml-popup>
