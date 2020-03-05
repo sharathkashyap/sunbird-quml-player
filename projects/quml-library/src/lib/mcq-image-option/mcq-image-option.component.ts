@@ -1,11 +1,11 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'quml-mcq-image-option',
   templateUrl: './mcq-image-option.component.html',
   styleUrls: ['./mcq-image-option.component.css']
 })
-export class McqImageOptionComponent implements OnInit  {
+export class McqImageOptionComponent implements OnInit, AfterViewInit {
   showQumlPopup = false;
   qumlPopupImage: any;
   @Input() mcqQuestion: any;
@@ -14,16 +14,22 @@ export class McqImageOptionComponent implements OnInit  {
   constructor() { }
 
   ngOnInit() {
-    console.log('mcq questions image component', this.mcqQuestion);
+  }
+  ngAfterViewInit() {
+    const dom = document.getElementsByTagName('figure');
+    for (let i = 0; i < dom.length; i++) {
+      dom[i].firstElementChild['style'].width = '50%';
+    }
   }
 
   showPopup(image) {
     this.showQumlPopup = true;
     this.qumlPopupImage = image;
+
   }
 
   optionClicked(mcqOption) {
-    this.imgOptionSelected.emit({name: 'optionSelect', option: mcqOption});
+    this.imgOptionSelected.emit({ name: 'optionSelect', option: mcqOption });
   }
 
   closePopUp() {
