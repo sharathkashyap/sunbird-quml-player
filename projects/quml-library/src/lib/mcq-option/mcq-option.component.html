@@ -1,6 +1,6 @@
 <div class="quml-mcq-options" *ngIf="layout=='DEFAULT' || layout=='IMAGEQOPTION'">
     <div class="quml-option-card" *ngFor="let mcqOption of mcqOptions" (click)="onOptionSelect($event,mcqOption)">
-        <quml-mcq-image-option></quml-mcq-image-option>
+        <!-- <quml-mcq-image-option></quml-mcq-image-option> -->
         <div class="option-border"
             [ngClass]="(mcqOption.selected==true)?'option-border option-border-selected':'option-border'">
             <div class="option" [ngClass]="(mcqOption.selected==true)?'option selected-option-text':'option'"
@@ -27,7 +27,7 @@
     <div class="qumlOption-imageQaGrid">
         <div class="wrapper">
             <div *ngFor="let mcqOption of mcqOptions">
-                <quml-mcq-image-option [mcqOption]='mcqOption'></quml-mcq-image-option>
+                <quml-mcq-image-option (imgOptionSelected)="onImageOptionSelected($event)" [mcqOption]='mcqOption'></quml-mcq-image-option>
             </div>
         </div>
     </div>

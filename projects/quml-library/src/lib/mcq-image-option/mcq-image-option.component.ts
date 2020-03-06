@@ -18,7 +18,7 @@ export class McqImageOptionComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     const dom = document.getElementsByTagName('figure');
     for (let i = 0; i < dom.length; i++) {
-      dom[i].firstElementChild['style'].width = '50%';
+      dom[i].firstElementChild['style'].width = '100%';
     }
   }
 
