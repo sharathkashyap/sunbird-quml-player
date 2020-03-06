@@ -36,36 +36,52 @@ export class McqComponent implements OnInit, AfterViewInit {
     this.renderLatex();
     this.question = this.question ? this.question : questionData;
     this.layout = this.layout ? this.layout : 'IMAGEGRID';
-    if (this.question.templateId === 'mcq-vertical') {
-      this.layout = 'DEFAULT';
-    } else if (this.question.templateId === 'mcq-horizontal') {
-      const urlArr = [];
-      for (let i = 0; i < this.question.media.length; i++) {
-        const url = 'https://preprod.ntp.net.in' + this.question.media[i].src;
-        urlArr.push(url);
+    if (this.question.editorState != null) {
+      if (this.question.templateId === 'mcq-vertical') {
+        this.layout = 'DEFAULT';
+      } else if (this.question.templateId === 'mcq-horizontal') {
+        const urlArr = [];
+        for (let i = 0; i < this.question.media.length; i++) {
+          const url = 'https://preprod.ntp.net.in' + this.question.media[i].src;
+          urlArr.push(url);
+        }
+        this.question.editorState.quwstionUrl = urlArr[0];
+        urlArr.shift();
+        for (let i = 0; i < urlArr.length; i++) {
+          this.question.editorState.options[i].url = urlArr[i];
+        }
+        this.layout = 'IMAGEGRID';
+      } else if (this.question.templateId === 'mcq-vertical mcq-split') {
+        const urlArr = [];
+        for (let i = 0; i < this.question.media.length; i++) {
+          const url = 'https://preprod.ntp.net.in' + this.question.media[i].src;
+          urlArr.push(url);
+        }
+        this.question.editorState.quwstionUrl = urlArr[0];
+        urlArr.shift();
+        for (let i = 0; i < urlArr.length; i++) {
+          if (Boolean(this.question.editorState.options[i].url)) {
+            this.question.editorState.options[i].url = urlArr[i];
+          }
+        }
+        this.layout = 'IMAGEQAGRID';
       }
-      this.question.editorState.quwstionUrl = urlArr[0];
-      urlArr.shift();
-      for (let i = 0; i < urlArr.length; i++) {
-        this.question.editorState.options[i].url = urlArr[i];
+      this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
+        this.domSanitizer.bypassSecurityTrustHtml(this.question.editorState.question));
+      this.options = this.question.editorState.options;
+    } else if (this.question.editorState === null) {
+      if (this.question.templateId === 'mcq-grid mcq-split') {
+        this.layout = 'IMAGEQAGRID';
+      } if (this.question.templateId === 'mcq-horizontal') {
+        this.layout = 'IMAGEGRID';
+      } else if (this.layout === 'mcq-vertical') {
+        this.layout = 'DEFAULT';
       }
-      this.layout = 'IMAGEGRID';
-    } else if (this.question.templateId === 'mcq-vertical mcq-split') {
-      const urlArr = [];
-      for (let i = 0; i < this.question.media.length; i++) {
-        const url = 'https://preprod.ntp.net.in' + this.question.media[i].src;
-        urlArr.push(url);
-      }
-      this.question.editorState.quwstionUrl = urlArr[0];
-      urlArr.shift();
-      for (let i = 0; i < urlArr.length; i++) {
-        this.question.editorState.options[i].url = urlArr[i];
-      }
-      this.layout = 'IMAGEQAGRID';
+      this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
+        this.domSanitizer.bypassSecurityTrustHtml(this.question.body));
+      this.options = this.question.options;
+
     }
-    this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-      this.domSanitizer.bypassSecurityTrustHtml(this.question.editorState.question));
-    this.options = this.question.editorState.options;
     this.initOptions();
   }
 
@@ -136,6 +152,7 @@ export class McqComponent implements OnInit, AfterViewInit {
     });
   }
   optionSelectedInImage(event) {
+    console.log('mcq component ts', event);
     this.onOptionSelect(event);
   }
 

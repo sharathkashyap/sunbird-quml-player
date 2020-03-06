@@ -20,6 +20,9 @@ export class McqOptionComponent implements OnInit {
   onOptionSelect(event, mcqOption) {
     this.optionSelected.emit({name: 'optionSelect', option: mcqOption});
   }
+  onImageOptionSelected(event) {
+    this.onOptionSelect(event , event.option);
+  }
 
   showQumlPopup() {
     this.showPopup.emit();
