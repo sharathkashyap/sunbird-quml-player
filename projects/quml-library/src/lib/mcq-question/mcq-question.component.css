@@ -5,6 +5,9 @@
     margin-bottom: 16px;
     align-items: center;
   }
+  img {
+    width: 100% !important;
+  }
 
  .quml-question{
     font-size:14px;

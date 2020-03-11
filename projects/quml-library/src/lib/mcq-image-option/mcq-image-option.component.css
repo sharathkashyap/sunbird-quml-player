@@ -12,10 +12,10 @@
  .quml-mcq-option-card .option-image img {
    min-width: 100%;
    vertical-align: bottom;
+   width: 100% !important;
  }
 
  .quml-mcq-option-card .option {
-   text-align: center;
    color: #666666;
    font-size: 14px;
    margin-top: 0.2em;

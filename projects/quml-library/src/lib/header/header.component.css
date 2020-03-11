@@ -91,7 +91,7 @@
   margin-left: 50px;
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-height: 1024px) {
   .sidenav {
     padding-top: 0px;
   }
