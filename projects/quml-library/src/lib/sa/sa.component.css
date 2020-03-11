@@ -106,7 +106,7 @@
   font-size: 13px;
   color: #024f9d;
 }
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 840px) {
   .quml-solution-and-image .wrapper {
     display: grid;
     grid-template-columns: auto;

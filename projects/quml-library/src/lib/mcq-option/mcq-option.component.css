@@ -87,10 +87,17 @@
   border-radius: 50%;
   background: #5b53f4;
 }
-
+img {
+  width: 100% !important;
+}
 .option-img {
   position: relative;
 }
+
+.option-img img {
+  width: 100%;
+}
+
 .icon-zommin {
   position: absolute;
   bottom: 0;
@@ -108,7 +115,7 @@
   grid-gap: 1em;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 840px) {
   .qumlImageOption .wrapper {
   grid-template-columns: repeat(2, 1fr);
   }

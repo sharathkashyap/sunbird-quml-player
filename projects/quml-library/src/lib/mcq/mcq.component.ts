@@ -117,17 +117,27 @@ export class McqComponent implements OnInit, AfterViewInit {
     const _instance = this;
     setTimeout(function () {
       _instance.replaceLatexText();
-    }, 0);
+      const images = document.getElementsByTagName('img');
+    if(images != null && images.length > 0) {
+      console.log("images "+images.length);
+      for(var i=0;i<images.length;i++) {
+        images[i].style.width = "100%";
+      }
+    }
+    }, 100);
   }
 
   replaceLatexText() {
     const questionElement = document.getElementById(this.identifier);
-    const mathTextDivs = questionElement.getElementsByClassName('mathText');
-    for (let i = 0; i < mathTextDivs.length; i++) {
-      const mathExp = mathTextDivs[i];
-      const textToRender = mathExp.innerHTML;
-      katex.render(textToRender, mathExp, { displayMode: false, output: 'html', throwOnError: true });
+    if(questionElement!=null) {
+      const mathTextDivs = questionElement.getElementsByClassName('mathText');
+      for (let i = 0; i < mathTextDivs.length; i++) {
+        const mathExp = mathTextDivs[i];
+        const textToRender = mathExp.innerHTML;
+        katex.render(textToRender, mathExp, { displayMode: false, output: 'html', throwOnError: true });
+      }
     }
+    
   }
 
   onOptionSelect(event) {
