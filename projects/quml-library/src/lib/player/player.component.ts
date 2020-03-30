@@ -27,6 +27,9 @@ export class PlayerComponent implements OnInit {
   answeredQuestionCorrectly = 0;
   scoreSummary = {};
   questionData = this.getQuestionData();
+  linearNavigation = true; // this allows user to navigate in forward direction only
+  timer = true;
+  timing = 10000;
   CarouselConfig = {
     NEXT: 1,
     PREV: 2
@@ -34,6 +37,7 @@ export class PlayerComponent implements OnInit {
 
   constructor() {
     this.endPageReached = false;
+    this.navigatesToEndPageWithTimer();
   }
   getQuestionData() {
     // return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
@@ -61,6 +65,14 @@ export class PlayerComponent implements OnInit {
     //     element.questionType = element.config.metadata.type;
     //   }
     // });
+  }
+
+  navigatesToEndPageWithTimer() {
+    if (this.timer) {
+      setTimeout(() => {
+        this.endPageReached = true;
+      }, this.timing);
+    }
   }
 
   nextSlide() {
@@ -105,7 +117,7 @@ export class PlayerComponent implements OnInit {
   prevSlide() {
     if (this.car.getCurrentSlideIndex() + 1 === this.questions.length && this.endPageReached) {
       this.endPageReached = false;
-    } else {
+    } else if (!this.linearNavigation) {
       this.car.move(this.CarouselConfig.PREV);
     }
   }
