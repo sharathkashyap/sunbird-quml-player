@@ -27,6 +27,7 @@ export class PlayerComponent implements OnInit {
   answeredQuestionCorrectly = 0;
   scoreSummary = {};
   questionData = this.getQuestionData();
+  linearNavigation = true; // this allows user to navigate in forward direction only
   CarouselConfig = {
     NEXT: 1,
     PREV: 2
@@ -105,7 +106,7 @@ export class PlayerComponent implements OnInit {
   prevSlide() {
     if (this.car.getCurrentSlideIndex() + 1 === this.questions.length && this.endPageReached) {
       this.endPageReached = false;
-    } else {
+    } else if (!this.linearNavigation) {
       this.car.move(this.CarouselConfig.PREV);
     }
   }
