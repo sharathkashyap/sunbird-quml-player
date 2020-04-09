@@ -1,4 +1,4 @@
-<quml-header class="main-header" (nextSlideClicked)="nextSlideClicked($event)"
+<quml-header class="main-header" [disablePreviousNavigation]="linearNavigation" (nextSlideClicked)="nextSlideClicked($event)"
   (prevSlideClicked)="previousSlideClicked($event)" *ngIf="!endPageReached"></quml-header>
 <div class="potrait-header-top">
   <div class="wrapper">

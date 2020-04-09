@@ -9,6 +9,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angu
 export class HeaderComponent implements OnInit {
 
   @Input() questions?: any;
+  @Input() disablePreviousNavigation: boolean;
   @Output() nextSlideClicked = new EventEmitter<any>();
   @Output() prevSlideClicked = new EventEmitter<any>();
   constructor() {
@@ -24,7 +25,9 @@ export class HeaderComponent implements OnInit {
   }
 
   prevSlide() {
-    this.prevSlideClicked.emit({event : 'previous clicked'});
+    if (!this.disablePreviousNavigation) {
+      this.prevSlideClicked.emit({ event: 'previous clicked' });
+    }
   }
 
   openNav() {

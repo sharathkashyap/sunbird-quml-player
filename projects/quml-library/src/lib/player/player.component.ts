@@ -10,6 +10,8 @@ import { newQuestionFormatMcq } from './data';
 })
 export class PlayerComponent implements OnInit {
   @Input() questions: any;
+  @Input() linearNavigation: boolean;
+  @Input() duration: any;
   @Output() componentLoaded = new EventEmitter<any>();
   @Output() previousClicked = new EventEmitter<any>();
   @Output() nextClicked = new EventEmitter<any>();
@@ -27,9 +29,6 @@ export class PlayerComponent implements OnInit {
   answeredQuestionCorrectly = 0;
   scoreSummary = {};
   questionData = this.getQuestionData();
-  linearNavigation = true; // this allows user to navigate in forward direction only
-  timer = true;
-  timing = 10000;
   CarouselConfig = {
     NEXT: 1,
     PREV: 2
@@ -37,7 +36,6 @@ export class PlayerComponent implements OnInit {
 
   constructor() {
     this.endPageReached = false;
-    this.navigatesToEndPageWithTimer();
   }
   getQuestionData() {
     // return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
@@ -49,6 +47,8 @@ export class PlayerComponent implements OnInit {
     this.showIndicator = false;
     this.noWrapSlides = true;
     this.questions = this.questions ? this.questions : this.questionData;
+    this.navigatesToEndPageWithTimer();
+
     // this.setQuestionType();
     // console.log('after set question type', this.questions);
   }
@@ -68,10 +68,10 @@ export class PlayerComponent implements OnInit {
   }
 
   navigatesToEndPageWithTimer() {
-    if (this.timer) {
+    if (this.duration) {
       setTimeout(() => {
         this.endPageReached = true;
-      }, this.timing);
+      }, this.duration);
     }
   }
 
