@@ -9,19 +9,24 @@ import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angu
 export class HeaderComponent implements OnInit {
 
   @Input() questions?: any;
+  @Input() duration?: any;
   @Input() disablePreviousNavigation: boolean;
   @Output() nextSlideClicked = new EventEmitter<any>();
   @Output() prevSlideClicked = new EventEmitter<any>();
+  @Output() durationEnds = new EventEmitter<any>();
+  time: any;
   constructor() {
   }
 
 
   ngOnInit() {
-
+    if (this.duration) {
+      this.timer();
+    }
   }
 
   nextSlide() {
-    this.nextSlideClicked.emit({event : 'next clicked'});
+    this.nextSlideClicked.emit({ event: 'next clicked' });
   }
 
   prevSlide() {
@@ -40,4 +45,28 @@ export class HeaderComponent implements OnInit {
     document.body.style.backgroundColor = 'white';
   }
 
+  timer() {
+    const durationInSec = this.duration / 1000;
+    let min = ~~(durationInSec / 60);
+    let sec = (durationInSec % 60);
+    setInterval(() => {
+      if (sec === -1) {
+        sec = 59;
+        min = min - 1;
+      } else if (sec === -1) {
+        min = min - 1;
+        sec = 59;
+      }
+      if (min === -1) {
+        this.durationEnds.emit(true);
+        return false;
+      }
+      if (sec < 10) {
+        this.time = min + ':' + '0' + sec--;
+      } else {
+        this.time = min + ':' + sec--;
+      }
+      console.log('time is', this.time);
+    }, 1000);
+  }
 }

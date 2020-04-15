@@ -1,20 +1,20 @@
 <div class="quml-header">
   <div class="row">
-    <div class="col col-2">
+    <div class="col col-1">
       <div class="quml-menu" (click)="openNav()"><span class="quml-optionMenu"></span></div>
     </div>
-    <div class="col col-5">
+    <div class="col col-4">
       <div class="quml-header-text">
         Unit 2 ,Triangles and Rectangles
       </div>
     </div>
-    <!-- <div class="col col-2">
-      <div class="quml-timer">O 03:78</div>
-    </div> for timeer need to be discussed--> 
-    <div class="col col-5">
+    <div class="col col-4 offset-1 timer-section">
+      <span *ngIf="duration"> Quiz ends in :- &nbsp; {{time}} </span>
+    </div>
+    <div class="col col-2">
       <span class="quml-button-container">
-            <span class="quml-previousIcon" (click)="prevSlide()"></span>
-            <span (click)="nextSlide()" class="quml-nextIcon"></span>
+        <span class="quml-previousIcon" (click)="prevSlide()"></span>
+        <span (click)="nextSlide()" class="quml-nextIcon"></span>
       </span>
     </div>
   </div>
@@ -22,11 +22,20 @@
 
 <div id="mySidenav" class="sidenav">
   <div class="navBlock">
-    <div class="quml-nav-unit">UNIT-2.3: Topics, Indian Culture and the Civilisation, Unit Division and Explanation and to test whether ellipsis is working or not</div>
-    <div class="quml-nav-items"><div class="quml-replay"><span class="quml-replaySound"></span></div>Replay Audio</div>
-    <div class="quml-nav-items"><div class="quml-replay"><span class="quml-teacherNote"></span></div>Teacher's Note</div>
-    <div class="quml-nav-items"><div class="quml-replay"><span class="quml-optionImage"></span></div>Replay Content</div>
-    <div class="quml-nav-items"><div class="quml-replay"><span class="quml-optionHome"></span></div>Home</div>
+    <div class="quml-nav-unit">UNIT-2.3: Topics, Indian Culture and the Civilisation, Unit Division and Explanation and
+      to test whether ellipsis is working or not</div>
+    <div class="quml-nav-items">
+      <div class="quml-replay"><span class="quml-replaySound"></span></div>Replay Audio
+    </div>
+    <div class="quml-nav-items">
+      <div class="quml-replay"><span class="quml-teacherNote"></span></div>Teacher's Note
+    </div>
+    <div class="quml-nav-items">
+      <div class="quml-replay"><span class="quml-optionImage"></span></div>Replay Content
+    </div>
+    <div class="quml-nav-items">
+      <div class="quml-replay"><span class="quml-optionHome"></span></div>Home
+    </div>
   </div>
   <div class="transparentBlock" (click)="closeNav()"></div>
 </div>

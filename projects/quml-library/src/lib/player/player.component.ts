@@ -47,7 +47,6 @@ export class PlayerComponent implements OnInit {
     this.showIndicator = false;
     this.noWrapSlides = true;
     this.questions = this.questions ? this.questions : this.questionData;
-    this.navigatesToEndPageWithTimer();
 
     // this.setQuestionType();
     // console.log('after set question type', this.questions);
@@ -65,14 +64,6 @@ export class PlayerComponent implements OnInit {
     //     element.questionType = element.config.metadata.type;
     //   }
     // });
-  }
-
-  navigatesToEndPageWithTimer() {
-    if (this.duration) {
-      setTimeout(() => {
-        this.endPageReached = true;
-      }, this.duration);
-    }
   }
 
   nextSlide() {
