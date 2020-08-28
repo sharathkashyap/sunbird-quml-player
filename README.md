@@ -27,7 +27,7 @@ For existing apps, follow these steps to begin using .
 
 ## Step 1: Install the following packages
 
-    npm install ngx-bootsrap
+    npm install ngx-bootstrap
 
     npm install katex
 	
