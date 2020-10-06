@@ -34,53 +34,21 @@ export class McqComponent implements OnInit, AfterViewInit {
   async ngOnInit() {
     this.componentLoaded.emit({ event: 'mcq component has been loaded' });
     this.renderLatex();
-    this.question = this.question ? this.question : questionData;
+    this.question = this.question.metadata;
     this.layout = this.layout ? this.layout : 'IMAGEGRID';
-    if (this.question.editorState != null) {
+    if (this.question.editorState) {
       if (this.question.templateId === 'mcq-vertical') {
         this.layout = 'DEFAULT';
       } else if (this.question.templateId === 'mcq-horizontal') {
-        const urlArr = [];
-        for (let i = 0; i < this.question.media.length; i++) {
-          const url = 'https://preprod.ntp.net.in' + this.question.media[i].src;
-          urlArr.push(url);
-        }
-        this.question.editorState.quwstionUrl = urlArr[0];
-        urlArr.shift();
-        for (let i = 0; i < urlArr.length; i++) {
-          this.question.editorState.options[i].url = urlArr[i];
-        }
         this.layout = 'IMAGEGRID';
       } else if (this.question.templateId === 'mcq-vertical mcq-split') {
-        const urlArr = [];
-        for (let i = 0; i < this.question.media.length; i++) {
-          const url = 'https://preprod.ntp.net.in' + this.question.media[i].src;
-          urlArr.push(url);
-        }
-        this.question.editorState.quwstionUrl = urlArr[0];
-        urlArr.shift();
-        for (let i = 0; i < urlArr.length; i++) {
-          if (Boolean(this.question.editorState.options[i].url)) {
-            this.question.editorState.options[i].url = urlArr[i];
-          }
-        }
         this.layout = 'IMAGEQAGRID';
+      } else if (this.question.templateId === 'mcq-grid mcq-split') {
+        this.layout = 'MULTIIMAGEGRID';
       }
       this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
         this.domSanitizer.bypassSecurityTrustHtml(this.question.editorState.question));
       this.options = this.question.editorState.options;
-    } else if (this.question.editorState === null) {
-      if (this.question.templateId === 'mcq-grid mcq-split') {
-        this.layout = 'IMAGEQAGRID';
-      } if (this.question.templateId === 'mcq-horizontal') {
-        this.layout = 'IMAGEGRID';
-      } else if (this.question.templateId  === 'mcq-vertical') {
-        this.layout = 'DEFAULT';
-      }
-      this.mcqQuestion = this.domSanitizer.sanitize(SecurityContext.HTML,
-        this.domSanitizer.bypassSecurityTrustHtml(this.question.body));
-      this.options = this.question.options;
-
     }
     this.initOptions();
   }
@@ -118,18 +86,15 @@ export class McqComponent implements OnInit, AfterViewInit {
     setTimeout(function () {
       _instance.replaceLatexText();
       const images = document.getElementsByTagName('img');
-    if(images != null && images.length > 0) {
-      console.log("images "+images.length);
-      for(var i=0;i<images.length;i++) {
-        images[i].style.width = "100%";
+      if (images != null && images.length > 0) {
+        console.log("images " + images.length);
       }
-    }
     }, 100);
   }
 
   replaceLatexText() {
     const questionElement = document.getElementById(this.identifier);
-    if(questionElement!=null) {
+    if (questionElement != null) {
       const mathTextDivs = questionElement.getElementsByClassName('mathText');
       for (let i = 0; i < mathTextDivs.length; i++) {
         const mathExp = mathTextDivs[i];
@@ -137,7 +102,6 @@ export class McqComponent implements OnInit, AfterViewInit {
         katex.render(textToRender, mathExp, { displayMode: false, output: 'html', throwOnError: true });
       }
     }
-    
   }
 
   onOptionSelect(event) {
@@ -151,18 +115,10 @@ export class McqComponent implements OnInit, AfterViewInit {
         mcqOptionElement.selected = false;
       }
     });
-    this.mcqOptions.forEach((element) => {
-      if (element.value.body === mcqOption.optionHtml) {
-        const selectedOption = {
-          selectedOption: element,
-          result: element.answer
-        };
-        this.getSelectedOptionAndResult(selectedOption);
-      }
-    });
+        this.getSelectedOptionAndResult(mcqOption);
+
   }
   optionSelectedInImage(event) {
-    console.log('mcq component ts', event);
     this.onOptionSelect(event);
   }
 
@@ -173,6 +129,7 @@ export class McqComponent implements OnInit, AfterViewInit {
   showPopup() {
     this.showQumlPopup = true;
   }
+
   closePopUp() {
     this.showQumlPopup = false;
   }

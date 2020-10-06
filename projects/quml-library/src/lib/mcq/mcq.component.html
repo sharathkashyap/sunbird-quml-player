@@ -13,21 +13,19 @@
 </div>
 <!--End of Grid Layout-->
 <!--Image Multi Grid Layout-->
-<div class="quml-mcq" *ngIf="layout=='MULTIIMAGEGRID'">
+<div class="quml-mcq" *ngIf="layout==='MULTIIMAGEGRID'">
+    <div class="imageqa-wrapper">
+
     <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
     <quml-mcq-option [mcqOptions]="mcqOptions" (optionSelected)="optionSelectedInImage($event)" [layout]="layout"></quml-mcq-option>
+    </div>
 </div>
 <!--End of Image Multi Grid Layout-->
 <!--Image QA Grid Layout-->
 <div class="quml-mcq" *ngIf="layout=='IMAGEQAGRID'">
     <div class="imageqa-wrapper">
         <quml-mcq-question [mcqQuestion]="mcqQuestion" [layout]="layout"></quml-mcq-question>
-        <!-- <quml-mcq-image-option  [mcqQuestion]="mcqQuestion"></quml-mcq-image-option> -->
-
-        <!-- <div>option</div> -->
-        <div class="imageqa-option-wrapper">
-            <quml-mcq-option [mcqOptions]="mcqOptions" (optionSelected)="optionSelectedInImage($event)" [layout]="layout"></quml-mcq-option>
-        </div>
+        <quml-mcq-option [mcqOptions]="mcqOptions" (optionSelected)="optionSelectedInImage($event)" [layout]="layout"></quml-mcq-option>
     </div>
 </div>
 <!--End of Image QA Grid Layout-->

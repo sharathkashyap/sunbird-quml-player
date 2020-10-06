@@ -5,7 +5,7 @@ import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@
   templateUrl: './mcq-option.component.html',
   styleUrls: ['./mcq-option.component.css']
 })
-export class McqOptionComponent implements OnInit, AfterViewInit {
+export class McqOptionComponent implements OnInit {
 
   @Input() mcqOptions: any;
   @Input() layout: any;
@@ -15,12 +15,6 @@ export class McqOptionComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-  }
-  ngAfterViewInit() {
-    const dom = document.getElementsByTagName('figure');
-    for (let i = 0; i < dom.length; i++) {
-      dom[i].firstElementChild['style'].width = '50%';
-    }
   }
 
   onOptionSelect(event, mcqOption) {

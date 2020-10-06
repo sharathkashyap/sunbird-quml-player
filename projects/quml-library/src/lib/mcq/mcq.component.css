@@ -66,7 +66,7 @@ img {
     font-weight: 500;
     color:#666666;
   }
-  .imageqa-wrapper {
+  .quml-mcq .imageqa-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1em;
@@ -78,22 +78,46 @@ img {
     padding: 24px;
   }
 
-  @media only screen and (max-width: 840px) {
-    .quml-mcq .quml-mcq-img-option-container {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-gap: 1em;
-    }
-    .imageqa-wrapper{
+  @media only screen and (max-width: 600px) {
+    .quml-mcq .imageqa-wrapper {
       display: grid;
       grid-template-columns: none;
       grid-gap: 1em;
     }
-    .imageqa-option-wrapper{
-      padding: 0px;
-    }
-
   }
+
+::ng-deep img.small-image {
+  width: 25%;
+}
+
+@media only screen and (max-width: 640px) {
+  ::ng-deep img.small-image {
+      width: 100% !important;
+  }
+}
+
+@media only screen and ( max-width: 960px) {
+  ::ng-deep img.small-image {
+      width: 50% !important;
+  }
+}
+
+::ng-deep img.medium-image {
+  width: 50%;
+}
+
+@media only screen and (max-width: 640px) {
+  ::ng-deep img.medium-image {
+      width: 100% !important;
+  }
+}
+
+@media only screen and ( max-width: 960px) {
+  ::ng-deep img.medium-image {
+      width: 100% !important;
+  }
+}
+
   
   
   
