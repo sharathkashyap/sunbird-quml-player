@@ -1,47 +1,56 @@
-<quml-header class="main-header" (durationEnds)="this.endPageReached = true" [disablePreviousNavigation]="linearNavigation" [duration]="duration" (nextSlideClicked)="nextSlideClicked($event)"
-  (prevSlideClicked)="previousSlideClicked($event)" *ngIf="!endPageReached"></quml-header>
-<div class="potrait-header-top">
-  <div class="wrapper">
-    <div class="quml-menu">&#9776;</div>
-    <div class="quml-header-text">
-      Unit 2 ,Triangles and Rectangles
+<quml-header class="main-header" (durationEnds)="this.endPageReached = true"
+  [disablePreviousNavigation]="linearNavigation" [duration]="duration" (nextSlideClicked)="nextSlideClicked($event)"
+  (prevSlideClicked)="previousSlideClicked($event)" [currentSlideIndex]="currentSlideIndex"
+  [totalNoOfQuestions]="questions.length"></quml-header>
+<div class="landscape-mode" [hidden]="loadScoreBoard">
+  <div class="lanscape-mode-left">
+    <div class="current-slide">
+      {{currentSlideIndex}}/{{questions.length}}
+    </div>
+    <div>
+      <quml-bookmark></quml-bookmark>
+    </div>
+    <div>
+      <quml-hint></quml-hint>
+    </div>
+    <div>
+      <quml-share></quml-share>
+    </div>
+    <div>
+      <quml-ans></quml-ans>
     </div>
   </div>
+  <carousel class="landscape-center" [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides"
+    #car [hidden]="endPageReached">
+    <slide *ngFor="let question of questions; let i= index">
+      <div *ngIf="question.assessment_item.metadata.type === 'reference'">
+        <quml-sa [questions]='question.assessment_item' [identifier]="question.id" id={{question.id}}></quml-sa>
+      </div>
+      <div *ngIf="question.assessment_item.metadata.type === 'mcq'">
+        <quml-mcq [question]='question.assessment_item' (optionSelected)="getOptionSelected($event)"
+          [identifier]="question.id" id={{question.id}}></quml-mcq>
+      </div>
+    </slide>
+    <!-- <slide *ngIf="loadScoreBoard"><quml-scoreboard></quml-scoreboard></slide> -->
+  </carousel>
+  <div class="lanscape-mode-right">
+    <ul>
+      <li *ngFor="let question of questions; let i = index" (click)="goToSlide(i)">{{i+1}}</li>
+    </ul>
+  </div>
 </div>
-<carousel [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides" #car
-  [hidden]="endPageReached">
-  <slide *ngFor="let question of questions">
-    <div *ngIf="question.type === 'reference'">
-      <quml-sa [questions]='question.data' [identifier]="question.id" id={{question.id}}></quml-sa>
-    </div>
-    <div *ngIf="question.type === 'mcq'">
-      <quml-mcq [question]='question' (optionSelected)="getOptionSelected($event)" [identifier]="question.id"
-        id={{question.id}}></quml-mcq>
-    </div>
-  </slide>
-</carousel>
 <!-- [hidden]="!endPageReached" -->
-<quml-endpage *ngIf="endPageReached" [scoreSummary]="scoreSummary" (replayContentEvent)="replayContent()">
-</quml-endpage>
-<div class="quml-card" *ngIf="showAlert">
-  <div class="quml-card-title">
-    <p>Alert</p>
-  </div>
-  <div class="quml-card-body">
-    <p class="wrong">you have selected a wrong option</p>
-    <!-- <p class="right">you have selected a right option</p> -->
-  </div>
-  <div class="quml-card-button-section">
-    <div class="quml-button-container">
-      <button (click)="showAlert = false;"> Retry </button>
+<!-- <quml-endpage *ngIf="endPageReached" [scoreSummary]="scoreSummary" (replayContentEvent)="replayContent()">
+</quml-endpage> -->
+<quml-scoreboard *ngIf="loadScoreBoard" [scores]="scoreBoard"></quml-scoreboard>
+
+<div class="quml-correct-alert" *ngIf="showAlert">
+  <div class="close-icon" (click)="showAlert = false;">close</div>
+  <div class="quml-alert-body">
+      <quml-correct></quml-correct>
+    <div>
+      <div class="alert-text">You got it Right</div>
+      <div class="view-solution">View Solution</div>
     </div>
-    <div class="button-container">
-      <button (click)="skip()"> Skip </button>
-    </div>
-    <!-- <div class="button-container">
-      <button> Next </button>
-    </div> -->
   </div>
 </div>
-<quml-portrait-header class="portrait-header" (nextSlideClicked)="nextSlideClicked($event)"
-  (prevSlideClicked)="previousSlideClicked($event)"></quml-portrait-header>

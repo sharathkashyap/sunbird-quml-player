@@ -5,13 +5,11 @@
       <img src={{mcqOption?.url}} style="width: 50%;">
       <span class="icon-zommin" (click)="showPopup(mcqOption.url)"></span>
     </div>
-    <!-- <div class="option-image" *ngIf="!mcqOption?.url">
-      <img src='https://via.placeholder.com/54'>
-      <span class="icon-zommin" (click)="showQumlPopup = true;"></span>
-    </div> -->
   </div>
   <div class="option" *ngIf="mcqQuestion" id="mcqQuestionSection" [innerHTML]="mcqQuestion"></div>
   <div class="option" [ngClass]="(mcqOption?.selected==true)?'option selected-option-text':'option'" *ngIf="mcqOption"
     [innerHTML]="mcqOption?.optionHtml"></div>
+    <quml-zoom-in *ngIf="mcqOption?.optionHtml.includes('img')" class="zoom-in-icon"></quml-zoom-in>
+  
 </div>
 <quml-quml-popup *ngIf="showQumlPopup" [image]="qumlPopupImage" (popUpClose)="closePopUp()"></quml-quml-popup>

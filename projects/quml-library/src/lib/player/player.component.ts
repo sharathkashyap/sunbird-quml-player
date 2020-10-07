@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { newQuestionFormatMcq } from './data';
+import { data } from './smartLayout-data';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { newQuestionFormatMcq } from './data';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.css']
 })
-export class PlayerComponent implements OnInit {
+export class PlayerComponent implements OnInit, AfterViewInit {
   @Input() questions: any;
   @Input() linearNavigation: boolean;
   @Input() duration: any;
@@ -18,6 +19,7 @@ export class PlayerComponent implements OnInit {
   @Output() questionClicked = new EventEmitter<any>();
   @ViewChild('car') car: CarouselComponent;
 
+  scoreBoard = [];
   endPageReached: boolean;
   slides: any;
   slideInterval: number;
@@ -25,10 +27,14 @@ export class PlayerComponent implements OnInit {
   noWrapSlides: Boolean;
   optionSelectedObj: any;
   showAlert: Boolean;
+  durationSeconds = 0;
   skippedQuestion = 0;
   answeredQuestionCorrectly = 0;
   scoreSummary = {};
-  questionData = this.getQuestionData();
+  currentSlideIndex = 1;
+  loadScoreBoard = false;
+  // questionData = this.getQuestionData();
+  questionData = data;
   CarouselConfig = {
     NEXT: 1,
     PREV: 2
@@ -38,7 +44,6 @@ export class PlayerComponent implements OnInit {
     this.endPageReached = false;
   }
   getQuestionData() {
-    // return questionSet.stage[0]['org.ekstep.questionset'][0]['org.ekstep.question'];
     return newQuestionFormatMcq.result;
   }
 
@@ -46,44 +51,38 @@ export class PlayerComponent implements OnInit {
     this.slideInterval = 0;
     this.showIndicator = false;
     this.noWrapSlides = true;
-    this.questions = this.questions ? this.questions : this.questionData;
+    this.questions = data;
+  }
 
-    // this.setQuestionType();
-    // console.log('after set question type', this.questions);
+  ngAfterViewInit() {
+    console.log('got carousel' , document.getElementsByClassName('carousel-inner'));
   }
 
   setQuestionType() {
     this.questionClicked.forEach((ele) => {
       ele.questionType = 'mcq';
     });
-    // this.questions.forEach(element => {
-    //   if (typeof (element.config.__cdata) === 'string') {
-    //     const config = JSON.parse(element.config.__cdata);
-    //     element.questionType = config.metadata.type;
-    //   } else {
-    //     element.questionType = element.config.metadata.type;
-    //   }
-    // });
   }
 
   nextSlide() {
+    if (this.currentSlideIndex !== this.questions.length) {
+      this.currentSlideIndex = this.currentSlideIndex + 1;
+    }
+
+    // if (this.car.getCurrentSlideIndex() + 2 === this.questions.length) {
+        
+    // }
+
     if (this.car.getCurrentSlideIndex() + 1 === this.questions.length) {
+    this.loadScoreBoard = true;
       this.endPageReached = true;
       this.getScoreSummary();
+      const slide = document.getElementsByTagName('slide');
       return;
+
     }
-    if (this.optionSelectedObj === undefined || Object.keys(this.optionSelectedObj).length === 0) {
-      this.car.move(this.CarouselConfig.NEXT);
-      this.optionSelectedObj = {};
-      this.skippedQuestion = this.skippedQuestion + 1;
-      this.scoreSummary['skippedQuestion'] = this.skippedQuestion;
-    } else if (this.optionSelectedObj.result) {
-      this.car.move(this.CarouselConfig.NEXT);
-      this.answeredQuestionCorrectly = this.answeredQuestionCorrectly + 1;
-      this.scoreSummary['answeredQuestionCorrectly'] = this.answeredQuestionCorrectly;
-    } else if (this.optionSelectedObj.result === false) {
-      this.showAlert = true;
-    }
+    this.validateSelectedOption(this.optionSelectedObj);
+    this.car.move(this.CarouselConfig.NEXT);
   }
 
   getScoreSummary() {
@@ -105,7 +104,40 @@ export class PlayerComponent implements OnInit {
     this.optionSelectedObj = optionSelected;
   }
 
+  async validateSelectedOption(option) {
+    const obj = {};
+    if (this.optionSelectedObj !== undefined) {
+      const currentIndex = this.car.getCurrentSlideIndex();
+      const currentOptions = this.questions[currentIndex].assessment_item.metadata.editorState.options;
+      currentOptions.forEach((ele, index) => {
+        if (ele.value.body === option.optionHtml && Boolean(ele.answer)) {
+          this.showAlert = true;
+          obj['index'] = this.car.getCurrentSlideIndex() + 1;
+          obj['status'] = true;
+          obj['class'] = 'correct';
+        } else if (index === currentOptions.length - 1 && !Object.keys(obj).length) {
+          obj['index'] = this.car.getCurrentSlideIndex() + 1;
+          obj['status'] = false;
+          obj['class'] = 'wrong';
+        }
+      });
+    } else {
+      obj['index'] = this.car.getCurrentSlideIndex() + 1;
+      obj['status'] = false;
+      obj['class'] = 'skipped';
+    }
+    this.scoreBoard.push(obj);
+  }
+
   prevSlide() {
+    if (this.loadScoreBoard) {
+        const index = this.questions.length - 1;
+        this.car.selectSlide(index);
+        this.loadScoreBoard = false;
+    }
+    if (this.currentSlideIndex > 1) {
+      this.currentSlideIndex = this.currentSlideIndex - 1;
+    }
     if (this.car.getCurrentSlideIndex() + 1 === this.questions.length && this.endPageReached) {
       this.endPageReached = false;
     } else if (!this.linearNavigation) {
@@ -134,7 +166,13 @@ export class PlayerComponent implements OnInit {
   }
   replayContent() {
     this.endPageReached = false;
+    this.currentSlideIndex = 1;
     this.car.selectSlide(0);
+  }
+
+  goToSlide(index) {
+    this.currentSlideIndex = index + 1;
+    this.car.selectSlide(index);
   }
 
 }
