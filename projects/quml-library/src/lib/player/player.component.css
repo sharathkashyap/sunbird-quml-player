@@ -4,6 +4,16 @@
   height: 36px;
 }
 
+.att-color{
+  background-color: #024F9D !important;
+  border: 1px solid #024F9D !important;
+  color: white;
+}
+
+::ng-deep .carousel {
+  outline: none;
+}
+
 .col {
   padding-left: 0px;
   padding-right: 0px;
@@ -58,7 +68,8 @@
   color: #ababab;
   font-family: "Noto Sans";
   font-size: 13px;
-  height: auto;
+  height: 78vh;
+  overflow-y: scroll;
   grid-area: right;
 }
 
@@ -115,12 +126,13 @@
     overflow-x: auto;
     overflow-y: hidden;
     width: 90vw;
+    height: auto;
     padding: 0 16px;
   }
 
   .lanscape-mode-right ul {
     list-style: none;
-    margin: 0;
+    margin-top: 16px;
     padding: 0;
     text-align: center;
     position: relative;
@@ -131,9 +143,9 @@
   .lanscape-mode-right ul li {
     background-color: #fff;
     border-radius: 50%;
-    width: 24px;
+    width: 22px;
     padding: 4px;
-    height: 24px;
+    height: 22px;
     display: -webkit-box;
     display: flex;
     align-items: center;
@@ -142,7 +154,7 @@
     margin-right: 16px;
   }
 
-  .lanscape-mode-right li:hover{
+  .lanscape-mode-right li:hover {
     background-color: #024F9D;
     border: 1px solid #024F9D;
     color: white;

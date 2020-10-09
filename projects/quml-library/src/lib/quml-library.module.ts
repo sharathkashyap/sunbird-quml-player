@@ -17,25 +17,55 @@ import { ZoomInComponent } from './icon/zoom-in/zoom-in.component';
 import { StarComponent } from './icon/star/star.component';
 import { PreviousComponent } from './icon/previous/previous.component';
 import { NextComponent } from './icon/next/next.component';
-import { PreviousHoverComponent } from './icon/previous-hover/previous-hover.component';
 import { BookmarkComponent } from './icon/bookmark/bookmark.component';
 import { HintComponent } from './icon/hint/hint.component';
 import { AnsComponent } from './icon/ans/ans.component';
 import { ShareComponent } from './icon/share/share.component';
 import { CorrectComponent } from './icon/correct/correct.component';
 import { ScoreboardComponent } from './scoreboard/scoreboard.component';
+import { StartpageComponent } from './startpage/startpage.component';
+import { TimerComponent } from './icon/timer/timer.component';
+import { ContentComponent } from './icon/content/content.component';
+import { StartpagestariconComponent } from './icon/startpagestaricon/startpagestaricon.component';
+import { PreviousActiveComponent } from './icon/previous-active/previous-active.component';
+import { NextActiveComponent } from './icon/next-active/next-active.component';
 
 
 @NgModule({
-  declarations: [QumlLibraryComponent, McqComponent, HeaderComponent,
-      SaComponent, PlayerComponent, EndpageComponent, McqQuestionComponent,
-      PortraitHeaderComponent, McqOptionComponent, QumlPopupComponent, McqImageOptionComponent,  SmartLayoutMcqComponent, ZoomInComponent, 
-      StarComponent, PreviousComponent, NextComponent, PreviousHoverComponent, BookmarkComponent, HintComponent, AnsComponent, ShareComponent, CorrectComponent, ScoreboardComponent],
+  declarations: [
+    QumlLibraryComponent,
+    McqComponent,
+    HeaderComponent,
+    SaComponent,
+    PlayerComponent,
+    EndpageComponent,
+    McqQuestionComponent,
+    PortraitHeaderComponent,
+    McqOptionComponent,
+    QumlPopupComponent,
+    McqImageOptionComponent,
+    SmartLayoutMcqComponent,
+    ZoomInComponent,
+    StarComponent,
+    PreviousComponent,
+    NextComponent,
+    PreviousActiveComponent,
+    BookmarkComponent,
+    HintComponent,
+    AnsComponent,
+    ShareComponent,
+    CorrectComponent,
+    ScoreboardComponent,
+    StartpageComponent,
+    TimerComponent,
+    ContentComponent,
+    StartpagestariconComponent,
+    NextActiveComponent
+  ],
   imports: [
     CommonModule,
     CarouselModule
   ],
-  exports: [QumlLibraryComponent, McqComponent, SaComponent, PlayerComponent, HeaderComponent, PortraitHeaderComponent,
-    McqOptionComponent, McqImageOptionComponent]
+  exports: [PlayerComponent]
 })
 export class QumlLibraryModule { }

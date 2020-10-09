@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { newQuestionFormatMcq } from './data';
 import { data } from './smartLayout-data';
@@ -9,7 +10,7 @@ import { data } from './smartLayout-data';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.css']
 })
-export class PlayerComponent implements OnInit, AfterViewInit {
+export class PlayerComponent implements OnInit {
   @Input() questions: any;
   @Input() linearNavigation: boolean;
   @Input() duration: any;
@@ -31,7 +32,8 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   skippedQuestion = 0;
   answeredQuestionCorrectly = 0;
   scoreSummary = {};
-  currentSlideIndex = 1;
+  currentSlideIndex = 0;
+  attemptedQuestions = [];
   loadScoreBoard = false;
   // questionData = this.getQuestionData();
   questionData = data;
@@ -54,10 +56,6 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     this.questions = data;
   }
 
-  ngAfterViewInit() {
-    console.log('got carousel' , document.getElementsByClassName('carousel-inner'));
-  }
-
   setQuestionType() {
     this.questionClicked.forEach((ele) => {
       ele.questionType = 'mcq';
@@ -65,24 +63,26 @@ export class PlayerComponent implements OnInit, AfterViewInit {
   }
 
   nextSlide() {
+    console.log(this.car.getCurrentSlideIndex());
     if (this.currentSlideIndex !== this.questions.length) {
       this.currentSlideIndex = this.currentSlideIndex + 1;
     }
 
-    // if (this.car.getCurrentSlideIndex() + 2 === this.questions.length) {
-        
-    // }
-
     if (this.car.getCurrentSlideIndex() + 1 === this.questions.length) {
-    this.loadScoreBoard = true;
+      this.loadScoreBoard = true;
       this.endPageReached = true;
       this.getScoreSummary();
       const slide = document.getElementsByTagName('slide');
       return;
 
     }
-    this.validateSelectedOption(this.optionSelectedObj);
+    if (this.car.getCurrentSlideIndex() > 0) {
+      this.validateSelectedOption(this.optionSelectedObj);
+    }
     this.car.move(this.CarouselConfig.NEXT);
+    if (!this.attemptedQuestions.includes(this.car.getCurrentSlideIndex())) {
+      this.attemptedQuestions.push(this.car.getCurrentSlideIndex());
+    }
   }
 
   getScoreSummary() {
@@ -93,47 +93,58 @@ export class PlayerComponent implements OnInit, AfterViewInit {
     };
   }
 
-  skip() {
-    this.car.move(this.CarouselConfig.NEXT);
-    this.showAlert = false;
-    this.optionSelectedObj = {};
-  }
-
-
   getOptionSelected(optionSelected) {
     this.optionSelectedObj = optionSelected;
   }
 
   async validateSelectedOption(option) {
     const obj = {};
+    let updated = false;
     if (this.optionSelectedObj !== undefined) {
       const currentIndex = this.car.getCurrentSlideIndex();
       const currentOptions = this.questions[currentIndex].assessment_item.metadata.editorState.options;
       currentOptions.forEach((ele, index) => {
         if (ele.value.body === option.optionHtml && Boolean(ele.answer)) {
           this.showAlert = true;
-          obj['index'] = this.car.getCurrentSlideIndex() + 1;
+          obj['index'] = this.car.getCurrentSlideIndex();
           obj['status'] = true;
           obj['class'] = 'correct';
         } else if (index === currentOptions.length - 1 && !Object.keys(obj).length) {
-          obj['index'] = this.car.getCurrentSlideIndex() + 1;
+          obj['index'] = this.car.getCurrentSlideIndex();
           obj['status'] = false;
           obj['class'] = 'wrong';
         }
       });
+      this.optionSelectedObj = undefined;
     } else {
-      obj['index'] = this.car.getCurrentSlideIndex() + 1;
+      obj['index'] = this.car.getCurrentSlideIndex();
       obj['status'] = false;
       obj['class'] = 'skipped';
     }
-    this.scoreBoard.push(obj);
+    this.scoreBoard.forEach((ele) => {
+      if (ele.index === obj['index']) {
+        ele['status'] = obj['status'];
+        ele['class'] = obj['class'];
+        updated = true;
+      }
+    });
+    if (!updated) {
+      this.scoreBoard.push(obj);
+    }
   }
 
   prevSlide() {
     if (this.loadScoreBoard) {
-        const index = this.questions.length - 1;
-        this.car.selectSlide(index);
-        this.loadScoreBoard = false;
+      const index = this.questions.length - 1;
+      this.car.selectSlide(index);
+      this.loadScoreBoard = false;
+    }
+    console.log(this.attemptedQuestions);
+    if (this.attemptedQuestions.includes(this.currentSlideIndex)) {
+          const index = this.attemptedQuestions.indexOf(this.car.getCurrentSlideIndex());
+          this.attemptedQuestions.splice( index, 1);
+    } else if (this.car.getCurrentSlideIndex() === 0) {
+          this.attemptedQuestions = [];
     }
     if (this.currentSlideIndex > 1) {
       this.currentSlideIndex = this.currentSlideIndex - 1;

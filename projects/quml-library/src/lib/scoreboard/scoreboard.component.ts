@@ -10,6 +10,7 @@ export class ScoreboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('scores here', this.scores);
   }
 
 }

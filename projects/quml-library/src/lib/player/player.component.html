@@ -5,7 +5,7 @@
 <div class="landscape-mode" [hidden]="loadScoreBoard">
   <div class="lanscape-mode-left">
     <div class="current-slide">
-      {{currentSlideIndex}}/{{questions.length}}
+      {{currentSlideIndex}}/{{questions.length-1}}
     </div>
     <div>
       <quml-bookmark></quml-bookmark>
@@ -22,6 +22,9 @@
   </div>
   <carousel class="landscape-center" [interval]="slideInterval" [showIndicators]="showIndicator" [noWrap]="noWrapSlides"
     #car [hidden]="endPageReached">
+    <slide>
+      <quml-startpage></quml-startpage>
+    </slide>
     <slide *ngFor="let question of questions; let i= index">
       <div *ngIf="question.assessment_item.metadata.type === 'reference'">
         <quml-sa [questions]='question.assessment_item' [identifier]="question.id" id={{question.id}}></quml-sa>
@@ -31,11 +34,12 @@
           [identifier]="question.id" id={{question.id}}></quml-mcq>
       </div>
     </slide>
-    <!-- <slide *ngIf="loadScoreBoard"><quml-scoreboard></quml-scoreboard></slide> -->
   </carousel>
   <div class="lanscape-mode-right">
     <ul>
-      <li *ngFor="let question of questions; let i = index" (click)="goToSlide(i)">{{i+1}}</li>
+      <li [ngClass]="(currentSlideIndex === 0 || currentSlideIndex > 0) ? 'att-color': '' ">i</li>
+      <li *ngFor="let question of questions; let i = index"
+        [ngClass]="attemptedQuestions.includes(i+1) ? 'att-color': '' " (click)="goToSlide(i)">{{i+1}}</li>
     </ul>
   </div>
 </div>
@@ -47,7 +51,7 @@
 <div class="quml-correct-alert" *ngIf="showAlert">
   <div class="close-icon" (click)="showAlert = false;">close</div>
   <div class="quml-alert-body">
-      <quml-correct></quml-correct>
+    <quml-correct></quml-correct>
     <div>
       <div class="alert-text">You got it Right</div>
       <div class="view-solution">View Solution</div>
