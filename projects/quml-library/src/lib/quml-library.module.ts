@@ -29,6 +29,13 @@ import { ContentComponent } from './icon/content/content.component';
 import { StartpagestariconComponent } from './icon/startpagestaricon/startpagestaricon.component';
 import { PreviousActiveComponent } from './icon/previous-active/previous-active.component';
 import { NextActiveComponent } from './icon/next-active/next-active.component';
+import { AlertComponent } from './alert/alert.component';
+import { CloseComponent } from './icon/close/close.component';
+import { SolutionsComponent } from './solutions/solutions.component';
+import { DurationtimerComponent } from './icon/durationtimer/durationtimer.component';
+import { AudioComponent } from './icon/audio/audio.component';
+import { WrongComponent } from './icon/wrong/wrong.component';
+import { MenuComponent } from './icon/menu/menu.component';
 
 
 @NgModule({
@@ -60,7 +67,14 @@ import { NextActiveComponent } from './icon/next-active/next-active.component';
     TimerComponent,
     ContentComponent,
     StartpagestariconComponent,
-    NextActiveComponent
+    NextActiveComponent,
+    AlertComponent,
+    CloseComponent,
+    SolutionsComponent,
+    DurationtimerComponent,
+    AudioComponent,
+    WrongComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,

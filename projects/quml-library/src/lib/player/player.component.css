@@ -2,6 +2,7 @@
   background: #c2c2c2;
   display: flow-root;
   height: 36px;
+  position: fixed;
 }
 
 .att-color{
@@ -22,6 +23,10 @@
 .quml-button-container {
   margin-right: 24px;
   float: right;
+}
+
+.main-header{
+  /* position: fixed; */
 }
 
 .quml-button {
@@ -50,13 +55,14 @@
 }
 
 .lanscape-mode-left {
+  position: fixed;
   margin-top: 16px;
   grid-area: left;
-
+  text-align: center;
 }
 
 .lanscape-mode-left div {
-  padding-bottom: 16px;
+  padding-bottom: 24px;
 }
 
 .landscape-center {
@@ -64,6 +70,8 @@
 }
 
 .lanscape-mode-right {
+  position: fixed;
+  right: 20px;
   margin-top: 16px;
   color: #ababab;
   font-family: "Noto Sans";
@@ -96,19 +104,19 @@
 .lanscape-mode-right li {
   background-color: #fff;
   border-radius: 50%;
-  width: 24px;
+  width: 22px;
   padding: 4px;
-  height: 24px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid rgba(204, 204, 204, 0.5);
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
 
 .current-slide {
   color: #6D7278;
-  font-family: Avenir;
+  font-family: "Noto Sans";
   font-size: 14px;
   font-weight: 900;
   letter-spacing: 0;
@@ -127,7 +135,7 @@
     overflow-y: hidden;
     width: 90vw;
     height: auto;
-    padding: 0 16px;
+    padding: 0 30px;
   }
 
   .lanscape-mode-right ul {
@@ -210,44 +218,7 @@
   white-space: nowrap;
 }
 
-.quml-correct-alert {}
 
-.quml-alert-body {
-  display: grid;
-  grid-template-columns: 1fr 10fr;
-  grid-gap: 1em;
-}
-
-.alert-text {
-  color: #4A4A4A;
-  font-family: "Noto Sans";
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: 0;
-}
-
-.view-solution {
-  color: #024F9D;
-  font-family: "Noto Sans";
-  font-size: 12px;
-  letter-spacing: 0;
-  line-height: 17px;
-}
-
-.quml-correct-alert {
-  position: fixed;
-  bottom: 0px;
-  left: 30%;
-  border-radius: 8px;
-  background-color: #FFFFFF;
-  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.1);
-  width: 50%;
-  padding: 16px;
-}
-
-.close-icon {
-  float: right;
-}
 
 .quml-arrow-button {
   border-radius: 28%;

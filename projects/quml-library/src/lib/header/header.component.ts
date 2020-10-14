@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   @Input() disablePreviousNavigation: boolean;
   @Input() totalNoOfQuestions: any;
   @Input() currentSlideIndex: any;
+  @Input() active: boolean;
   @Output() nextSlideClicked = new EventEmitter<any>();
   @Output() prevSlideClicked = new EventEmitter<any>();
   @Output() durationEnds = new EventEmitter<any>();
@@ -22,14 +23,13 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log('total no of questions', this.totalNoOfQuestions);
     if (this.duration) {
       this.timer();
     }
   }
 
   nextSlide() {
-    this.nextSlideClicked.emit({ event: 'next clicked' });
+      this.nextSlideClicked.emit({ type: 'next' });
   }
 
   prevSlide() {

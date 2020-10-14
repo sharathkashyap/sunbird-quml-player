@@ -25,6 +25,7 @@ export class McqComponent implements OnInit, AfterViewInit {
   mcqOptions: any[] = [];
   selectedOptionTarget: any;
   showQumlPopup = false;
+  solutions: Array<[]>;
 
 
 
@@ -32,6 +33,9 @@ export class McqComponent implements OnInit, AfterViewInit {
   }
 
   async ngOnInit() {
+    if (this.question.metadata.solutions) {
+      this.solutions = this.question.metadata.solutions;
+    }
     this.componentLoaded.emit({ event: 'mcq component has been loaded' });
     this.renderLatex();
     this.question = this.question.metadata;
@@ -106,8 +110,7 @@ export class McqComponent implements OnInit, AfterViewInit {
 
   onOptionSelect(event) {
     const mcqOption = event.option;
-    // const parsedQuestion = JSON.parse(this.question.__cdata);
-    this.answerChanged.emit({ event: 'Option has been changed' });
+    const solutions = event.solutions;
     this.mcqOptions.forEach(mcqOptionElement => {
       if (mcqOptionElement.index === event.option.index) {
         mcqOptionElement.selected = true;
@@ -115,7 +118,8 @@ export class McqComponent implements OnInit, AfterViewInit {
         mcqOptionElement.selected = false;
       }
     });
-        this.getSelectedOptionAndResult(mcqOption);
+    mcqOption.solutions = solutions;
+    this.getSelectedOptionAndResult(mcqOption);
 
   }
   optionSelectedInImage(event) {

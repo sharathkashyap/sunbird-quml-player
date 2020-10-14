@@ -18,6 +18,13 @@
   visibility: visible;
 }
 
+quml-next{
+  padding-right: 8px;
+}
+quml-next-active{
+  padding-right: 8px;
+}
+
 .navigation-portrait-section{
   display: none;
 }
@@ -112,12 +119,7 @@
 }
 
 .quml-optionMenu {
-  display: inline-block;
-  width: 18px;
-  height: 12px;
-  background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iNjQiIGhlaWdodD0iNjQiCnZpZXdCb3g9IjAgMCA1MCA1MCIKc3R5bGU9IiBmaWxsOiMwMDAwMDA7Ij48cGF0aCBkPSJNIDAgNy41IEwgMCAxMi41IEwgNTAgMTIuNSBMIDUwIDcuNSBaIE0gMCAyMi41IEwgMCAyNy41IEwgNTAgMjcuNSBMIDUwIDIyLjUgWiBNIDAgMzcuNSBMIDAgNDIuNSBMIDUwIDQyLjUgTCA1MCAzNy41IFoiPjwvcGF0aD48L3N2Zz4=') 50% 50% no-repeat;
-  background-size: 100%;
-  margin: 4px;
+  padding-left: 21px;
 }
 
 

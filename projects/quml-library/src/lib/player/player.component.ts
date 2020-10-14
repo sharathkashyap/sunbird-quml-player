@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter, AfterViewInit } from '@angular/core';
-import { flattenStyles } from '@angular/platform-browser/src/dom/dom_renderer';
 import { CarouselComponent } from 'ngx-bootstrap/carousel';
 import { newQuestionFormatMcq } from './data';
 import { data } from './smartLayout-data';
@@ -28,14 +27,19 @@ export class PlayerComponent implements OnInit {
   noWrapSlides: Boolean;
   optionSelectedObj: any;
   showAlert: Boolean;
-  durationSeconds = 0;
-  skippedQuestion = 0;
-  answeredQuestionCorrectly = 0;
-  scoreSummary = {};
+  currentOptions: any;
+  currentQuestion: any;
+  currentSolutions: any;
+  showSolution: any;
+  active = false;
+  alertType: boolean;
+  previousOption: any;
+  scoreBoardObject = {};
+
+
   currentSlideIndex = 0;
   attemptedQuestions = [];
   loadScoreBoard = false;
-  // questionData = this.getQuestionData();
   questionData = data;
   CarouselConfig = {
     NEXT: 1,
@@ -63,88 +67,103 @@ export class PlayerComponent implements OnInit {
   }
 
   nextSlide() {
-    console.log(this.car.getCurrentSlideIndex());
     if (this.currentSlideIndex !== this.questions.length) {
       this.currentSlideIndex = this.currentSlideIndex + 1;
     }
 
     if (this.car.getCurrentSlideIndex() + 1 === this.questions.length) {
+      this.scoreBoard.splice(0, 1);
       this.loadScoreBoard = true;
       this.endPageReached = true;
-      this.getScoreSummary();
       const slide = document.getElementsByTagName('slide');
       return;
 
     }
-    if (this.car.getCurrentSlideIndex() > 0) {
-      this.validateSelectedOption(this.optionSelectedObj);
-    }
     this.car.move(this.CarouselConfig.NEXT);
+    this.active = false;
+    this.showAlert = false;
+    this.optionSelectedObj = undefined;
     if (!this.attemptedQuestions.includes(this.car.getCurrentSlideIndex())) {
       this.attemptedQuestions.push(this.car.getCurrentSlideIndex());
     }
   }
 
-  getScoreSummary() {
-    return this.scoreSummary = {
-      answeredQuestionCorrectly: this.answeredQuestionCorrectly,
-      skippedQuestion: this.skippedQuestion,
-      totalNoOfQuestions: this.questions.length
-    };
-  }
 
   getOptionSelected(optionSelected) {
     this.optionSelectedObj = optionSelected;
+    this.currentSolutions = optionSelected.solutions;
+    this.active = true;
+  }
+
+  closeAlertBox() {
+    this.showAlert = false;
+  }
+
+  viewSolution() {
+    this.showSolution = true;
+    this.showAlert = false;
+  }
+
+  closeSolution() {
+    this.showSolution = false;
+    this.car.selectSlide(this.currentSlideIndex);
   }
 
   async validateSelectedOption(option) {
-    const obj = {};
+    this.scoreBoardObject = {};
     let updated = false;
     if (this.optionSelectedObj !== undefined) {
-      const currentIndex = this.car.getCurrentSlideIndex();
-      const currentOptions = this.questions[currentIndex].assessment_item.metadata.editorState.options;
-      currentOptions.forEach((ele, index) => {
+      const currentIndex = this.car.getCurrentSlideIndex() - 1;
+      this.currentQuestion = this.questions[currentIndex].assessment_item.metadata.editorState.question;
+      this.currentOptions = this.questions[currentIndex].assessment_item.metadata.editorState.options;
+      this.currentOptions.forEach((ele, index) => {
         if (ele.value.body === option.optionHtml && Boolean(ele.answer)) {
+          this.scoreBoardObject['index'] = this.car.getCurrentSlideIndex();
+          this.scoreBoardObject['status'] = true;
+          this.scoreBoardObject['class'] = 'correct';
           this.showAlert = true;
-          obj['index'] = this.car.getCurrentSlideIndex();
-          obj['status'] = true;
-          obj['class'] = 'correct';
-        } else if (index === currentOptions.length - 1 && !Object.keys(obj).length) {
-          obj['index'] = this.car.getCurrentSlideIndex();
-          obj['status'] = false;
-          obj['class'] = 'wrong';
+          this.alertType = true;
+        } else if (index === this.currentOptions.length - 1 && !Object.keys(this.scoreBoardObject).length) {
+          this.scoreBoardObject['index'] = this.car.getCurrentSlideIndex();
+          this.scoreBoardObject['status'] = false;
+          this.scoreBoardObject['class'] = 'wrong';
+          this.showAlert = true;
+          this.alertType = false;
         }
       });
       this.optionSelectedObj = undefined;
-    } else {
-      obj['index'] = this.car.getCurrentSlideIndex();
-      obj['status'] = false;
-      obj['class'] = 'skipped';
+    } else if (this.optionSelectedObj === undefined && !this.active) {
+      this.scoreBoardObject['index'] = this.car.getCurrentSlideIndex();
+      this.scoreBoardObject['status'] = false;
+      this.scoreBoardObject['class'] = 'skipped';
+      this.nextSlide();
+    } else if (this.optionSelectedObj === undefined && this.active) {
+      this.nextSlide();
     }
     this.scoreBoard.forEach((ele) => {
-      if (ele.index === obj['index']) {
-        ele['status'] = obj['status'];
-        ele['class'] = obj['class'];
+      if (ele.index === this.scoreBoardObject['index']) {
+        ele['status'] = this.scoreBoardObject['status'];
+        ele['class'] = this.scoreBoardObject['class'];
         updated = true;
       }
     });
-    if (!updated) {
-      this.scoreBoard.push(obj);
+    if (!updated && Object.keys(this.scoreBoardObject).length > 0) {
+      this.scoreBoard.push(this.scoreBoardObject);
     }
   }
 
   prevSlide() {
+    this.showAlert = false;
     if (this.loadScoreBoard) {
       const index = this.questions.length - 1;
       this.car.selectSlide(index);
       this.loadScoreBoard = false;
     }
-    console.log(this.attemptedQuestions);
     if (this.attemptedQuestions.includes(this.currentSlideIndex)) {
-          const index = this.attemptedQuestions.indexOf(this.car.getCurrentSlideIndex());
-          this.attemptedQuestions.splice( index, 1);
+      const index = this.attemptedQuestions.indexOf(this.car.getCurrentSlideIndex());
+      this.attemptedQuestions.splice(index, 1);
     } else if (this.car.getCurrentSlideIndex() === 0) {
-          this.attemptedQuestions = [];
+      this.attemptedQuestions = [];
     }
     if (this.currentSlideIndex > 1) {
       this.currentSlideIndex = this.currentSlideIndex - 1;
@@ -165,8 +184,8 @@ export class PlayerComponent implements OnInit {
   }
 
   nextSlideClicked(event) {
-    if (event = 'next clicked') {
-      this.nextSlide();
+    if (event.type === 'next') {
+      this.validateSelectedOption(this.optionSelectedObj);
     }
   }
 

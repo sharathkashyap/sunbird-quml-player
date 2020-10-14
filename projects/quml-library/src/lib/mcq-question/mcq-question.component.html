@@ -1,10 +1,8 @@
-<div class="quml-mcq-questions" *ngIf="layout=='DEFAULT' || layout=='IMAGEGRID' || layout=='MULTIIMAGEGRID'">
-    
-  <!-- <quml-mcq-image-option></quml-mcq-image-option> -->
-  <div class="quml-question-icon"></div>
-  <div class="quml-question" #question [innerHTML]="mcqQuestion">
-  </div>
+<div [ngClass]="mcqQuestion.includes('img') ? 'quml-mcq-image-questions' : 'quml-mcq-questions'">
+    <quml-audio></quml-audio>
+    <div class="quml-question" #question [innerHTML]="mcqQuestion">
+    </div>
 </div>
-<div class="" *ngIf="layout=='IMAGEQAGRID' || layout=='IMAGEQOPTION'">
-    <quml-mcq-image-option [mcqQuestion]="mcqQuestion"></quml-mcq-image-option>
-</div>
+<!-- <div class="" *ngIf="layout=='IMAGEQAGRID' || layout=='IMAGEQOPTION'">
+  <quml-mcq-image-option [mcqQuestion]="mcqQuestion"></quml-mcq-image-option>
+</div> -->
