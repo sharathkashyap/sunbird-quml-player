@@ -1,12 +1,20 @@
 .quml-mcq-questions {
-    /* display: grid;
-    grid-template-columns: 10fr 1fr;
-    grid-gap: 1em;
-    margin-bottom: 16px;
-    align-items: center; */
+  display: flex;
+    justify-content: start;
+    align-items: flex-start;
   }
+  .quml-mcq-image-questions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
   img {
     width: 100% !important;
+  }
+
+  quml-audio {
+    padding: 4px 8px;
+    margin-top: 19px;
   }
 
   .quml-question-icon {

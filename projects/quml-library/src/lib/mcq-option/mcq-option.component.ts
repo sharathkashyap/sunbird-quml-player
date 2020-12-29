@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@
 export class McqOptionComponent implements OnInit {
 
   @Input() mcqOptions: any;
+  @Input() solutions: any;
   @Input() layout: any;
   @Output() showPopup = new EventEmitter();
   @Output() optionSelected = new EventEmitter<any>();
@@ -18,7 +19,20 @@ export class McqOptionComponent implements OnInit {
   }
 
   onOptionSelect(event, mcqOption) {
-    this.optionSelected.emit({ name: 'optionSelect', option: mcqOption });
+    this.mcqOptions.forEach((ele) => {
+        if (ele.value.body === mcqOption.value.body) {
+            ele.selected = true;
+        } else {
+            ele.selected = false;
+        }
+    });
+    this.optionSelected.emit(
+      {
+        name: 'optionSelect',
+        option: mcqOption,
+        solutions: this.solutions
+      }
+    );
   }
   onImageOptionSelected(event) {
     this.onOptionSelect(event, event.option);

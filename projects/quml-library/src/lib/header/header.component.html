@@ -1,46 +1,48 @@
 <div class="quml-header-container">
   <div>
-    <div class="quml-menu" (click)="openNav()"><span class="quml-optionMenu"></span></div>
+    <!-- <quml-menu class="quml-menu"></quml-menu> -->
   </div>
-  <!-- <div>
-    <span *ngIf="duration"> {{time}} </span>
-  </div> -->
+
   <div class="header-right-section">
-    <div class="duration">
-      {{time}}
+    <div class="duration mr-16" *ngIf="duration && showTimer && !initializeTimer">
+      <span><quml-durationtimer></quml-durationtimer></span><span>{{minutes}}:{{seconds}}</span>
     </div>
-    <div class="star-container">
+    <div class="duration mr-8" *ngIf="duration && showTimer && initializeTimer && time">
+      <span><quml-durationtimer></quml-durationtimer></span><span>{{time}}</span>
+    </div>
+    <!-- <div class="star-container">
       <span div class="star">
         <quml-star></quml-star>
       </span>
       <span class="score">
         47
       </span>
-    </div>
+    </div> -->
     <div class="navigation-icons">
       <span (click)="prevSlide()">
         <quml-previous></quml-previous>
       </span>
       <span (click)="nextSlide()">
-        <quml-next></quml-next>
+        <quml-next *ngIf="!active"></quml-next>
+        <quml-next-active *ngIf="active"></quml-next-active>
       </span>
     </div>
   </div>
 </div>
 
-<div class="navigation-portrait-section">
+<div class="navigation-portrait-section" *ngIf="!endPageReached">
   <div class="current-slide">
     {{currentSlideIndex}}/{{totalNoOfQuestions}}
   </div>
-  <div>
+  <!-- <div>
     <quml-bookmark></quml-bookmark>
-  </div>
+  </div> -->
   <div>
     <quml-hint></quml-hint>
   </div>
-  <div>
+  <!-- <div>
     <quml-share></quml-share>
-  </div>
+  </div> -->
   <div>
     <quml-ans></quml-ans>
   </div>
@@ -49,29 +51,8 @@
       <quml-previous></quml-previous>
     </span>
     <span (click)="nextSlide()">
-      <quml-next></quml-next>
+      <quml-next *ngIf="!active"></quml-next>
+      <quml-next-active *ngIf="active"></quml-next-active>
     </span>
   </div>
-
-</div>
-
-
-<div id="mySidenav" class="sidenav">
-  <div class="navBlock">
-    <div class="quml-nav-unit">UNIT-2.3: Topics, Indian Culture and the Civilisation, Unit Division and Explanation and
-      to test whether ellipsis is working or not</div>
-    <div class="quml-nav-items">
-      <div class="quml-replay"><span class="quml-replaySound"></span></div>Replay Audio
-    </div>
-    <div class="quml-nav-items">
-      <div class="quml-replay"><span class="quml-teacherNote"></span></div>Teacher's Note
-    </div>
-    <div class="quml-nav-items">
-      <div class="quml-replay"><span class="quml-optionImage"></span></div>Replay Content
-    </div>
-    <div class="quml-nav-items">
-      <div class="quml-replay"><span class="quml-optionHome"></span></div>Home
-    </div>
-  </div>
-  <div class="transparentBlock" (click)="closeNav()"></div>
 </div>
