@@ -12,7 +12,6 @@ import { PortraitHeaderComponent } from './portrait-header/portrait-header.compo
 import { McqOptionComponent } from './mcq-option/mcq-option.component';
 import { QumlPopupComponent } from './quml-popup/quml-popup.component';
 import { McqImageOptionComponent } from './mcq-image-option/mcq-image-option.component';
-import { SmartLayoutMcqComponent } from './smart-layout-mcq/smart-layout-mcq.component';
 import { ZoomInComponent } from './icon/zoom-in/zoom-in.component';
 import { StarComponent } from './icon/star/star.component';
 import { PreviousComponent } from './icon/previous/previous.component';
@@ -36,6 +35,8 @@ import { DurationtimerComponent } from './icon/durationtimer/durationtimer.compo
 import { AudioComponent } from './icon/audio/audio.component';
 import { WrongComponent } from './icon/wrong/wrong.component';
 import { MenuComponent } from './icon/menu/menu.component';
+import {SunbirdPlayerSdkModule} from '@project-sunbird/sunbird-player-sdk';
+import { QumlLibraryService } from './quml-library.service';
 
 
 @NgModule({
@@ -51,7 +52,6 @@ import { MenuComponent } from './icon/menu/menu.component';
     McqOptionComponent,
     QumlPopupComponent,
     McqImageOptionComponent,
-    SmartLayoutMcqComponent,
     ZoomInComponent,
     StarComponent,
     PreviousComponent,
@@ -78,7 +78,11 @@ import { MenuComponent } from './icon/menu/menu.component';
   ],
   imports: [
     CommonModule,
-    CarouselModule
+    CarouselModule,
+    SunbirdPlayerSdkModule
+  ],
+  providers: [
+    QumlLibraryService
   ],
   exports: [PlayerComponent]
 })

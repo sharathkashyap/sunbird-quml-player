@@ -1,20 +1,23 @@
 <div class="quml-header-container">
   <div>
-    <quml-menu class="quml-menu"></quml-menu>
+    <!-- <quml-menu class="quml-menu"></quml-menu> -->
   </div>
 
   <div class="header-right-section">
-    <div class="duration">
-      <span><quml-durationtimer></quml-durationtimer></span>&nbsp;&nbsp;<span>{{time}}</span>
+    <div class="duration mr-16" *ngIf="duration && showTimer && !initializeTimer">
+      <span><quml-durationtimer></quml-durationtimer></span><span>{{minutes}}:{{seconds}}</span>
     </div>
-    <div class="star-container">
+    <div class="duration mr-8" *ngIf="duration && showTimer && initializeTimer && time">
+      <span><quml-durationtimer></quml-durationtimer></span><span>{{time}}</span>
+    </div>
+    <!-- <div class="star-container">
       <span div class="star">
         <quml-star></quml-star>
       </span>
       <span class="score">
         47
       </span>
-    </div>
+    </div> -->
     <div class="navigation-icons">
       <span (click)="prevSlide()">
         <quml-previous></quml-previous>
@@ -27,19 +30,19 @@
   </div>
 </div>
 
-<div class="navigation-portrait-section">
+<div class="navigation-portrait-section" *ngIf="!endPageReached">
   <div class="current-slide">
     {{currentSlideIndex}}/{{totalNoOfQuestions}}
   </div>
-  <div>
+  <!-- <div>
     <quml-bookmark></quml-bookmark>
-  </div>
+  </div> -->
   <div>
     <quml-hint></quml-hint>
   </div>
-  <div>
+  <!-- <div>
     <quml-share></quml-share>
-  </div>
+  </div> -->
   <div>
     <quml-ans></quml-ans>
   </div>
@@ -48,7 +51,8 @@
       <quml-previous></quml-previous>
     </span>
     <span (click)="nextSlide()">
-      <quml-next></quml-next>
+      <quml-next *ngIf="!active"></quml-next>
+      <quml-next-active *ngIf="active"></quml-next-active>
     </span>
   </div>
 </div>
